@@ -20,3 +20,6 @@
     <%= f.submit "Add a Wild Place", class: "btn btn-success" %>
   <% end %>
 </div>
+<%= content_for(:after_js) do %>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDANjx3bosEtIyzJaoWs50Wnt6nt_1rmxU"></script>
+<% end %>
