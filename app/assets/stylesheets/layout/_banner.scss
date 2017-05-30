@@ -1,0 +1,109 @@
+.banner {
+  color: white;
+  text-align: center;
+  height: 92vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  // added effects for banner parallax
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.banner h1 {
+  font-family:"Cabin";
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  margin-bottom:10px
+}
+.banner p {
+  font-size: 20px;
+  font-weight: lighter;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+}
+
+.banner-content {
+  label {
+    color: black;
+  }
+  .form-search {
+    color: black;
+  }
+  .btn-trouve-colloc{
+  background-color: $orange;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0.7;
+  }
+  .btn-trouve-colloc:hover {
+  background-color: $orange;
+  color: $gray;
+  opacity: 1;
+  }
+}
+
+
+
+
+/* -------------------------------------
+ * CSS code specific to home page
+ * (margin/padding adjustments)
+ * ------------------------------------- */
+.btn-lg-alt {
+    padding: 5px;
+    line-height: 1.8em;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 3px solid #f9f9f9;
+    text-decoration: none;
+    font-size:30px;
+    font-weight: normal;
+    color:white;
+    transition: background-color .3s ease-in-out;
+  }
+
+  .btn-lg-alt:hover {
+    background-color: #f9f9f9;
+    color: #333;
+  }
+
+
+.features-wrapper {
+    background-color: #F4F4F4;
+
+}
+
+
+.align-image {
+  margin-top: -40px;
+}
+
+
+.align-image a {
+display: inline-block;
+position: relative;
+transform-style: preserve-3d;
+transition: 0.4s;
+}
+.align-image a:hover {
+transform: rotateY(180deg);
+}
+
+
+.home-first-wrapper {
+  margin-bottom: 90px;
+  margin-top:50px
+}
+
+
+.home-quote {
+  margin-top:50px;
+  font-family: 'Cabin'
+}
