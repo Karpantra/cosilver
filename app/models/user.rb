@@ -10,12 +10,11 @@ class User < ApplicationRecord
 
   # validates :first_name, presence: true
   # validates :last_name, presence: true
+  # :last_name, :email, :password, :gender, presence: true
   # :gender, etc ... presence: true
 
-  mount_uploader :photo, PhotoUploader
-
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
+  # Photo
+  has_attachment :photo
 
   def self.find_for_facebook_oauth(auth)
       user_params = auth.slice(:provider, :uid)
