@@ -15,4 +15,6 @@ class Flat < ApplicationRecord
   # :address, :city, :service_charges, :deposit, :description, :flat_area, :max_roommmates, :number_pieces, :smoker, :animals
   validates :photo, presence: true
 
+  mount_uploader :photo, PhotoUploader
+
 end
