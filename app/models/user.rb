@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :conversations, foreign_key: :offer_id
   has_many :messages
 
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
