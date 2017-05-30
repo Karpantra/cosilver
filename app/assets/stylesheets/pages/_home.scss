@@ -2,3 +2,38 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.supporting {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+.supporting .col {
+  float: left;
+  width: 33%;
+  font-family: 'Cabin', sans-serif;
+  text-align: center;
+}
+.supporting img {
+  height: 160px;
+}
+.supporting h2 {
+  font-weight: 600;
+  font-size: 23px;
+  text-transform: uppercase;
+}
+.supporting p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0 50px;
+  margin-bottom: 40px;
+}
+.banner-width {
+  width: 100vw;
+}
+
+.image-home{
+  img {
+  image-width: 200;
+  height: 100;
+  }
+}
