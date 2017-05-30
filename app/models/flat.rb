@@ -5,6 +5,7 @@ class Flat < ApplicationRecord
 
   belongs_to :user
   has_many :offers
+  has_many :flat_equipments
   has_many :equipments, through: :flat_equipments
 
 
