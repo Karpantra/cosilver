@@ -6,9 +6,6 @@
 
 
 
-
-
-
   <!-- center navigation with links on colocs and events -->
   <div class="navbar-wagon-right hidden-xs">
     <div class="navbar-wagon-center">
@@ -25,12 +22,12 @@
 
 
 
-
-
-
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <%= link_to t(".top_call_to_action", default: "Besoin d'aide ?"), "#", class: "navbar-wagon-link " %>
+
+
+
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
@@ -71,13 +68,20 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "navbar-connect-button " %>
+      <%= link_to t(".sign_in", default: "Se connecter"), user_session_path, class: "navbar-connect-button " %>
 
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Créer un compte"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <%= link_to t(".top_call_to_action", default: "Créer un compte"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
+
+
+
+
+
+
+
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
