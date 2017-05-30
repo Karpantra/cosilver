@@ -27,9 +27,9 @@
 
 // navbar center section with links
 .navbar-wagon-center {
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar-wagon-center-links {
@@ -61,6 +61,19 @@
   margin-right: 15px;
   line-height: 70px;
 }
+
+// .navbar-wagon-center-links li:after {
+// border-bottom:1px solid $orange;
+//     content: "";
+//     display: block;
+//     margin: 0 auto;
+//     transition:all 0.5s linear 0s;
+// }
+
+
+// .navbar-wagon-center-links li:hover:after {
+//     width: 70%;
+// }
 
 
 

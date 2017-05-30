@@ -23,9 +23,7 @@
 
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%= link_to t(".top_call_to_action", default: "Besoin d'aide ?"), "#", class: "navbar-wagon-link " %>
-  </div>
+
 
 
     <!-- Different navigation if login or not -->
@@ -64,17 +62,19 @@
           </ul>
         </div>
 
-
+  </div>
     <% else %>
 
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
       <!-- Login text link -->
+      <%= link_to t(".top_call_to_action", default: "Besoin d'aide ?"), "#", class: "navbar-wagon-link " %>
       <%= link_to t(".sign_in", default: "Se connecter"), user_session_path, class: "navbar-connect-button " %>
-
 
     <!-- Button (call-to-action) -->
     <%= link_to t(".top_call_to_action", default: "Créer un compte"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+   </div>
     <% end %>
-  </div>
+
 
 
 
@@ -89,7 +89,7 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path%></li>
-        <li><%= link_to t(".top_call_to_action", default: "Créer un compte"), "#"%></li>
+        <li><%= link_to t(".top_call_to_action", default: "Créer un compte"), new_user_registration_path%></li>
         <li><%= link_to t(".top_call_to_action", default: "Besoin d'aide ?"), "#"%></li>
         <li><%= link_to t(".top_call_to_action", default: "Ajouter une coloc ?"), new_flat_path %></li>
       </ul>
