@@ -63,6 +63,7 @@
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
             </li>
+            <li><%= link_to t(".top_call_to_action", default: "Ajouter une coloc ?"), new_flat_path %></li>
           </ul>
         </div>
 
@@ -86,6 +87,7 @@
         <li><%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path%></li>
         <li><%= link_to t(".top_call_to_action", default: "Créer un compte"), "#"%></li>
         <li><%= link_to t(".top_call_to_action", default: "Besoin d'aide ?"), "#"%></li>
+        <li><%= link_to t(".top_call_to_action", default: "Ajouter une coloc ?"), new_flat_path %></li>
       </ul>
     </div>
   </div>
