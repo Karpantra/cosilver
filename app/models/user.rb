@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_many :messages
 
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
   validates :email, presence: true
   validates :password, presence:true
   # :last_name, :email, :password, :gender, presence: true
