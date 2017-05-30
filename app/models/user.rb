@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :messages
 
   validates :first_name, :last_name, :email, :password, :gender, presence: true
+
+  mount_uploader :photo, PhotoUploader
 end
