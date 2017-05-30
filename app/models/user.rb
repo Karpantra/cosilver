@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   has_many :flats
-  has_many :conversations, foreign_key: :offer_id
+  # has_many :conversations, foreign_key: :offer_id
   has_many :messages
 
 
