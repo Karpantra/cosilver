@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence:true
   # :last_name, :email, :password, :gender, presence: true
+  mount_uploader :photo, PhotoUploader
 
   def self.find_for_facebook_oauth(auth)
       user_params = auth.slice(:provider, :uid)
@@ -36,4 +37,5 @@ class User < ApplicationRecord
 
       return user
     end
+
 end
