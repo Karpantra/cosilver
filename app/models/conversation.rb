@@ -6,6 +6,6 @@ class Conversation < ApplicationRecord
   validates :offer_id, uniqueness: { scope: :user_id }
 
   def opposed_user(user)
-    user == user ? offer :user
+    user == user ? offer : user
   end
 end
