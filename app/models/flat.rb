@@ -8,8 +8,11 @@ class Flat < ApplicationRecord
   has_many :flat_equipments
   has_many :equipments, through: :flat_equipments
 
+
   validates :category, presence: true
   validates :address, presence: true
   validates :city, presence: true
   # :address, :city, :service_charges, :deposit, :description, :flat_area, :max_roommmates, :number_pieces, :smoker, :animals
+  validates :photo, presence: true
+
 end

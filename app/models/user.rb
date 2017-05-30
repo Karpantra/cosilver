@@ -8,10 +8,12 @@ class User < ApplicationRecord
   # has_many :conversations, foreign_key: :offer_id
   has_many :messages
 
-
   # validates :first_name, presence: true
   # validates :last_name, presence: true
   # :gender, etc ... presence: true
+
+  mount_uploader :photo, PhotoUploader
+
 
   def self.find_for_facebook_oauth(auth)
       user_params = auth.slice(:provider, :uid)
@@ -33,4 +35,5 @@ class User < ApplicationRecord
 
       return user
     end
+
 end
