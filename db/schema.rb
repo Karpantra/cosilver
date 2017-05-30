@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530081843) do
+ActiveRecord::Schema.define(version: 20170530084242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(version: 20170530081843) do
     t.datetime "updated_at", null: false
     t.index ["offer_id"], name: "index_conversations_on_offer_id", using: :btree
     t.index ["user_id"], name: "index_conversations_on_user_id", using: :btree
+  end
+
+  create_table "equipment", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "flat_equipments", force: :cascade do |t|
+    t.integer  "amount"
+    t.integer  "flat_id"
+    t.integer  "equipment_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["equipment_id"], name: "index_flat_equipments_on_equipment_id", using: :btree
+    t.index ["flat_id"], name: "index_flat_equipments_on_flat_id", using: :btree
   end
 
   create_table "flats", force: :cascade do |t|
@@ -88,6 +104,8 @@ ActiveRecord::Schema.define(version: 20170530081843) do
 
   add_foreign_key "conversations", "offers"
   add_foreign_key "conversations", "users"
+  add_foreign_key "flat_equipments", "equipment"
+  add_foreign_key "flat_equipments", "flats"
   add_foreign_key "flats", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
