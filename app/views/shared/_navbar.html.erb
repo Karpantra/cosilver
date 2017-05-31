@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+  <%= image_tag "logo.png" %>
   <% end %>
 
 
@@ -11,10 +11,13 @@
     <div class="navbar-wagon-center">
       <ul class="navbar-wagon-center-links list-inline">
         <li>
-        <%= link_to t(".top_call_to_action", default: "COLOCATIONS"), "#", class: "navbar-wagon-link " %>
+          <%= link_to t(".top_call_to_action", default: "COLOCATIONS"), "#", class: "navbar-wagon-link " %>
         </li>
         <li>
-        <%= link_to t(".top_call_to_action", default: "ÉVÉNEMENTS"), "#", class: "navbar-wagon-link " %>
+          <%= link_to t(".top_call_to_action", default: "ÉVÉNEMENTS"), "#", class: "navbar-wagon-link " %>
+        </li>
+        <li>
+          <%= link_to t(".top_call_to_action", default: "SERVICES"), "#", class: "navbar-wagon-link " %>
         </li>
       </ul>
     </div>
@@ -26,60 +29,100 @@
 
 
 
-    <!-- Different navigation if login or not -->
-    <% if user_signed_in? %>
+  <!-- Different navigation if login or not -->
+  <% if user_signed_in? %>
 
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
-        </div>
+  <!-- Notification -->
+  <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+  <div class="badge-container">
+    <i class="fa fa-envelope-o"></i>
+    <div class="badge badge-blue">3</div>
+  </div>
 
+  <% end %>
+  <!-- Profile picture and dropdown -->
+  <div class="navbar-wagon-item">
+    <div class="dropdown">
+      <% if current_user.photos? %>
+      <%= cl_image_tag current_user.photos.first.path, width: 30, height: 30, crop: :fill, radius: :max, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <% elsif current_user.facebook_picture_url.present? %>
+      <%= image_tag current_user.facebook_picture_url, :style => 'border-radius: 150px', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"  %>
+      <% else %>
+      <%= image_tag "http://placehold.it/30x30", class: "img-thumbnail avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <% end %>
-      <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <% if current_user.photos? %>
-            <%= cl_image_tag current_user.photos.first.path, width: 30, height: 30, crop: :fill, radius: :max, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <% elsif current_user.facebook_picture_url.present? %>
-            <%= image_tag current_user.facebook_picture_url, :style => 'border-radius: 150px', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"  %>
-          <% else %>
-            <%= image_tag "http://placehold.it/30x30", class: "img-thumbnail avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li>
+          <%= link_to dashboard_users_path do %>
+          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
           <% end %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to dashboard_users_path do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to root_path do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-            <li><%= link_to t(".top_call_to_action", default: "Ajouter une coloc ?"), new_flat_path %></li>
-          </ul>
-        </div>
+        </li>
+        <li>
+          <%= link_to root_path do %>
+          <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
+        <li><%= link_to t(".top_call_to_action", default: "Ajouter une coloc ?"), new_flat_path %></li>
+      </ul>
+    </div>
 
   </div>
-    <% else %>
+  <% else %>
+  <% if provider_signed_in? %>
+  <!-- Notification -->
+  <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+  <div class="badge-container">
+    <i class="fa fa-envelope-o"></i>
+    <div class="badge badge-blue">3</div>
+  </div>
 
+  <% end %>
+  <!-- Profile picture and dropdown -->
+  <div class="navbar-wagon-item">
+    <div class="dropdown">
+      <% if current_provider.photos? %>
+      <%= cl_image_tag current_provider.photos.first.path, width: 30, height: 30, crop: :fill, radius: :max, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <% elsif current_provider.facebook_picture_url.present? %>
+      <%= image_tag current_provider.facebook_picture_url, :style => 'border-radius: 150px', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"  %>
+      <% else %>
+      <%= image_tag "http://placehold.it/30x30", class: "img-thumbnail avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <% end %>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li>
+          <%= link_to dashboard_users_path do %>
+          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to root_path do %>
+          <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_provider_session_path, method: :delete do %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
+        <li><%= link_to t(".top_call_to_action", default: "Ajouter une coloc ?"), new_flat_path %></li>
+      </ul>
+    </div>
+
+  </div>
+  <% else %>
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-      <!-- Login text link -->
-      <%= link_to t(".top_call_to_action", default: "Besoin d'aide ?"), "#", class: "navbar-wagon-link " %>
-      <%= link_to t(".sign_in", default: "Se connecter"), user_session_path, class: "navbar-connect-button " %>
+    <!-- Login text link -->
+    <%= link_to t(".top_call_to_action", default: "Besoin d'aide ?"), "#", class: "navbar-wagon-link " %>
+    <%= link_to t(".sign_in", default: "Se connecter"), user_session_path, class: "navbar-connect-button " %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Créer un compte"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
-   </div>
-    <% end %>
-
+    <%= link_to t(".top_call_to_action", default: "Proposer un service"), new_provider_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+  </div>
+  <% end %>
+  <% end %>
 
 
 
@@ -94,9 +137,9 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path%></li>
-        <li><%= link_to t(".top_call_to_action", default: "Créer un compte"), new_user_registration_path%></li>
+        <li><%= link_to t(".top_call_to_action", default: "Proposer un service"), new_provider_session_path%></li>
         <li><%= link_to t(".top_call_to_action", default: "Besoin d'aide ?"), "#"%></li>
-        <li><%= link_to t(".top_call_to_action", default: "Ajouter une coloc ?"), new_flat_path %></li>
+        <li><%= link_to t(".top_call_to_action", default: "Proposer une colocation"), new_flat_path %></li>
       </ul>
     </div>
   </div>

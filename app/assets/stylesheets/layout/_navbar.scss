@@ -34,9 +34,10 @@
 
 .navbar-wagon-center-links {
   color: $dark-gray;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: normal;
   margin-right: 15px;
+  margin-top:10px;
   // box-sizing: border-box
 }
 
@@ -46,14 +47,12 @@
 }
 
 .navbar-wagon-center-links li {
-  border-right: 1px solid $orange;
   // box-sizing: border-box;
   // height: 70px;
   font-weight:500
 }
 
 .navbar-wagon-center-links li:first-child {
-  border-left: 1px solid $orange;
 }
 
 .navbar-wagon-center-links li a {

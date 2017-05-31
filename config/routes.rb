@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :providers, controllers: { registrations: "providers/registrations", sessions: "providers/sessions", passwords: "providers/passwords"}
   mount Attachinary::Engine => "/attachinary"
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
