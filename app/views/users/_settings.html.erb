@@ -1,8 +1,13 @@
 <div class="col-md-4 col-sm-6 col-xs-12">
   <div class="text-center">
-    <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+    <% if @user.photo? %>
+        <%= cl_image_tag @user.photo.path, width: 25, height: 25, crop: :thumb, radius: :max %>
+        <% elsif current_user.facebook_picture_url.present? %>
+          <%= image_tag current_user.facebook_picture_url, :style => 'border-radius: 150px' %>
+        <% else %>
+          <%= image_tag 'logo.png', class: "img-thumbnail avatar-extra-large" %>
+        <% end %>
     <h6>Upload a different photo...</h6>
-    <input type="file" class="text-center center-block well well-sm">
   </div>
 </div>
 <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
@@ -15,14 +20,13 @@
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :password_confirmation, required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    <%= f.input :photo, as: :attachinary %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update"%>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path("user"), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
