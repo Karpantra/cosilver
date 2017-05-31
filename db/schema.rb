@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170531110442) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,11 +55,12 @@ ActiveRecord::Schema.define(version: 20170531110442) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "offer_id"
-    t.integer  "user_id"
+    t.integer  "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["offer_id", "sender_id"], name: "index_conversations_on_offer_id_and_sender_id", unique: true, using: :btree
     t.index ["offer_id"], name: "index_conversations_on_offer_id", using: :btree
-    t.index ["user_id"], name: "index_conversations_on_user_id", using: :btree
+    t.index ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -170,7 +173,7 @@ ActiveRecord::Schema.define(version: 20170531110442) do
   add_foreign_key "bookings", "flats"
   add_foreign_key "bookings", "services"
   add_foreign_key "conversations", "offers"
-  add_foreign_key "conversations", "users"
+  add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "flat_equipments", "equipment"
   add_foreign_key "flat_equipments", "flats"
   add_foreign_key "flats", "users"

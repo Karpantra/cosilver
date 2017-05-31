@@ -4,4 +4,5 @@ class Offer < ApplicationRecord
   validates :price, presence: true
   validates :title, presence: true
   validates :room_size, presence: true
+  has_many :conversations, foreign_key: :sender_id
 end
