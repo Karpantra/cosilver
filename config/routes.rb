@@ -7,6 +7,12 @@ Rails.application.routes.draw do
       get "dashboard"
     end
   end
+
+  # resources :flats, only: [:show] do
+  #   collection do
+  #     get "dashboard"
+  #   end
+  # end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :flats do
     resources :offers, only: [:new, :create]
