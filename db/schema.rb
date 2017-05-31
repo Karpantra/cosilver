@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531103425) do
+
+ActiveRecord::Schema.define(version: 20170531110442) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +30,27 @@ ActiveRecord::Schema.define(version: 20170531103425) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
+
+  create_table "availabilities", force: :cascade do |t|
+    t.string   "day"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_availabilities_on_service_id", using: :btree
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "delivered_at"
+    t.datetime "booked_at"
+    t.integer  "service_id"
+    t.integer  "flat_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["flat_id"], name: "index_bookings_on_flat_id", using: :btree
+    t.index ["service_id"], name: "index_bookings_on_service_id", using: :btree
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -97,6 +120,27 @@ ActiveRecord::Schema.define(version: 20170531103425) do
     t.index ["flat_id"], name: "index_offers_on_flat_id", using: :btree
   end
 
+  create_table "providers", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string   "category"
+    t.string   "title"
+    t.string   "price_per_hour"
+    t.string   "description"
+    t.string   "address"
+    t.integer  "provider_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["provider_id"], name: "index_services_on_provider_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -125,6 +169,9 @@ ActiveRecord::Schema.define(version: 20170531103425) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "availabilities", "services"
+  add_foreign_key "bookings", "flats"
+  add_foreign_key "bookings", "services"
   add_foreign_key "conversations", "offers"
   add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "flat_equipments", "equipment"
@@ -133,4 +180,5 @@ ActiveRecord::Schema.define(version: 20170531103425) do
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "offers", "flats"
+  add_foreign_key "services", "providers"
 end

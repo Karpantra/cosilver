@@ -14,7 +14,7 @@ class User < ApplicationRecord
   # :gender, etc ... presence: true
 
   # Photo
-  has_attachment :photo
+  has_attachments :photos, maximum: 2
 
   def self.find_for_facebook_oauth(auth)
       user_params = auth.slice(:provider, :uid)
