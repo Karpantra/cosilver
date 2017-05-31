@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :providers, controllers: { registrations: "providers/registrations", sessions: "providers/sessions", passwords: "providers/passwords"}
   mount Attachinary::Engine => "/attachinary"
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
@@ -7,6 +8,12 @@ Rails.application.routes.draw do
       get "dashboard"
     end
   end
+
+  # resources :flats, only: [:show] do
+  #   collection do
+  #     get "dashboard"
+  #   end
+  # end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :flats do
     resources :offers, only: [:new, :create]
@@ -19,7 +26,6 @@ Rails.application.routes.draw do
     member do
       post :close
     end
-    resources :messages, only: [:create]
   end
 
 end

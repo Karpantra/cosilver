@@ -1,0 +1,15 @@
+// app/views/offers/create.js.erb
+// Here you will write *javascript* that would be executed by the browser
+<% if @offer.errors.any? %>
+  // Render new review form with errors
+  $('#new_offer').html("<%= j render 'offers/form', flat: @flat, offer: @offer %>");
+<% else %>
+  // Create a paragraph for the new review. But hide it.
+  var new_offer = $("<%= j render 'offers/show', offer: @offer %>").hide();
+  // Add it to the DOM, at the end of the existing offers. It's still hidden.
+  $('#offers').append(new_offer);
+  // Show the new offer with an animation!
+  new_offer.slideDown();
+  // Reset the form
+  $('#new_offer').html("<%= j render 'offers/form', flat: @flat, offer: Offer.new %>");
+<% end %>

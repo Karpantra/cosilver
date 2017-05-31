@@ -3,15 +3,15 @@
 
 
 <div class="banner-content text-center parallax">
-  <h1>Co-silver finder</h1> <h4>Bienvenue sur l'application N°1 de colocation pour Séniors</h4>
-  <p>Trouvez quelqu'un à votre image, un endroit à partager</p>
-  <form action="" method="get">
 
-    <label class="form-search" for="GET-name" placeholder="Ville" ></label>
-    <input id="GET-name" type="text" name="name">
-    <input class="btn btn-trouve-colloc" type="submit" value="Trouve ton colloc'">
-  </form>
+  <h1>Cosilver</h1> <p>Colocation pour jeunes seniors</p>
+  <p>Trouvez vos futurs colocataires pour partager votre nouvelle vie et vos passions</p>
+  <%= simple_form_for :offer, :method => 'get',
+      :html => { :class => 'form-search' }, url: offers_path do |f| %>
+    <%= f.input_field :search, placeholder: "city",
+        class: "input-medium search-query" %>
+    <%= f.submit "Lancez-vous!", class: "btn btn-primary", style:"text-decoration:none" %>
+  <% end %>
   </div>
  </div>
-
 
