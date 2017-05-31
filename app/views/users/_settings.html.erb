@@ -1,12 +1,12 @@
 <div class="col-md-4 col-sm-6 col-xs-12">
   <div class="text-center">
-    <% if @user.photo? %>
-        <%= cl_image_tag @user.photo.path, width: 25, height: 25, crop: :thumb, radius: :max %>
-        <% elsif current_user.facebook_picture_url.present? %>
-          <%= image_tag current_user.facebook_picture_url, :style => 'border-radius: 150px' %>
-        <% else %>
-          <%= image_tag 'logo.png', class: "img-thumbnail avatar-extra-large" %>
-        <% end %>
+    <% if current_user.photos? %>
+      <%= cl_image_tag current_user.photos.first.path, width: 300, height: 300, crop: :thumb, radius: :max, class: "avatar-extra-large img-thumbnail" %>
+    <% elsif current_user.facebook_picture_url.present? %>
+      <%= image_tag current_user.facebook_picture_url, :style => 'border-radius: 150px' %>
+    <% else %>
+      <%= image_tag 'logo.png', class: "avatar-extra-large" %>
+    <% end %>
     <h6>Upload a different photo...</h6>
   </div>
 </div>
@@ -20,11 +20,11 @@
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :password_confirmation, required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-    <%= f.input :photo, as: :attachinary %>
+    <%= f.input :photos, as: :attachinary %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update"%>
+    <%= f.button :submit, "Update" %>
   </div>
 <% end %>
 
