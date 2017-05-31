@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     resources :offers, only: [:new, :create]
   end
   resources :offers, except: [:new, :create]
+  resources :services
 end
