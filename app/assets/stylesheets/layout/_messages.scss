@@ -3,17 +3,15 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
-
-
 .message-sent {
   position: relative;
   background-color: #D9EDF7;
   border-color: #BCE8F1;
+  font-size: 12px;
   margin: 5px 20px;
   padding: 10px;
   float: right;
 }
-
 
 .message-received {
   background-color: #F1F0F0;
@@ -26,4 +24,10 @@
 .message ul {
   padding-left: 0px;
   list-style: none;
+}
+
+.message_row {
+  position: fixed;
+  bottom: 0;
+  width: 80%;
 }
