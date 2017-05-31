@@ -11,9 +11,15 @@
         <li><%= @offer.flat.city %></li>
         <li><%= @offer.flat.service_charges %></li>
         <li><%= @offer.flat.deposit %></li>
+        <li><%= @offer.flat.flat_area %> m²</li>
+        <li><%= @offer.flat.max_roommmates %></li>
+        <li><%= @offer.flat.number_pieces %></li>
+        <li><%= @offer.flat.smoker %></li>
+        <li><%= @offer.flat.animals %></li>
       </ul>
     </div>
     <%= link_to "Retour", offers_path %>
+    <%= link_to "Voir le propriétaire", dashboard_users_path(@user) %>
   </div>
 
 
