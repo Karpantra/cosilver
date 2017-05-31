@@ -1,3 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ul>
+        <% @flats.each do |flat| %>
+        <li><%= flat.category %></li>
+        <li><%= flat.address %></li>
+        <li><%= flat.city %></li>
+        <li><%= flat.service_charges %></li>
+        <li><%= flat.deposit %></li>
+        <li><%= link_to "Détails", flat_path(flat) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <%= link_to "Accueil", root_path %>
+  </div>
+</div>
+
+
+
 <div id="map" style="width: 50%; height: 300px;"></div>
 
 <% content_for(:after_js) do %>
