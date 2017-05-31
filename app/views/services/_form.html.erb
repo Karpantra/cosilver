@@ -1,0 +1,8 @@
+  <%= simple_form_for @service do |f| %>
+    <%= f.input :title, placeholder: "Service title" %>
+    <%= f.input :price_per_hour, placeholder: "price/hour" %>
+    <%= f.input :category, placeholder: "Service category"%>
+     <%= f.input :description, placeholder: "Service description"%>
+     <%= f.input :address, placeholder: "Service address"%>
+    <%= f.submit "Add a Wild Place", class: "btn btn-success" %>
+  <% end %>
