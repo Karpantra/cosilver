@@ -1,0 +1,17 @@
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(145, 136, 154, 0.68) 0%, rgba(12, 15, 15, 0.5) 50%), url('<%= image_path('service.jpg')%>');">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <%= simple_form_for @provider do |f| %>
+        <%= f.input :first_name, required: true %>
+        <%= f.input :last_name, required: true %>
+        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%= f.input :photos, as: :attachinary %>
+        <%= f.input :password_confirmation, required: true %>
+        <%= f.submit "Sign up", link_to new_service_path, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
