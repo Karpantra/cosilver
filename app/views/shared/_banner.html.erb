@@ -6,13 +6,17 @@
   <h1>Co-silver finder</h1> <p>co-housing for senior people</p>
   <p>Find a cohouser, a place to live in and someone to share your
   hobbies</p>
-  <form action="" method="get">
+  <%= simple_form_for :offer, :method => 'get',
+      :html => { :class => 'form-search' }, url: offers_path do |f| %>
+    <%= f.input_field :search, placeholder: "city",
+        class: "input-medium search-query" %>
+    <%= f.submit "Find a Wild place!", class: "btn btn-primary", style:"text-decoration:none" %>
+  <% end %>
+  </div>
+ </div>
+<!--   <form action="" method="get">
 
     <label class="form-search" for="GET-name" placeholder="Ville" ></label>
     <input id="GET-name" type="text" name="name">
     <input class="btn btn-trouve-colloc" type="submit" value="Trouve ton colloc'">
-  </form>
-  </div>
- </div>
-
-
+  </form> -->
