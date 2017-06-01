@@ -1,5 +1,6 @@
 class ConversationChannel < ApplicationCable::Channel
   def subscribed
+    binding.pry
     stream_from "conversations-#{current_user.id}"
   end
 
