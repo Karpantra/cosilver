@@ -1,3 +1,4 @@
+
 <div class="container">
 <div class="container-index text-center col-xs-12 col-md-8">
   <div class="row">
@@ -6,6 +7,8 @@
       <div class="card">
 
           <figcaption>
+            <% @services.each do |service| %>
+              <%= cl_image_tag service.provider.photos.first.path, width: 200, height: 200, crop: :fill %>
             <h3><%= service.title %> </h3>
             <p><%= service.category %></p>
             <p><%= service.description %></p>
