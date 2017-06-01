@@ -1,6 +1,8 @@
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(145, 136, 154, 0.68) 0%, rgba(12, 15, 15, 0.5) 50%), url('<%= image_path('breakfast2.jpg')%>');">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <h3>Ajoutez un nouveau service</h3>
         <%= simple_form_for @service do |f| %>
           <%= f.input :title, placeholder: "Service title" %>
           <%= f.input :price_per_hour, placeholder: "price/hour" %>
@@ -13,4 +15,4 @@
 
     </div>
   </div>
-
+</div>
