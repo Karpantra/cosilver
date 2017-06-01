@@ -8,7 +8,7 @@
         <li><%= @flat.service_charges %></li>
         <li><%= @flat.deposit %></li>
       </ul>
-      <% @flat.photos.each do |flat| %>
+      <% @flat.photos.each do |photo| %>
   <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
 <% end %>
       <%= link_to "Modifier votre colocation", edit_flat_path %>
