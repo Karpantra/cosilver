@@ -2,9 +2,7 @@
   <div class="col">
     <div class="row">
        <% @services.each do |service| %>
-
-
-            <figcaption>
+              <%= cl_image_tag service.provider.photos.first.path, width: 200, height: 200, crop: :fill %>
               <h3><%= service.title %> </h3>
               <p><%= service.category %></p>
               <p><%= service.description %></p>
@@ -12,11 +10,7 @@
               <div class="price">
                <p> <s>$39.00</s> <%= service.price_per_hour %>$</p>
                <%= link_to "Détails", service_path(service) %>
-
               </div>
-            </figcaption><i class="ion-android-cart"></i>
-            <a href="#"></a>
-
        <% end %>
     </div>
   </div>

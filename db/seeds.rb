@@ -7,6 +7,8 @@ require 'nokogiri'
 html_file = open("https://stootie.com/stoot/services")
 html_doc = Nokogiri::HTML(html_file)
 
+Service.destroy_all
+Provider.destroy_all
 services = []
 
 # titles
@@ -41,8 +43,8 @@ html_doc.search('#stoots-list .profile-picture-field img').each_with_index do |e
 end
 
 services.each do |service|
-  service.address = "36 Rue Moplo"
-  service.category = "Babysitting et nounous"
+  service.address = ["16 villa gaudelet, paris", "123 rue de rivoli, paris", "2 faubourg saint antoine, paris", "12 rue tolbiac, paris", "8 rue censier, paris", "55 boulevard de port royal, paris"].sample
+  service.category = ["Babysitting et nounous", "Cours particuliers et coaching", "Nettoyage, repassage et cuisine", "Animaux", "Réparations et dépannage", "Bricolage et jardinage", "Courses et livraison", "Déménagement", "Transport, co-voiturage", "Prestations web, design, photo", "Mode, beauté, bien-être", "Prestations administratives", "Sports, loisirs et évènements", "Informations et conseils"].sample
   service.price_per_hour = (10..100).to_a.sample
   service.save!
 end
