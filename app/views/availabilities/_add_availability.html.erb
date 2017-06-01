@@ -1,0 +1,4 @@
+<%= simple_form_for [@availability, @service], url: service_availability_path(@service) do |f| %>
+  <%= f.input :dates, :as => :hidden %>
+  <%= f.submit "Proposez ces dates", class: "btn btn-blue" %>
+<% end %>

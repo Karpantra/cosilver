@@ -1,4 +1,4 @@
-class Availabilty < ApplicationRecord
+class Availability < ApplicationRecord
   belongs_to :service
 
   validates :day, presence: true
