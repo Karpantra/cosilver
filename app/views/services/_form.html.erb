@@ -9,6 +9,10 @@
           <%= f.input :category, as: :select, collection: Service::SOUS_CATEGORIES, placeholder: "Service category"%>
            <%= f.input :description, placeholder: "Service description"%>
            <%= f.input :address, placeholder: "Service address"%>
+           <div class='datepicker'>
+             <!-- The datepicker will be drawn in this div -->
+             <div id="datepicker_id"></div>
+           </div>
           <%= f.submit "Add a Service", class: "btn btn-success" %>
         <% end %>
       </div>

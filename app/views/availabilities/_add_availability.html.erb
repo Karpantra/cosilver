@@ -1,4 +1,13 @@
-<%= simple_form_for [@availability, @service], url: service_availability_path(@service) do |f| %>
-  <%= f.input :dates, :as => :hidden %>
-  <%= f.submit "Proposez ces dates", class: "btn btn-blue" %>
-<% end %>
+<div class="col-xs-12 col-sm-6 col-md-4">
+  <br>
+  <%= simple_form_for [availability, service] do |f| %>
+  <div class="input-daterange input-group" id="datepicker">
+    <input type="text" class="input-sm form-control" name="availability[start_time]" />
+    <span class="input-group-addon">to</span>
+    <input type="text" class="input-sm form-control" name="availability[end_time]" />
+  </div>
+  <br>
+  <%=  f.submit "Valider", class: "btn btn-primary"%>
+  <% end %>
+</div>
+

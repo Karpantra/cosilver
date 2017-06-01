@@ -21,8 +21,11 @@ Rails.application.routes.draw do
   resources :offers, except: [:new, :create]
 
   resources :services do
-  resources :availabilities, only: [:new, :create, :show]
+    resources :availabilities, only: [:new, :create]
   end
+
+  resources :availabilities
+
 
   resources :conversations, only: [:create] do
     member do
