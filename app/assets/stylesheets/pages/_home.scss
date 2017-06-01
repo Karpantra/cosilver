@@ -2,6 +2,7 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
 .supporting {
   padding-top: 50px;
   padding-bottom: 100px;
@@ -36,4 +37,7 @@
   image-width: 200;
   height: 100;
   }
+}
+.form-control {
+ color: $dark-gray;
 }

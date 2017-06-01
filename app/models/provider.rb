@@ -3,7 +3,7 @@ class Provider < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :services
+  has_many :services, dependent: :destroy
 
   validates :email, presence: true
   validates :password, presence: true
