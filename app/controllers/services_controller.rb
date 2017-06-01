@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :new ]
+  skip_before_action :authenticate_user!, only: [ :new, :index ]
 
   def show
     @service = Service.find(params[:id])
