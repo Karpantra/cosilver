@@ -3,10 +3,10 @@ class MessageBroadcastJob < ApplicationJob
 
   def perform(message)
     sender = message.user
-    offer = message.conversation.opposed_user(sender)
+    recipient = message.conversation.opposed_user(sender)
 
     broadcast_to_sender(sender, message)
-    broadcast_to_offer(offer, message)
+    broadcast_to_recipient(recipient, message)
   end
 
   private
@@ -19,7 +19,7 @@ class MessageBroadcastJob < ApplicationJob
     )
   end
 
-  def broadcast_to_offer(user, message)
+  def broadcast_to_recipient(user, message)
     ActionCable.server.broadcast(
       "conversations-#{user.id}",
       window: render_window(message.conversation, user),
