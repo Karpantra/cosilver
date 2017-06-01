@@ -11,20 +11,9 @@ services = []
 
 # titles
 html_doc.search('#stoots-list .link').each_with_index do |element, index|
-  service[index] = Service.new
-  service[index].title =  element.text
-  service[index].save!
+  services[index] = Service.new
+  services[index].title =  element.text
 end
-
-services << service[index]
-
-# Prices
-html_doc.search('.price-field').each_with_index do |element, index|
-  service[index].price_per_hour = element.text.split("€")
-  service[index].save!
-end
-
-services << service[index]
 
 # names
 names = []
@@ -32,15 +21,31 @@ names = []
 html_doc.search('#stoots-list img').each do |element|
   names << element.attr('alt')
 end
-p names.uniq
+
+names.compact!
 
 # photo
-photos = []
-html_doc.search('#stoots-list .profile-picture-field img').each do |element|
-  photos << element.attr('data-original')
+html_doc.search('#stoots-list .profile-picture-field img').each_with_index do |element, index|
+  if services[index]
+    provider = services[index].create_provider!({
+      first_name: names[index],
+      last_name: "Toto",
+      email: Faker::Internet.email,
+      password: "123456",
+    })
+
+    urls = [element.attr('data-original')]
+    provider.photo_urls = urls
+
+  end
 end
 
-p photos.uniq
+services.each do |service|
+  service.address = "36 Rue Moplo"
+  service.category = "Babysitting et nounous"
+  service.price_per_hour = (10..100).to_a.sample
+  service.save!
+end
 
 
 
