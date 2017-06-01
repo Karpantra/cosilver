@@ -1,29 +1,37 @@
 class ServicesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :new ]
-  def index
-    @services = Service.all
-  end
 
   def show
     @service = Service.find(params[:id])
+    @service_coordinates = { lat: @service.latitude, lng: @service.longitude }
   end
+
+  def index
+    @services = Service.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@services) do |service, marker|
+      marker.lat service.latitude
+      marker.lng service.longitude
+      # marker.infowindow render_to_string(partial: "/services/map_box", locals: { service: service })
+    end
+  end
+
 
   def new
     @service = Service.new
   end
 
   def create
-    @service = service.new(service_params)
-    if @service.save
-      redirect_to service_path(@service)
-    else
-      render new
-    end
+    @service = Service.new(service_params)
+    @service.save
+    redirect_to service_path(@service)
+
   end
 
  private
 
-  def offer_params
-    params.require(:service).permit(:category, :title, :price_per_hour, :description, :address)
+  def service_params
+    params.require(:service).permit(:category, :title, :price_per_hour, :description, :address, :latitude,
+      :longitude)
   end
 end
