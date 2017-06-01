@@ -1,109 +1,52 @@
+<div class="container text-center col-xs-12 col-md-8">
+  <div class="col">
+    <div class="row">
+       <% @services.each do |service| %>
 
-<li>
-  Services à la famille
+            <figcaption>
+              <h3><%= service.title %></h3>
+              <p><%= service.category %></p>
+              <p><%= service.description %></p>
+              <p><%= service.address %></p>
+              <div class="price">
+               <p> <s>$39.00</s> <%= service.price_per_hour %>$</p>
 
-  <div class="hidden menu-level">
-    <button type="button" class="menu-level-back"><span>Services à la famille</span></button>
-    <ul class="menu-level-list">
-      <li>
-        Garde d&#039;enfant de moins de 3 ans
+              </div>
+            </figcaption><i class="ion-android-cart"></i>
+            <a href="#"></a>
+            <%= link_to "", service_path(service) %>
 
-      </li>
-      <li>
-        Accompagnement des enfants de moins de 3 ans
-
-      </li>
-      <li>
-        Garde d’enfants de plus de 3 ans
-
-      </li>
-      <li>
-       Accompagnement des enfants de plus de 3 ans
-
-     </li>
-     <li>
-      Soutien scolaire et cours à domicile
-    </li>
-  </ul>
+       <% end %>
+    </div>
+  </div>
 </div>
-</li>
-<li>
-  Services de la vie quot<div class="hidden menu-level">
-  <button type="button" class="menu-level-back"><span>Services de la vie quotidienne</span></button>
-  <ul class="menu-level-list">
-    <li>
-      Entretien de la maison et travaux ménagers
-    </li>
-    <li>
-      Petits travaux de jardinage
-    </li>
-    <li>
-      Travaux de petit bricolage
-    </li>
-    <li>
-     Préparation de repas à domicile
-   </li>
-   <li>
-    Livraison de repas à domicile
-  </li>
-  <li>
-   Collecte et livraison de linge repassé
- </li>
- <li>
-  Livraison de courses à domicile
-</li>
-<li>
-  Assistance informatique à domicile
-</li>
-<li>
-  Maintenance et vigilance temporaires de résidence
-</li>
-<li>
-  Assistance administrative à domicile
-</li>
-<li>
-  Téléassistance et visio assistance
-</li>
-<li>
-  Coordination et délivrance des SAP
-</li>
-</ul>
-</div>
-</li>
 
-<li>
-  <div class="hidden menu-level">
-    <button type="button" class="menu-level-back"><span>Services d'assistance et daccompagnement
-    </span>
-  </button>
-  <ul class="menu-level-list">
-    <li>
-      Assistance aux personnes âgées, handicapées
-    </li>
-    <li>
-      Conduite du véhicule des personnes âgées, handicapées
-    </li>
-    <li>
-      Accompagnement des personnes âgées, handicapées
-    </li>
-    <li>
-      Interprète en langue des signes
-    </li>
-    <li>
-      Assistance aux personnes ayant besoin d&#039;une aide temporaire
-    </li>
-    <li>
-      Conduite du véhicule des personnes ayant besoin d&#039;une aide temporaire
-    </li>
-    <li>
-      Accompagnement des personnes ayant besoin d&#039;une aide temporaire
-    </li>
-    <li>
-      Soins esthétiques aux personnes dépendantes
-    </li>
-    <li>
-      Soins d&#039;animaux pour personnes dépendantes
-    </li>
-  </ul>
+
+
+
+<div class="mappy col-xs-12 col-md-4">
+  <div id="map" style="width: 100%; height: 100vh;"></div>
+    <% content_for(:after_js) do %>
+    <%= javascript_tag do %>
+      $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+          if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+        }
+        });
+        });
+    <% end %>
+  <% end %>
 </div>
-</li>
+
+
+
+<%= content_for(:after_js) do %>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAe4PVk38pNIO3t77HZnIT6f_8b_k30BCs"></script>
+<% end %>
