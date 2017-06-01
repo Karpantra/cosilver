@@ -1,53 +1,64 @@
+<!-- changer le padding  -->
 
-
-
-
-<div class="container text-center col-xs-12 col-md-8">
-  <div class="col">
-    <div class="row">
-       <% @offers.each do |offer| %>
-          <figure class="snip1423 "><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample98.jpg" alt="sample98" />
-            <figcaption>
-              <h3><%= offer.title %></h3>
-              <p><%= offer.content %></p>
-              <div class="price">
-                <s>$29.00</s>$39.00
+<div class="card-container text-center">
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+    <div class="col-padding">
+      <% @offers.each do |offer| %>
+          <div class="col-xs-12 col-md-6">
+            <!-- Thumbnail-->
+            <div class="card">
+              <%= link_to "", offer_path(offer), class: "card-link" %>
+              <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=image_path('livingroom2')%>');">
+                <div class="category">
+                  <%= offer.flat.category %>
+                </div>
+                <div class="date"></div>
               </div>
-            </figcaption><i class="ion-android-cart"></i>
-            <a href="#"></a>
-            <%= link_to "", offer_path(offer) %>
-        </figure>
-       <% end %>
+              <div class="card-info">
+                <p class="description"><%= offer.content %></p>
+                <div class="sub_title">
+                  <%= offer.title %>
+                </div>
+                <div class="post-meta">
+                  <span class="comments"><i class="fa fa-comments"></i><a href="#"> 39 comments</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+      <%end %>
+      </div>
     </div>
-  </div>
+
+
+
+          <div class="mappy col-xs-12 col-md-4">
+            <div id="map" style="width: 100%; height: 60vh;"></div>
+              <% content_for(:after_js) do %>
+              <%= javascript_tag do %>
+                $(document).ready(function() {
+                var handler = Gmaps.build('Google');
+                handler.buildMap({ internal: { id: 'map' } }, function() {
+                markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                    if (markers.length == 0) {
+                    handler.getMap().setZoom(2);
+                  } else if (markers.length == 1) {
+                  handler.getMap().setZoom(14);
+                  }
+                  });
+                  });
+              <% end %>
+            <% end %>
+                <%= content_for(:after_js) do %>
+                <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAe4PVk38pNIO3t77HZnIT6f_8b_k30BCs"></script>
+                <% end %>
+          </div>
+    </div>
 </div>
 
 
 
-
-<div class="mappy col-xs-12 col-md-4">
-  <div id="map" style="width: 100%; height: 100vh;"></div>
-    <% content_for(:after_js) do %>
-    <%= javascript_tag do %>
-      $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-      markers = handler.addMarkers(<%= raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-          if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-        handler.getMap().setZoom(14);
-        }
-        });
-        });
-    <% end %>
-  <% end %>
-</div>
-
-
-
-<%= content_for(:after_js) do %>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAe4PVk38pNIO3t77HZnIT6f_8b_k30BCs"></script>
-<% end %>
