@@ -94,8 +94,8 @@
       <% end %>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to dashboard_users_path do %>
-          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+          <%= link_to  do %>
+          <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
           <% end %>
         </li>
         <li>
@@ -108,7 +108,7 @@
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
           <% end %>
         </li>
-        <li><%= link_to t(".top_call_to_action", default: "Ajouter une coloc ?"), new_flat_path %></li>
+        <li><%= link_to t(".top_call_to_action", default: "Ajouter un service"), new_service_path %></li>
       </ul>
     </div>
 
@@ -124,6 +124,9 @@
   </div>
   <% end %>
   <% end %>
+
+
+
 
 
   <!-- Dropdown list appearing on mobile only -->
