@@ -1,7 +1,8 @@
 .messages-list {
-  max-height: 200px;
+  max-height: 100px;
   overflow-y: auto;
   overflow-x: hidden;
+  width: 150px;
 }
 .message-sent {
   position: relative;
@@ -10,7 +11,6 @@
   font-size: 12px;
   margin: 5px 20px;
   padding: 10px;
-  float: right;
 }
 
 .message-received {
@@ -21,13 +21,42 @@
   float: left;
 }
 
-.message ul {
+.message_row ul {
   padding-left: 0px;
   list-style: none;
+  font-size: 10px;
 }
 
 .message_row {
-  position: fixed;
+  float: right;
   bottom: 0;
-  width: 80%;
+  width: 100%;
+  position: fixed;
+
 }
+
+.panel-title {
+  font-size: 12px;
+  color: #302E3E;
+}
+
+.panel-body a:hover {
+  color: #F78536;
+  text-decoration: none;
+}
+
+.panel {
+  border: 1px solid;
+  border-color: #302E3E;
+  border-radius: 5px;
+}
+
+.panel-heading {
+  text-align: center;
+  border-bottom: 1px solid;
+}
+
+textarea.form-control {
+  height: 20px;
+}
+
