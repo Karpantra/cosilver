@@ -56,3 +56,29 @@
       </div>
 
 </div>
+
+require 'open-uri'
+require 'nokogiri'
+
+
+html_file = open("https://stootie.com/stoot/services")
+# p html_file
+html_doc = Nokogiri::HTML(html_file)
+
+Service.destroy_all
+services = []
+
+html_doc.search('a .img').each do |element|
+  provider = Provider.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,email: Faker::Internet.email, password: "123456")
+  provider.save!
+
+
+  service = Service.new(address: Faker::Address.street_address, city: Faker::Address.city, description: Faker::Lorem.sentence, latitude: Faker::Address.latitude, longitude: Faker::Address.longitude, price: rand(10...30))
+  service.provider = provider
+  servicess << service
+end
+
+html_doc.search("a h2").each_with_index do |element, index|
+  services[index].title = element.text
+  services[index].save!
+end
