@@ -14,6 +14,6 @@ class Flat < ApplicationRecord
   # :address, :city, :service_charges, :deposit, :description, :flat_area, :max_roommmates, :number_pieces, :smoker, :animals
 
   # Photo
-  has_attachment :photo
+  has_attachments :photos, maximum: 3
 
 end
