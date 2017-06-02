@@ -4,7 +4,7 @@ class Flat < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   belongs_to :user
-  has_many :offers
+  has_many :offers, dependent: :destroy
   has_many :flat_equipments
   has_many :equipments, through: :flat_equipments
 
