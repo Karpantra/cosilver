@@ -8,8 +8,7 @@ class ServicesController < ApplicationController
 
   def index
 
-
-    if params[:search_city] == "" &&  params[:search_category] == ""
+    if (params[:search_city] == "" &&  params[:search_category] == "") || (params[:search_city] == nil &&  params[:search_category] == nil)
       @services = Service.where.not(latitude: nil, longitude: nil)
 
     elsif params[:search_city] && params[:search_category]
@@ -26,8 +25,8 @@ class ServicesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@services) do |service, marker|
       marker.lat service.latitude
       marker.lng service.longitude
+      end
     end
-  end
 
   def new
     @service = Service.new
