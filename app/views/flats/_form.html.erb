@@ -1,28 +1,25 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(145, 136, 154, 0.68) 0%, rgba(12, 15, 15, 0.5) 50%), url('<%= image_path('livingroom2.jpg')%>');">
-<div class="container">
-  <div class="row">
+  <div class="container">
+    <div class="row">
 
-    <div class="col-xs-10 col-offset-1 col-sm-6">
-      <%= simple_form_for @flat do |f| %>
-      <%= f.input :category, placeholder: "Category", collection: ["Appartment", "House"] %>
-      <%= f.input :address, placeholder: "Address" %>
-      <%= f.input :city, placeholder: "City" %>
-      <%= f.input :service_charges, placeholder: "Service charge"%>
-      <%= f.input :deposit, placeholder: "Deposit" %>
+      <div class="col-xs-10 col-offset-1 col-sm-6">
+        <%= simple_form_for @flat do |f| %>
+        <%= f.input :category, placeholder: "Category", collection: ["Appartment", "House"] %>
+        <%= f.input :address, placeholder: "Address" %>
+        <%= f.input :city, placeholder: "City" %>
+        <%= f.input :service_charges, placeholder: "Service charge"%>
+        <%= f.input :deposit, placeholder: "Deposit" %>
 
+      </div>
+      <div class="col-xs-10 col-offset-1 col-sm-6">
+        <%= f.input :flat_area, placeholder: "Flat area" %>
+        <%= f.input :max_roommmates, placeholder: "Max roommates" %>
+        <%= f.input :number_pieces, placeholder: "Number of pieces" %>
+        <%= f.input :smoker %>
+        <%= f.input :animals %>
+      </div>
+      <%= f.submit "Add a Wild Place", class: "btn btn-success" %>
+      <% end %>
     </div>
-    <div class="col-xs-10 col-offset-1 col-sm-6">
-      <%= f.input :flat_area, placeholder: "Flat area" %>
-      <%= f.input :max_roommmates, placeholder: "Max roommates" %>
-      <%= f.input :number_pieces, placeholder: "Number of pieces" %>
-      <%= f.input :smoker %>
-      <%= f.input :animals %>
-    </div>
-    <%= f.submit "Add a Wild Place", class: "btn btn-success" %>
-    <% end %>
   </div>
-  <%= content_for(:after_js) do %>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDANjx3bosEtIyzJaoWs50Wnt6nt_1rmxU"></script>
-  <% end %>
-</div>
 </div>
