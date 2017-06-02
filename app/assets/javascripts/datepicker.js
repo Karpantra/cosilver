@@ -1,8 +1,9 @@
 $(function() {
-  $('div').datepicker({
-      format: "dd/mm/yyyy",
-      weekStart: 1,
-      language: "fr",
-      multidate: true
+  $('.input-daterange').datepicker({
+    format: "dd/mm/yyyy",
+    weekStart: 1,
+    language: "fr",
+    orientation: "bottom auto",
+    multidate: true
   });
 });

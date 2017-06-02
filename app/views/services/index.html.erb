@@ -4,56 +4,49 @@
   <div class="row">
          <% @services.each do |service| %>
      <div class="col-xs-12 col-sm-6">
-      <div class="card">
+            <div class="card">
+            <figure class="snip1139">
+              <blockquote> <%= service.description.first(70) %>...
+                <div class="arrow"></div>
+              </blockquote>
+              <%= cl_image_tag service.provider.photos.first.path, width: 300, height: 200, crop: :fill %>
+              <div class="author">
+                <h5><%= service.title %> <span><%= service.category %></span>
+                <%= link_to "Détails", service_path(service) %></h5>
+              </div>
+            </figure>
+           </div>
 
-          <figcaption>
-            <% @services.each do |service| %>
-              <%= cl_image_tag service.provider.photos.first.path, width: 200, height: 200, crop: :fill %>
-            <h3><%= service.title %> </h3>
-            <p><%= service.category %></p>
-            <p><%= service.description %></p>
-            <p><%= service.address %></p>
-            <div class="price">
-             <p> <s>$39.00</s> <%= service.price_per_hour %>$</p>
-             <%= link_to "Détails", service_path(service) %>
-
-            </div>
-          </figcaption><i class="ion-android-cart"></i>
-          <a href="#"></a>
-        </div>
       </div>
         <% end %>
+    </div>
   </div>
-</div>
-
-
-
 
 <div class="mappy col-xs-12 col-md-4">
-<div class="card">
-  <div id="map" style="width: 100%; height: 100vh;"></div>
+  <div class="card">
+    <div id="map" style="width: 100%; height: 100vh;"></div>
+  </div>
 </div>
 </div>
 
-</div>
 
-
-<%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
-<%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
 <% content_for(:after_js) do %>
-  <script>
-    $(document).ready(function() {
+<script>
+  $(document).ready(function() {
     var handler = Gmaps.build('Google');
     handler.buildMap({ internal: { id: 'map' } }, function() {
-    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-        if (markers.length == 0) {
+      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
         handler.getMap().setZoom(2);
       } else if (markers.length == 1) {
-      handler.getMap().setZoom(14);
+        handler.getMap().setZoom(14);
       }
-      });
-      });
-  </script>
+    });
+  });
+</script>
 <% end %>
+
+
+

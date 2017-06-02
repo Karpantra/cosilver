@@ -47,7 +47,7 @@ class FlatsController < ApplicationController
     params.require(:flat).permit(:category, :address,
       :city, :service_charges, :deposit, :description, :flat_area,
       :max_roommmates, :number_pieces, :smoker, :animals, :latitude,
-      :longitude)
+      :longitude, photos: [])
   end
 
 end

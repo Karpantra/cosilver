@@ -8,20 +8,22 @@
         <li><%= @flat.service_charges %></li>
         <li><%= @flat.deposit %></li>
       </ul>
+      <% @flat.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+<% end %>
       <%= link_to "Modifier votre colocation", edit_flat_path %>
       <%= link_to "Delete", flat_path(@flat), method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
     <%= link_to "Retour à la recherche", flats_path %>
+    <%= link_to 'Offers', new_flat_offer_path(@flat) %>
   </div>
 </div>
   <% content_for(:after_js) do %>
     <%= javascript_tag do %>
       $(document).ready(function() {
         var coord = <%= raw @flat_coordinates.to_json %>;
-        alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
+<!--         alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng); -->
       });
     <% end %>
   <% end %>
-
-<%= link_to 'Offers', new_flat_offer_path(@flat) %>
 
