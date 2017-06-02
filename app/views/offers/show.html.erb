@@ -1,7 +1,11 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-4 col-sm-8">
-      <ul>
+  <div class="row offer_card">
+    <ul>
+      <div class="col-md-4 offer_image">
+        <%= cl_image_tag @offer.flat.photos.first.path, width: 300, height: 200, crop: :fill %>
+        <%= link_to "Voir le propriétaire", dashboard_users_path(@user), :class => "btn btn-primary" %>
+      </div>
+      <div class="col-md-4 offer_desc">
         <li><%= @offer.content %></li>
         <li><%= @offer.title %></li>
         <li><%= @offer.price %></li>
@@ -9,41 +13,44 @@
         <li><%= @offer.flat.category %></li>
         <li><%= @offer.flat.address %></li>
         <li><%= @offer.flat.city %></li>
-        <li><%= @offer.flat.service_charges %></li>
-        <li><%= @offer.flat.deposit %></li>
-        <li><%= @offer.flat.flat_area %> m²</li>
-        <li><%= @offer.flat.max_roommmates %></li>
-        <li><%= @offer.flat.number_pieces %></li>
-        <li><%= @offer.flat.smoker %></li>
-        <li><%= @offer.flat.animals %></li>
-        <li><%= cl_image_tag(@offer.flat.photos.first.path)%></li>
-      </ul>
 
-
-
-    <%= link_to "Retour", offers_path %>
-    <%= link_to "Voir le propriétaire", dashboard_users_path(@user) %>
-    </div>
-
-  <div class="mappy col-xs-12 col-md-4">
-    <div id="map" style="width: 100%; height: 100vh;"></div>
-      <% content_for(:after_js) do %>
-        <%= javascript_tag do %>
-          $(document).ready(function() {
-            var handler = Gmaps.build('Google');
-            handler.buildMap({ internal: { id: 'map' } }, function() {
-              markers = handler.addMarkers(<%= raw @hash.to_json %>);
-              handler.bounds.extendWith(markers);
-              handler.fitMapToBounds();
-              if (markers.length == 0) {
-                handler.getMap().setZoom(2);
-              } else if (markers.length == 1) {
-                handler.getMap().setZoom(14);
-              }
-            });
-          });
-        <% end %>
-      <% end %>
+      </div>
+      <div class="col-md-4">
+        <div class="mappy offer_map">
+          <div id="map" style="width: 100%; height: 250px;">
+            <% content_for(:after_js) do %>
+              <%= javascript_tag do %>
+                $(document).ready(function() {
+                  var handler = Gmaps.build('Google');
+                  handler.buildMap({ internal: { id: 'map' } }, function() {
+                    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                    handler.bounds.extendWith(markers);
+                    handler.fitMapToBounds();
+                    if (markers.length == 0) {
+                      handler.getMap().setZoom(2);
+                    } else if (markers.length == 1) {
+                      handler.getMap().setZoom(14);
+                    }
+                  });
+                });
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </ul>
+  </div>
+  <div class="row offer_card">
+    <li><%= @offer.flat.service_charges %></li>
+    <li><%= @offer.flat.deposit %></li>
+    <li><%= @offer.flat.flat_area %> m²</li>
+    <li><%= @offer.flat.max_roommmates %></li>
+    <li><%= @offer.flat.number_pieces %></li>
+    <li><%= @offer.flat.smoker %></li>
+    <li><%= @offer.flat.animals %></li>
+  </div>
+  <div class="offer_btn">
+    <%= link_to "Retour", offers_path, :class => "btn btn-primary" %>
   </div>
 </div>
 

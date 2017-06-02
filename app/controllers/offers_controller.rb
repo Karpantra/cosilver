@@ -51,6 +51,6 @@ end
   private
 
   def offer_params
-    params.require(:offer).permit(:content, :title, :price, :room_size)
+    params.require(:offer).permit(:content, :title, :price, :room_size, :photos)
   end
 end
