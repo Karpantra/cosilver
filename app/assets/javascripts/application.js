@@ -11,7 +11,7 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 
-(function() {
+$(document).ready(function() {
   $(document).on('click', '.toggle-window', function(e) {
     e.preventDefault();
     var panel = $(this).parent().parent();
@@ -25,4 +25,4 @@
       messages_list.scrollTop(height);
     }
   });
-})();
+});
