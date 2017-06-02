@@ -1,31 +1,26 @@
 <div class="container text-center">
   <div class="row">
-  <div class="col-xs-12 col-sm-6">
-      <figure class="snip1139">
-        <blockquote><%= @service.description %>
-          <div class="arrow"></div>
-        </blockquote>
-        <%= cl_image_tag @service.provider.photos.first.path, width: 350, height: 350, crop: :thumb, gravity: :face %>
-        <div class="author">
-          <h5><%= @service.provider.first_name %> <span>- <%= @service.price_per_hour %> €/heure</span></h5>
-          <h4><%= @service.title %></h4>
-          <p><%= @service.address %></p>
-        </div>
-      </figure>
+    <div class="col-xs-12 col-sm-6">
+        <figure class="snip1139">
+          <blockquote><%= @service.description %>
+            <div class="arrow"></div>
+          </blockquote>
+          <%= cl_image_tag @service.provider.photos.first.path, width: 350, height: 350, crop: :thumb, gravity: :face %>
+          <div class="author">
+            <h5><%= @service.provider.first_name %> <span>- <%= @service.price_per_hour %> €/heure</span></h5>
+            <h4><%= @service.title %></h4>
+            <p><%= @service.address %></p>
+          </div>
+        </figure>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container text-center">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-offset-6">
-      <%= link_to "Indiquez vos disponibilités",  new_service_availability_path(@service), class: "btn btn-blue" %>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-offset-6">
+        <%= link_to "Indiquez vos disponibilités",  new_service_availability_path(@service), class: "btn btn-blue" %>
+      </div>
     </div>
   </div>
-</div>
-
-
-<%= content_for(:after_js) do %>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAe4PVk38pNIO3t77HZnIT6f_8b_k30BCs"></script>
-<% end %>
 </div>
