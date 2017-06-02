@@ -1,6 +1,29 @@
 
 <div class="container">
-<div class="container-index text-center col-xs-12 col-md-8">
+  <div class="map-container text-center col-xs-12 col-sm-4 ">
+
+    <h3>Trouvez un service sur mesure</h3>
+    <p>contactez le prestataire</p>
+
+    <%= form_tag(services_path, method: :get, class: 'form-search') do %>
+    <%= text_field_tag :search_city, params[:search_city] , placeholder: "ville", class: "input-medium search-query" %>
+    <%= select_tag :search_category, options_for_select(Service::SOUS_CATEGORIES, params[:search_category]), prompt: "Catégorie?" %>
+    <%= submit_tag "Trouvez un spécialiste", class: "btn btn-primary" %>
+      <% end %>
+
+
+  <div class="mappy">
+    <div class="card">
+      <div id="map" style="width: 100%; height: 100vh;"></div>
+    </div>
+    </div>
+  </div>
+
+
+
+
+
+<div class="container-index text-center col-xs-12 col-sm-8" style="overflow:scroll; height: 90vh;">
   <div class="row">
          <% @services.each do |service| %>
      <div class="col-xs-12 col-sm-6">
@@ -22,11 +45,6 @@
     </div>
   </div>
 
-<div class="mappy col-xs-12 col-md-4">
-  <div class="card">
-    <div id="map" style="width: 100%; height: 100vh;"></div>
-  </div>
-</div>
 </div>
 
 
