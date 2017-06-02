@@ -1,56 +1,43 @@
-<div class="container">
-  <div class="row offer_card">
-    <ul>
-      <div class="col-md-4 offer_image">
-        <%= cl_image_tag @offer.flat.photos.first.path, width: 300, height: 200, crop: :fill %>
-        <%= link_to "Voir le propriétaire", dashboard_users_path(@user), :class => "btn btn-primary" %>
-      </div>
-      <div class="col-md-4 offer_desc">
-        <li><%= @offer.content %></li>
-        <li><%= @offer.title %></li>
-        <li><%= @offer.price %></li>
-        <li><%= @offer.room_size %></li>
-        <li><%= @offer.flat.category %></li>
-        <li><%= @offer.flat.address %></li>
-        <li><%= @offer.flat.city %></li>
-      </div>
-      <div class="col-md-4">
-        <div class="mappy offer_map">
-          <div id="map" style="width: 100%; height: 250px;">
-            <% content_for(:after_js) do %>
-              <%= javascript_tag do %>
-                $(document).ready(function() {
-                  var handler = Gmaps.build('Google');
-                  handler.buildMap({ internal: { id: 'map' } }, function() {
-                    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                    handler.bounds.extendWith(markers);
-                    handler.fitMapToBounds();
-                    if (markers.length == 0) {
-                      handler.getMap().setZoom(2);
-                    } else if (markers.length == 1) {
-                      handler.getMap().setZoom(14);
-                    }
-                  });
-                });
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </ul>
-  </div>
-  <div class="row offer_card">
-    <li><%= @offer.flat.service_charges %></li>
-    <li><%= @offer.flat.deposit %></li>
-    <li><%= @offer.flat.flat_area %> m²</li>
-    <li><%= @offer.flat.max_roommmates %></li>
-    <li><%= @offer.flat.number_pieces %></li>
-    <li><%= @offer.flat.smoker %></li>
-    <li><%= @offer.flat.animals %></li>
-  </div>
-  <div class="offer_btn">
-    <%= link_to "Retour", offers_path, :class => "btn btn-primary" %>
-  </div>
+
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(145, 136, 154, 0.18) 0%, rgba(12, 15, 15, 0.5) 60%), url('<%= image_path('entrance2')%>');">
 </div>
 
+  <div class="container-cards">
+    <div class="row offer_card" style="overflow:scroll; height: 90vh; ">
+       <div class="col-xs-12 col-md-4">
+         <div class="card">
+            <%= cl_image_tag @offer.flat.photos.first.path , width: 300, height: 200, crop: :fill %>
+            <%= link_to "Voir le propriétaire", dashboard_users_path(@user), :class => "btn btn-primary" %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="card">
+          <h4>Infos sur la colloc'</h4>
+          <p> <strong>Description:</strong> <%= @offer.content %></p>
+          <p> <strong>Prix:</strong> <%= @offer.price %> €</p>
+          <p> <strong>Taille de la chambre:</strong> <%= @offer.room_size %> m^2</p>
+          <p> <strong></strong> <%= @offer.flat.category %></p>
+          <p> <strong>au </strong> <%= @offer.flat.address %> à <%= @offer.flat.city %></p>
+                    </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+        <div class="card non-hover">
+         <h4>infos sur l'appart</h4>
+          <p><strong>Charges:</strong> <%= @offer.flat.service_charges %> €</p>
+          <p><strong>Caution:</strong> <%= @offer.flat.deposit %> €</p>
+          <p> <strong>taille(m2):</strong><%= @offer.flat.flat_area %> m²</p>
+          <p><strong>Nombre max de colocs':</strong> <%= @offer.flat.max_roommmates %></p>
+          <p><strong>nombre de pièces:</strong> <%= @offer.flat.number_pieces %></p>
+          <p><strong>fumeur/non fumeur:</strong> <%= @offer.flat.smoker %></p>
+          <p><strong>animaux:</strong> <%= @offer.flat.animals %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="col-md-4 col-md-offset-4">
+        <div class="offer_btn">
+          <%= link_to "Retour", offers_path, :class => "btn btn-primary" %>
+        </div>
+  </div>
