@@ -4,6 +4,7 @@
   <div class="row">
          <% @services.each do |service| %>
      <div class="col-xs-12 col-sm-6">
+            <div class="card">
             <figure class="snip1139">
               <blockquote> <%= service.description.first(70) %>...
                 <div class="arrow"></div>
@@ -14,6 +15,7 @@
                 <%= link_to "Détails", service_path(service) %></h5>
               </div>
             </figure>
+           </div>
 
       </div>
         <% end %>
