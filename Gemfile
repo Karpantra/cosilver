@@ -25,6 +25,9 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+#gem slick for carousel
+gem "jquery-slick-rails"
+
 # Datepicker
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'momentjs-rails', '>= 2.9.0'
@@ -36,6 +39,7 @@ gem 'geocoder'
 gem "coffee-rails"
 gem "gmaps4rails"
 gem "faker"
+
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

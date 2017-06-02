@@ -21,10 +21,13 @@
      <div class="col-xs-12 col-sm-6 col-lg-4 image-home">
        <%= image_tag "welcome2.png" %>
        <h2>Emménagez!</h2>
+
        <p>Si le profil du colloc' et si l'appartement vous correspondent, nous vous accompagnons dans vos démarches d'emménagement</p>
+
        <!-- <a class="btn-default" href="#">Learn more</a> -->
      </div>
-
+        <!-- Discussion instantanée -->
+        <% if user_signed_in? %>
      <div class="message_row">
        <div class="col-md-9">
          <ul id="conversations-list">
@@ -47,4 +50,5 @@
      </div>
    </div>
 </div>
+<% end %>
 
