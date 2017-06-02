@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :new, :index ]
+  skip_before_action :authenticate_user!, only: [ :new, :index, :show ]
 
   def show
     @service = Service.find(params[:id])
@@ -22,10 +22,21 @@ class ServicesController < ApplicationController
   end
 
   def create
+    @provider = current_provider
     @service = Service.new(service_params)
-    @service.save
-    redirect_to service_path(@service)
+    @service.provider = @provider
+    @service.status = 'pending'
 
+    if @service.save
+      respond_to do |format|
+        format.html { redirect_to service_path(@service) }
+      end
+    else
+      respond_to do |format|
+        format.html { render 'services/show' }
+        # format.js  # <-- idem
+      end
+    end
   end
 
  private
