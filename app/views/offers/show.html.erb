@@ -16,7 +16,13 @@
         <li><%= @offer.flat.number_pieces %></li>
         <li><%= @offer.flat.smoker %></li>
         <li><%= @offer.flat.animals %></li>
+        <li><%= @offer.flat.photos.first %></li>
       </ul>
+
+
+
+
+
     <%= link_to "Retour", offers_path %>
     <%= link_to "Voir le propriétaire", dashboard_users_path(@user) %>
     </div>
