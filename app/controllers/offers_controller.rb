@@ -2,8 +2,14 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
-  end
 
+    @flats = Flat.where.not(latitude: nil, longitude: nil).joins(:offers)
+
+    @hash = Gmaps4rails.build_markers(@flats) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
+end
 
   # def index
   #   search = params[:flat][:search]
@@ -25,10 +31,9 @@ class OffersController < ApplicationController
   # end
 
 
-
-
   def show
     @offer = Offer.find(params[:id])
+    @offer_coordinates = { lat: @offer.flat.latitude, lng: @offer.flat.longitude }
   end
 
   def new

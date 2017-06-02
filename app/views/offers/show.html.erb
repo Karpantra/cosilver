@@ -16,7 +16,7 @@
         <li><%= @offer.flat.number_pieces %></li>
         <li><%= @offer.flat.smoker %></li>
         <li><%= @offer.flat.animals %></li>
-        <li><%= @offer.flat.photos.first %></li>
+        <li><%= cl_image_tag(@offer.flat.photos.first.path)%></li>
       </ul>
 
 
