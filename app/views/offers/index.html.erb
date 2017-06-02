@@ -9,20 +9,30 @@
             <!-- Thumbnail-->
             <div class="card">
               <%= link_to "", offer_path(offer), class: "card-link" %>
-              <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=image_path('livingroom2')%>');">
+              <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('livingroom1.jpg')%>');">
                 <div class="category">
                   <%= offer.flat.category %>
                 </div>
-                <div class="date"></div>
+                <div class="profile-picture">
+                <% if current_user.photos? %>
+                  <%= cl_image_tag current_user.photos.first.path, width: 300, height: 300, crop: :thumb, radius: :max, class: "avatar-extra-large img-thumbnail" %>
+                <% elsif current_user.facebook_picture_url.present? %>
+                  <%= image_tag current_user.facebook_picture_url, :style => 'border-radius: 150px' %>
+                <% else %>
+                  <%= image_tag 'logo.png', class: "avatar-extra-large" %>
+                <% end %>
+
+                </div>
               </div>
               <div class="card-info">
-                <p class="description"><%= offer.content %></p>
+                <p class="description">
+                    <%= offer.content %>
+                    <br><span><%= offer.price %> euros/mois</span>
+                </p>
                 <div class="sub_title">
                   <%= offer.title %>
                 </div>
                 <div class="post-meta">
-                  <span class="comments"><i class="fa fa-comments"></i><a href="#"> 39 comments</a>
-                  </span>
                 </div>
               </div>
             </div>
@@ -36,26 +46,28 @@
 
       <div class="mappy col-xs-12 col-md-4">
         <div id="map" style="width: 100%; height: 60vh;"></div>
-          <% content_for(:after_js) do %>
-            <script>
-              $(document).ready(function() {
-                var handler = Gmaps.build('Google');
-                handler.buildMap({ internal: { id: 'map' } }, function() {
-                  markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                  handler.bounds.extendWith(markers);
-                  handler.fitMapToBounds();
-                  if (markers.length == 0) {
-                    handler.getMap().setZoom(2);
-                  } else if (markers.length == 1) {
-                    handler.getMap().setZoom(14);
-                  }
-                });
-              });
-            </script>
-          <% end %>
       </div>
     </div>
 </div>
 
 
-
+<%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+<%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
+<%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  </script>
+<% end %>
