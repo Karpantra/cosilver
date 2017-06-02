@@ -15,7 +15,7 @@ services = []
 html_doc.search('#stoots-list .link').each_with_index do |element, index|
   services[index] = Service.new
   services[index].title =  element.text
-  services[index].description =  Faker::Lorem.paragraph
+  services[index].description = Faker::Lorem.paragraph
 end
 
 # names
