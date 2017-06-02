@@ -7,15 +7,26 @@ class ServicesController < ApplicationController
   end
 
   def index
-    @services = Service.where.not(latitude: nil, longitude: nil)
+
+    if (params[:search_city] == "" &&  params[:search_category] == "") || (params[:search_city] == nil &&  params[:search_category] == nil)
+      @services = Service.where.not(latitude: nil, longitude: nil)
+
+    elsif params[:search_city] && params[:search_category]
+      @services = Service.near(params[:search_city], 10).where(category: params[:search_category])
+
+    elsif params[:search_city] == "" && params[:search_category]
+      @services = Service.where.not(latitude: nil, longitude: nil).where(category: params[:search_category])
+
+    elsif params[:search_city] && params[:search_category] == ""
+      @services = Service.near(params[:search_city], 10)
+
+    end
 
     @hash = Gmaps4rails.build_markers(@services) do |service, marker|
       marker.lat service.latitude
       marker.lng service.longitude
-      # marker.infowindow render_to_string(partial: "/services/map_box", locals: { service: service })
+      end
     end
-  end
-
 
   def new
     @service = Service.new
@@ -42,7 +53,7 @@ class ServicesController < ApplicationController
  private
 
   def service_params
-    params.require(:service).permit(:category, :title, :price_per_hour, :description, :address, :latitude,
+    params.require(:service).permit(:category, :title, :price_per_hour, :description, :search, :address, :latitude,
       :longitude)
   end
 end

@@ -6,6 +6,7 @@
 @import "banner";
 @import "cards";
 @import "messages";
+@import "show";
 
 
 .container-index {
@@ -13,6 +14,10 @@ opacity: 0.6;
 padding-top: 30px;
 }
 
+.map-container {
+  background-color: $dark-gray;
+  color: $orange;
+}
 
 .container-gray {
 background-color: $gray;

@@ -1,7 +1,8 @@
   <%= simple_form_for([flat, offer]) do |f| %>
     <%= f.input :content %>
-    <%= f.input :title, placeholder: "Address" %>
-    <%= f.input :price, placeholder: "City" %>
-    <%= f.input :room_size, placeholder: "Service charge"%>
+    <%= f.input :title, placeholder: "Votre proposition" %>
+    <%= f.input :price, placeholder: "Prix" %>
+    <%= f.input :room_size, placeholder: "Superficie de la chambre"%>
+    <%= f.input :photos, as: :attachinary %>
     <%= f.submit "Publish a new offer", class: "btn btn-success" %>
   <% end %>
