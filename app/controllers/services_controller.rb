@@ -36,7 +36,7 @@ class ServicesController < ApplicationController
     @provider = current_provider
     @service = Service.new(service_params)
     @service.provider = @provider
-    @service.status = 'pending'
+    # @service.status = 'pending'
 
     if @service.save
       respond_to do |format|

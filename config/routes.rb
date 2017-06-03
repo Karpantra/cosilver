@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :users, only: [:update] do
     collection do
-      get "dashboard"
+      get "profile"
     end
   end
 
+  # resources :services, only [:create] do
+  #   collection do
+  #     post "dashboard"
+  #   end
+  # end
   # resources :flats, only: [:show] do
   #   collection do
   #     get "dashboard"
