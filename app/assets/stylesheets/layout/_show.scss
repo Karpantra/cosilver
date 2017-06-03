@@ -12,10 +12,10 @@
   background-color: $gray;
   opacity: 0.8;
   position: fixed;
-  top: 250px;
+  top: 20px;
   left: 65px;
-  max-width: 78vw;
-  max-height: 50vh;
+  // max-width: 78vw;
+  // max-height: 50vh;
 }
 
 .offer_image {
@@ -39,7 +39,7 @@
 }
 
 .container-cards {
-  max-height: 50vh;
+  max-height: 100vh;
   position: relative;
   top: 600px;
   left: -30px;

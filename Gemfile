@@ -36,7 +36,6 @@ source "https://rails-assets.org" do
 end
 
 gem 'geocoder'
-gem "coffee-rails"
 gem "gmaps4rails"
 gem "faker"
 

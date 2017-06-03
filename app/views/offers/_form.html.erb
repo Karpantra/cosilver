@@ -1,8 +1,16 @@
-  <%= simple_form_for([flat, offer]) do |f| %>
-    <%= f.input :content %>
-    <%= f.input :title, placeholder: "Votre proposition" %>
-    <%= f.input :price, placeholder: "Prix" %>
-    <%= f.input :room_size, placeholder: "Superficie de la chambre"%>
-    <%= f.input :photos, as: :attachinary %>
-    <%= f.submit "Publish a new offer", class: "btn btn-success" %>
-  <% end %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(145, 136, 154, 0.68) 0%, rgba(12, 15, 15, 0.5) 50%), url('<%= image_path('books.jpg')%>');">
+  <div class="container">
+    <div class="row">
+    <div class="col-xs-12 col-lg-6 col-offset-6">
+        <%= simple_form_for([flat, offer]) do |f| %>
+        <%= f.input :content %>
+        <%= f.input :title, placeholder: "Votre proposition" %>
+        <%= f.input :price, placeholder: "Prix" %>
+        <%= f.input :room_size, placeholder: "Superficie de la chambre"%>
+        <%= f.input :photos, as: :attachinary %>
+        <%= f.submit "Publish a new offer", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
