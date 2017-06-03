@@ -7,6 +7,7 @@
 
     <%= form_tag(services_path, method: :get, class: 'form-search') do %>
     <%= text_field_tag :search_city, params[:search_city] , placeholder: "ville", class: "input-medium search-query" %>
+    <br>
     <%= select_tag :search_category, options_for_select(Service::SOUS_CATEGORIES, params[:search_category]), prompt: "Catégorie?" %>
     <%= submit_tag "Trouvez un spécialiste", class: "btn btn-primary" %>
       <% end %>
