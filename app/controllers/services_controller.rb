@@ -25,8 +25,8 @@ class ServicesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@services) do |service, marker|
       marker.lat service.latitude
       marker.lng service.longitude
-      end
     end
+  end
 
   def new
     @service = Service.new
