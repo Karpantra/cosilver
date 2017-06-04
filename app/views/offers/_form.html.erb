@@ -3,12 +3,12 @@
     <div class="row">
     <div class="col-xs-12 col-lg-6 col-offset-6">
         <%= simple_form_for([flat, offer]) do |f| %>
-        <%= f.input :content %>
         <%= f.input :title, placeholder: "Votre proposition" %>
-        <%= f.input :price, placeholder: "Prix" %>
-        <%= f.input :room_size, placeholder: "Superficie de la chambre"%>
+        <%= f.input :content, placeholder: "Détaillez votre offre" %>
+        <%= f.input :price, placeholder: "Prix ?" %>
+        <%= f.input :room_size, placeholder: "Superficie de la chambre ?"%>
         <%= f.input :photos, as: :attachinary %>
-        <%= f.submit "Publish a new offer", class: "btn btn-success" %>
+        <%= f.submit "Publiez votre offre !", class: "btn btn-success" %>
         <% end %>
       </div>
     </div>
