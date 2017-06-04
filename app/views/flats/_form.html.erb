@@ -4,25 +4,29 @@
   <div class="container">
     <div class="row">
 
-    <div class="col-xs-10 col-offset-1 col-sm-6">
-      <%= simple_form_for @flat do |f| %>
-      <%= f.input :category, label: "Catégorie",placeholder: "Category", collection: ["Appartement", "Maison"] %>
-      <%= f.input :address, label: "Adresse", placeholder: "Tapez votre adresse" %>
-      <%= f.input :city, label: "Ville", placeholder: "Dans quelle ville vivez-vous ?" %>
-      <%= f.input :service_charges, label: "Charges", placeholder: "A combien s'élèvent les charges ?"%>
-      <%= f.input :deposit, label: "Caution", placeholder: "Quel montant ?" %>
-      <%= f.input :photos, label: " Vos photos", as: :attachinary %>
-    </div>
+      <div class="col-xs-10 col-offset-1 col-sm-6">
+        <%= simple_form_for @flat do |f| %>
+        <%= f.input :category, label: "Catégorie",placeholder: "Category", collection: ["Appartement", "Maison"] %>
+        <%= f.input :address, label: "Adresse", placeholder: "Tapez votre adresse" %>
+        <%= f.input :city, label: "Ville", placeholder: "Dans quelle ville vivez-vous ?" %>
+        <%= f.input :service_charges, label: "Charges", placeholder: "A combien s'élèvent les charges ?"%>
+        <%= f.input :deposit, label: "Caution" , placeholder: "Quel montant ?" %>
+        <%= f.input :photos, label: " Vos photos", as: :attachinary %>
+      </div>
 
-    <div class="col-xs-10 col-offset-1 col-sm-6">
-      <%= f.input :flat_area, label: "Superficie de votre logement", placeholder: "Entrez la superficie" %>
-      <%= f.input :max_roommmates, label: "Nombre de colocataires souhaité", placeholder: "Combien de colocataires souhaitez-vous ? " %>
-      <%= f.input :number_pieces, label: "Nombre de pièces", placeholder: "Entrez le nombre de pièces" %>
-      <%= f.input :smoker, label: "fumeur/fumeuse ?" %>
-      <%= f.input :animals, label: "Des animaux ?" %>
-    </div>
-      <%= f.submit "Ajoutez votre appartement / maison", class: "btn btn-success" %>
-      <% end %>
+      <div class="col-xs-10 col-offset-1 col-sm-6">
+        <%= f.input :flat_area, label: "Superficie de votre logement", placeholder: "Entrez la superficie" %>
+        <%= f.input :max_roommmates, label: "Nombre de colocataires souhaité", placeholder: "Combien de colocataires souhaitez-vous ? " %>
+        <%= f.input :number_pieces, label: "Nombre de pièces", placeholder: "Entrez le nombre de pièces"%>
+        <div class="category-choice">
+          <%= f.input :smoker, label: "fumeur/fumeuse ?"%>
+          <%= f.input :animals, label: "Des animaux ?",
+          class:"hidden" %>
+
+        </div>
+      </div>
+        <%= f.submit "Ajoutez votre appartement / maison", class: "btn btn-success" %>
+        <% end %>
     </div>
   </div>
 </div>
