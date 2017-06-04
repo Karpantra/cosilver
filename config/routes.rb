@@ -9,11 +9,11 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :services, only [:create] do
-  #   collection do
-  #     post "dashboard"
-  #   end
-  # end
+  resources :providers, only: [:update] do
+    collection do
+      get "dashboard"
+    end
+  end
   # resources :flats, only: [:show] do
   #   collection do
   #     get "dashboard"

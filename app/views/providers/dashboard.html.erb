@@ -1,1 +1,38 @@
+<div class="wrapper-profil">
+  <div class="profile-header-wrapper">
+    <div class="container profile-header-container text-center">
 
+      <div class="tabs">
+        <a class="tab active" data-target="#create">
+          <h3>Créer un nouveau service</h3>
+        </a>
+        <a class="tab" data-target="#services">
+          <h3>Mes services</h3>
+        </a>
+        <a class="tab" data-target="#pending">
+          <h3>Mes services confirmés</h3>
+        </a>
+        <a class="tab" data-target="#settings">
+          <h3>Editer mes informations</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="tab-content" id="create">
+
+    </div>
+    <div class="tab-content hidden" id="services">
+
+    </div>
+    <div class="tab-content hidden" id="pending">
+
+    </div>
+    <div class="tab-content hidden" id="settings">
+      <h3 class="text-center">Informations personnelles</h3>
+        <%= render "settings" %>
+    </div>
+  </div>
+</div>
