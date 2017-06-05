@@ -1,24 +1,42 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(145, 136, 154, 0.58) 0%, rgba(12, 15, 15, 0.5) 90%), url('<%= image_path('livingroom2.jpg')%>');">
   <div class="container">
     <div class="row">
+      <h2>Bienvenue chez CoSilver</h2>
+      </br>
+      </br>
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-        <h2>Se connecter</h2>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div>
-            <%= f.input :email, required: false, autofocus: true %>
-            <%= f.input :password, label:"Mot de passe", required: false %>
+            <%= f.input :email, required: false, label:false,  autofocus: true, placeholder: "Entrez votre email" %>
+            <%= f.input :password, required: false, placeholder: "Mot de passe", label:false %>
             <%= f.input :remember_me, label: "se rappeler de moi", as: :boolean if devise_mapping.rememberable? %>
+              <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class:"btn btn-mdp" %><br />
+              <% end %>
           </div>
-          <div>
-            <%= f.button :submit, "Je me connecte" %>
+        <%= f.button :submit, "Je me connecte", class:"btn btn-co" %>
+        <% end -%>
+        </br>
+        </br>
+        <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <%= link_to "Connexion avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-primary btn-fb" %>
+            <br />
+          <% end -%>
+        <% end -%>
+        </br>
+        </br>
+        <div class="row btn-insc">
+          <div class="col-xs-6">
+            <h6>Vous n'avez pas de compte ? </h6>
           </div>
-        <% end %>
-        <%= render "devise/shared/links" %>
+          <div class="col-xs-6 ">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
- </div>
-
-
+</div>
 
 

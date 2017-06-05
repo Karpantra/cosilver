@@ -10,6 +10,7 @@
 @import "offer-show";
 @import "form-post";
 @import "offers-index";
+@import "session";
 
 
 .container-index {
@@ -26,7 +27,8 @@ padding-top: 30px;
 background-color: $gray;
 }
 
-.mappy {
-
+.btn-co {
+  height: auto;
+  padding-top: 5px;
 }
 
