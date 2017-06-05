@@ -11,10 +11,11 @@ class AvailabilitiesController < ApplicationController
     @service = Service.find(params[:service_id])
     @availability = Availability.new(availability_params)
     @availability.service = @service
+    raise
 
     if @availability.save
       respond_to do |format|
-        format.html { redirect_to service_availabilities_path(@service) }
+        format.html { redirect_to service_path(@service) }
       end
     else
       respond_to do |format|

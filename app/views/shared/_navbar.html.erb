@@ -45,7 +45,7 @@
       <% end %>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to dashboard_users_path do %>
+          <%= link_to profile_users_path do %>
           <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
           <% end %>
         </li>
@@ -55,10 +55,10 @@
           <% end %>
         </li>
         <li>
-        <li>
           <%= link_to new_flat_path do %><i class="fa fa-user-plus"></i> <%= t(".top_call_to_action", default: "Proposer une colocation") %>
           <%end %>
         </li>
+        <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
           <% end %>
@@ -74,14 +74,13 @@
     <div class="dropdown">
       <% if current_provider.photos? %>
       <%= cl_image_tag current_provider.photos.first.path, width: 30, height: 30, crop: :fill, radius: :max, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-      <% elsif current_provider.facebook_picture_url.present? %>
-      <%= image_tag current_provider.facebook_picture_url, :style => 'border-radius: 150px', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"  %>
+
       <% else %>
       <%= image_tag "http://placehold.it/30x30", class: "img-thumbnail avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <% end %>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to  do %>
+          <%= link_to dashboard_providers_path  do %>
           <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
           <% end %>
         </li>
@@ -95,7 +94,7 @@
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
           <% end %>
         </li>
-        <li><%= link_to t(".navbar-connect-button", default: "Proposer un service"), new_service_path %></li>
+        <li><%= link_to t(".navbar-connect-button", default: "Proposer un service"), new_provider_service_path(current_provider) %></li>
       </ul>
     </div>
 

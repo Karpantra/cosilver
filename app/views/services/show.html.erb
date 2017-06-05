@@ -1,28 +1,33 @@
 <div class="container text-center">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-        <figure class="snip1139">
-          <blockquote><%= @service.description %>
-            <div class="arrow"></div>
-          </blockquote>
-          <%= cl_image_tag @service.provider.photos.first.path, width: 350, height: 350, crop: :thumb, gravity: :face %>
-          <div class="author">
-            <h5><%= @service.provider.first_name %> <span>- <%= @service.price_per_hour %> €/heure</span></h5>
-            <h4><%= @service.title %></h4>
-            <p><%= @service.address %></p>
-          </div>
-        </figure>
-      </div>
-      <div class="col-xs-12 col-sm-6">
+      <figure class="snip1139">
+        <blockquote><%= @service.description %>
+          <div class="arrow"></div>
+        </blockquote>
+        <% if @service.provider.photos.first.nil? %>
+        <%= image_tag 'cosilverlogo3.png', width: 350, height: 350, crop: :fill %>
+        <% else %>
+        <%= cl_image_tag @service.provider.photos.first.path, width: 350, height: 350, crop: :thumb, gravity: :face %>
+        <% end %>
+        <div class="author">
+          <h5><%= @service.provider.first_name %> <span>- <%= @service.price_per_hour %> €/heure</span></h5>
+          <h4><%= @service.title %></h4>
+          <p><%= @service.address %></p>
+        </div>
+      </figure>
+    </div>
+    <!-- emplacement des dates disponibles pour booker les services en tant que user -->
+    <div class="col-xs-12 col-sm-6">
       <div class="btn btn-success calendrier">
         <h4>calendrier</h4>
-      <div class="btn btn-info">
-        <%= link_to "Indiquez vos disponibilités",  new_service_availability_path(@service)  %>
-      </div>
-      </div>
+          <div class="btn btn-info">
+            <%=  link_to "Indiquez vos disponibilités",  new_service_availability_path(@service)  %>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
   <div class="container text-center ">
     <div class="row">
