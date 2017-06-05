@@ -1,14 +1,20 @@
 class OffersController < ApplicationController
 
   def index
-    @offers = Offer.all
 
-    if (params[:search] == "")  || (params[:search] == nil)
+    if params[:search] == ""  || params[:search] == nil
       @flats = Flat.where.not(latitude: nil, longitude: nil).joins(:offers)
+      @offers = Offer.all
+
 
     elsif params[:search]
       @flats = Flat.near(params[:search], 10).joins(:offers)
-
+      @offers = []
+      @flats.each do |flat|
+        flat.offers.each do |offer|
+          @offers << offer
+        end
+      end
     end
 
     @flat_properties = Array.new

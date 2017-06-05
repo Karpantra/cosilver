@@ -7,12 +7,16 @@
 
 
     <%= form_tag(offers_path, method: :get, class: 'form-search') do %>
-    <%= text_field_tag :search_city, params[:search_city] , placeholder: "ville", class: "input-medium search-query" %>
+    <%= text_field_tag :search, params[:search] , placeholder: "ville", class: "input-medium search-query" %>
     <br>
     <br>
 
-    <%= submit_tag "Lancez-vous", class: "btn btn-primary" %>
+    <%= submit_tag "Lancez-vous", class: "btn btn-primary" %>   <%= link_to t(".top_call_to_action", default: "ré-initialiser"), offers_path, class: "btn btn-info" %>
       <% end %>
+
+
+
+
 
 
   <div class="mappy">
