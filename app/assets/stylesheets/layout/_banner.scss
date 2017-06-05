@@ -15,14 +15,14 @@
   background-size: cover;
 }
 .banner h1 {
-  font-family:"Cabin";
-  font-size: 50px;
+  font-family:"Roboto";
+  font-size: 60px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   margin-bottom:10px
 }
 .banner p {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: lighter;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
@@ -106,4 +106,11 @@ transform: rotateY(180deg);
 .home-quote {
   margin-top:50px;
   font-family: 'Cabin'
+}
+
+
+.btn-banner {
+  margin-left:20px;
+  font-size:20px;
+  border-radius: 5px
 }

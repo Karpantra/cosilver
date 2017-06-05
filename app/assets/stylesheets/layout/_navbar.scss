@@ -21,7 +21,7 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 50px;
+  width: 120px;
 }
 
 
@@ -64,7 +64,7 @@
 }
 
 .navbar-wagon-center-links li:after {
-    border-bottom:2px solid $orange;
+    border-bottom:3px solid $orange;
     content: "";
     display: block;
     width: 0;
@@ -140,6 +140,8 @@
   opacity: 0.8;
   margin-right: 15px;
   text-decoration: none;
+  width: 200px;
+  text-align: center;
 }
 
 .navbar-connect-button:hover {

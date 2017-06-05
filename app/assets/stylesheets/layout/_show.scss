@@ -9,6 +9,13 @@
   padding: 30px;
   margin-top: 30px;
   margin: 30px;
+  background-color: $gray;
+  opacity: 0.8;
+  position: fixed;
+  top: 20px;
+  left: 65px;
+  // max-width: 78vw;
+  // max-height: 50vh;
 }
 
 .offer_image {
@@ -25,4 +32,25 @@
 
 .offer_btn {
   padding: 30px;
+}
+
+.container-show {
+  max-height: 30vh;
+}
+
+.container-cards {
+  max-height: 100vh;
+  position: relative;
+  top: 600px;
+  left: -30px;
+
+}
+
+.calendrier {
+  position: fixed;
+  top: 200px;
+  right: 75px;
+  height: 30vh;
+  width: 40vw;
+  opacity: 0.3;
 }

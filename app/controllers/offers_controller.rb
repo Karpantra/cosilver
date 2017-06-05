@@ -2,33 +2,19 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
-  end
 
+    @flats = Flat.where.not(latitude: nil, longitude: nil).joins(:offers)
 
-  # def index
-  #   search = params[:flat][:search]
-  #   if search.to_s.size > 0
-  #     @flats= Flat.near(search, 10).where.not(latitude: nil, longitude: nil)
-  #        @hash = Gmaps4rails.build_markers(@flats) do |flat, marker|
-  #        marker.lat product.latitude
-  #        marker.lng product.longitude
-  #   #   filter product where city = search
-  #     end
-  #   else
-  #     @flats = Flat.where.not(latitude: nil, longitude: nil)
-  #     @hash = Gmaps4rails.build_markers(@flats) do |flat, marker|
-  #       marker.lat product.latitude
-  #       marker.lng product.longitude
-  #     # marker.infowindow render_to_string(partial: "/products/map_box", locals: { product: product })
-  #     end
-  #   end
-  # end
-
-
+    @hash = Gmaps4rails.build_markers(@flats) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
+end
 
 
   def show
     @offer = Offer.find(params[:id])
+    @offer_coordinates = { lat: @offer.flat.latitude, lng: @offer.flat.longitude }
   end
 
   def new
@@ -40,7 +26,6 @@ class OffersController < ApplicationController
     @flat = Flat.find(params[:flat_id])
     @offer = Offer.new(offer_params)
     @offer.flat = @flat
-
     if @offer.save
       respond_to do |format|
         format.html { redirect_to offer_path(@offer) }
@@ -48,7 +33,7 @@ class OffersController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render 'offers/show' }
+        format.html { render 'offers/new' }
         # format.js  # <-- idem
       end
     end
