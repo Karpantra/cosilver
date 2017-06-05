@@ -14,7 +14,7 @@ class AvailabilitiesController < ApplicationController
 
     if @availability.save
       respond_to do |format|
-        format.html { redirect_to service_availabilities_path(@service) }
+        format.html { redirect_to service_path(@service) }
       end
     else
       respond_to do |format|

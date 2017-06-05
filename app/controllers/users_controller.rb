@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  def dashboard
+  def profile
     @user = current_user
   end
 

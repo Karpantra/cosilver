@@ -36,7 +36,7 @@ class ServicesController < ApplicationController
     @provider = current_provider
     @service = Service.new(service_params)
     @service.provider = @provider
-    @service.status = 'pending'
+    # @service.status = 'pending'
 
     if @service.save
       respond_to do |format|
@@ -53,7 +53,7 @@ class ServicesController < ApplicationController
  private
 
   def service_params
-    params.require(:service).permit(:category, :title, :price_per_hour, :description, :search, :address, :latitude,
+    params.require(:service).permit(:status, :category, :title, :price_per_hour, :description, :search, :address, :latitude,
       :longitude)
   end
 end
