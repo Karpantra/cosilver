@@ -62,7 +62,98 @@ end
 
 
 
+flats_attributes = [
+  {
+    category: "Appartement",
+    address: "112 rue du Fg St-Honoré ",
+    city:  '75008 Paris',
+    service_charges: 300,
+    deposit: 500,
+    description: "Face au jardin, on découvre une salle lumineuse... et la cuisine d'Éric Frechon.",
+    flat_area: 125,
+    max_roommmates: 3,
+    number_pieces: 2,
+    smoker: true,
+    animals: false,
+  },
+  {
+    category: "Maison",
+    address: "4 rue Blainville ",
+    city: "75005 Paris",
+    service_charges: 150,
+    deposit: 100,
+    description: "Une valeur sûre que cette belle maison du 17e, ",
+    flat_area: 75,
+    max_roommmates: 4,
+    number_pieces: 2,
+    smoker: true,
+    animals: false,
+  },
+  {
+    category: "Maison",
+    address: " 3 route de Suresnes ",
+    city: "75016 Paris",
+    service_charges: 50,
+    deposit: 200,
+    description: "Oeil vif, geste sûr: impossible de distinguer, dans les créations de Frédéric Anton...",
+    flat_area: 45,
+    max_roommmates: 2,
+    number_pieces: 3,
+    smoker: false,
+    animals: false,
+  },
+    {
+    category: "Appartement",
+    address: "10 rue de la paix ",
+    city:  "Paris",
+    service_charges: 30,
+    deposit: 54,
+    description: "Belle appartement pour deux personne, à deux pas du metro et de toute les commodités ! ",
+    flat_area: 45,
+    max_roommmates: 3,
+    number_pieces: 4,
+    smoker: true,
+    animals: true,
+  },
+    {
+    category: "Appartement",
+    address: " 14 rue condorcet",
+    city:  "Paris",
+    service_charges: 30,
+    deposit: 550,
+    description: "Petit appartement de deux chambres, belle luminosité, tout équipe ! ",
+    flat_area: 55,
+    max_roommmates: 2,
+    number_pieces: 4,
+    smoker: true,
+    animals:false,
+  },
+    {
+    category: "Appartement",
+    address: "56 rue de l'université",
+    city:  "Paris",
+    service_charges: 130,
+    deposit: 450,
+    description: "Très belle appartement avec 5 chambres et 3 salles de bain, il dispose également d'un grand salon, parfait pour des apéro entre amis ! ",
+    flat_area: 110,
+    max_roommmates: 4,
+    number_pieces: 7,
+    smoker: true,
+    animals: false,
+  },
+]
 
+Flat.create!(flats_attributes)
+
+# has_attachement :photos  (many)
+urls = [
+  'http://static.cotemaison.fr/medias_10600/w_1121,h_841,c_crop,x_59,y_0/w_640,h_358,c_fill,g_center/v1443457866/appartement-arty-et-design-a-amsterdam-11_5427515.jpg',
+  'http://www.paris-appartements-services.com/img/photo/11/1.jpg',
+]
+
+flat = Flat.new
+flat.save!
+flat.photo_urls = urls
 
 
 # html_doc.search('.has-tip').each do |element|
