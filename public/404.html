@@ -22,6 +22,10 @@
     margin: 4em auto 0;
   }
 
+  .header{
+    padding-top: 30px;
+}
+/*
   .rails-default-error-page div.dialog > div {
     border: 1px solid #CCC;
     border-right-color: #999;
@@ -33,15 +37,15 @@
     background-color: white;
     padding: 7px 12% 0;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+  }*/
 
-  .rails-default-error-page h1 {
+  .rails-default-error-page h1, p {
     font-size: 100%;
-    color: #730E15;
+    color: p#730E15;
     line-height: 1.5em;
   }
 
-  .rails-default-error-page p {
+/*  .rails-default-error-page p {
     margin: 0 0 1em;
     padding: 1em;
     background-color: #F7F7F7;
@@ -55,38 +59,23 @@
     color: #730E15;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+*/
 
 
-  .rails-default-error-page > .banner {
-  color: white;
-  text-align: center;
-  height: 92vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-position: center;
-  // added effects for banner parallax
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('https://unsplash.com/search/nowhere?photo=y3WCSJAqFVE');
-  /*background-color: black*/
-  }
 
   </style>
 </head>
 
 <body class="rails-default-error-page">
-<div class="banner">
+<!-- <div class="banner"> -->
   <!-- This file lives in public/404.html -->
+  <div class="header">
+    <a href=""><img src="https://unsplash.com/search/nowhere?photo=y3WCSJAqFVE" alt=""></a>
+  </div>
   <div class="dialog">
-      <h1>Désolé ! La page recherchée n'existe plus !
-   (404)</h1>
-      <p>Mais vous pouvez retourner à l'accueil</p>
+    <h1>Désolé ! La page recherchée n'existe plus !  :( </h1>
+    <p>Mais vous pouvez retourner à l'accueil en cliquant sur le logo</p>
   </div>
 </body>
-</div>
+<!-- </div> -->
 </html>
