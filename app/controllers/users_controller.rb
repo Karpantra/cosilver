@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
+    @conversations = Conversation.where("recipient_id = ? OR sender_id = ?", current_user.id, current_user.id).order('updated_at DESC')
   end
 
   def update

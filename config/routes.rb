@@ -12,15 +12,15 @@ Rails.application.routes.draw do
 
   resources :providers, only: [:update] do
     collection do
-      get "dashboard"
+      get "dashboard", to: "providers#dashboard"
     end
   end
 
 
   resources :providers do
-    resources :services, only: [:new, :create, :show]
+    resources :services, only: [:new, :create]
     resources :bookings, only: :create
-    end
+  end
   # resources :flats, only: [:show] do
   #   collection do
   #     get "dashboard"
@@ -32,11 +32,11 @@ Rails.application.routes.draw do
   end
   resources :offers, except: [:new, :create]
 
-  resources :services do
+  resources :services, except: [:new, :create] do
     resources :availabilities, only: [:new, :create]
   end
 
-  resources :availabilities
+  resources :availabilities, except: [:new, :create]
 
 
   resources :conversations, only: [:create] do

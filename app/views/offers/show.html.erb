@@ -24,11 +24,11 @@
       <p> <strong>Taille de la chambre:</strong> <%= @offer.room_size %> m2</p>
       <p> <strong></strong> <%= @offer.flat.category %></p>
       <p> <strong>au </strong> <%= @offer.flat.address %> à <%= @offer.flat.city %></p>
-      <div class="text-center">
-        <%= link_to "Contactez le propriétaire", profile_users_path(@user), :class => "btn btn-primary" %>
-      </div>
     </div>
 
+    <!-- ##################### discution instantanée ######################## -->
+
+      <% if current_user != @offer.flat.user %>
     <div class="col-xs-12 col-sm-4">
       <div class="message_row">
         <div class="col-xs-12">
@@ -43,10 +43,10 @@
             <div class="panel-body">
               <ul>
                 <% @users = [] %>
-                <% @users << @offer.flat.user %>
-                <% @users << current_user %>
-                <% @users.each do |user|  %>
-                  <li><%= link_to user.email, conversations_path(user_id: user), remote: true, method: :post %></li>
+                <% @users << @offer.flat.user unless @offer.flat.user == current_user  %>
+
+                <% @users.each do |user| %>
+                  <li><%= link_to user.email.split("@")[0], conversations_path(user_id: user), remote: true, method: :post %></li>
                 <% end %>
               </ul>
             </div>
@@ -54,6 +54,7 @@
         </div>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
 
