@@ -5,7 +5,7 @@ class Service < ApplicationRecord
 
   belongs_to :provider
   has_many :bookings
-  has_many :availibilities
+  has_many :availabilities
 
 
   validates :category, presence: true
