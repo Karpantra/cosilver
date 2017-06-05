@@ -1,12 +1,25 @@
 class OffersController < ApplicationController
 
   def index
-    @offers = Offer.all
 
-    @flats = Flat.where.not(latitude: nil, longitude: nil).joins(:offers)
+    if params[:search] == ""  || params[:search] == nil
+      @flats = Flat.where.not(latitude: nil, longitude: nil).joins(:offers)
+      @offers = Offer.all
+
+
+    elsif params[:search]
+      @flats = Flat.near(params[:search], 10).joins(:offers)
+      @offers = []
+      @flats.each do |flat|
+        flat.offers.each do |offer|
+          @offers << offer
+        end
+      end
+    end
+
     @flat_properties = Array.new
     @flats.each do |flat|
-    @flat_properties.push(flat)
+      @flat_properties.push(flat)
     end
 
 
@@ -16,7 +29,7 @@ class OffersController < ApplicationController
       marker.lng flat.longitude
       marker.infowindow concat_info_window
     end
-end
+  end
 
 #    def gmaps4rails_title
 #       return "Hello all"

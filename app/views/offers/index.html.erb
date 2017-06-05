@@ -1,26 +1,50 @@
 <!-- changer le padding  -->
 
-<div class="card-container text-center">
+<div class="container text-center">
+  <div class="map-container text-center col-xs-12 col-sm-4 ">
+
+    <h3>Trouvez votre colloc'</h3>
+
+
+    <%= form_tag(offers_path, method: :get, class: 'form-search') do %>
+    <%= text_field_tag :search, params[:search] , placeholder: "ville", class: "input-medium search-query" %>
+    <br>
+    <br>
+
+    <%= submit_tag "Lancez-vous", class: "btn btn-primary" %>   <%= link_to t(".top_call_to_action", default: "ré-initialiser"), offers_path, class: "btn btn-info" %>
+      <% end %>
+
+
+
+
+
+
+  <div class="mappy">
+    <div class="card">
+      <div id="map" style="width: 100%; height: 100vh;"></div>
+    </div>
+    </div>
+  </div>
+
+  <div class="container-index text-center col-xs-12 col-sm-8" style="overflow:scroll; height: 90vh;">
   <div class="row">
-    <div class="col-xs-12 col-md-8">
-    <div class="col-padding">
-      <% @offers.each do |offer| %>
-          <div class="col-xs-12 col-md-6">
-            <!-- Thumbnail-->
-        <%= render "card", offer: offer%>
+         <% @offers.each do |offer| %>
+     <div class="col-xs-12 col-sm-6">
 
-          </div>
-      <%end %>
+       <%= render "card", offer: offer%>
+
+      <% end %>
       </div>
     </div>
-
-
-
-      <div class="mappy col-xs-12 col-md-4">
-        <div id="map" style="width: 100%; height: 60vh;"></div>
-      </div>
-    </div>
+  </div>
 </div>
+
+
+
+
+
+
+
 
 
 <% content_for(:after_js) do %>

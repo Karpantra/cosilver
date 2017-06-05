@@ -7,6 +7,7 @@ class ServicesController < ApplicationController
   end
 
   def index
+     # @services = Service.all
 
     if (params[:search_city] == "" &&  params[:search_category] == "") || (params[:search_city] == nil &&  params[:search_category] == nil)
       @services = Service.where.not(latitude: nil, longitude: nil)
@@ -53,7 +54,7 @@ class ServicesController < ApplicationController
  private
 
   def service_params
-    params.require(:service).permit(:status, :category, :title, :price_per_hour, :description, :search, :address, :latitude,
+    params.require(:service).permit(:status, :category, :title, :price_per_hour, :description, :address, :latitude,
       :longitude)
   end
 end
