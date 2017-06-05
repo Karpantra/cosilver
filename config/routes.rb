@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_for :providers, controllers: { registrations: "providers/registrations", sessions: "providers/sessions", passwords: "providers/passwords"}
   root to: 'pages#home'
+
   resources :users, only: [:update] do
     collection do
       get "profile"
@@ -14,6 +15,12 @@ Rails.application.routes.draw do
       get "dashboard"
     end
   end
+
+
+  resources :providers do
+    resources :services, only: [:new, :create, :show]
+    resources :bookings, only: :create
+    end
   # resources :flats, only: [:show] do
   #   collection do
   #     get "dashboard"

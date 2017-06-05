@@ -1,0 +1,23 @@
+<div class="container text-center">
+  <div class="row">
+    <% current_provider.services.split.flatten.each do |service| %>
+    <div class="col-xs-12 col-sm-6">
+      <figure class="snip1139">
+      <blockquote><%= service.description %>
+          <div class="arrow"></div>
+        </blockquote>
+        <% if current_provider.photos? %>
+        <%= cl_image_tag service.provider.photos.first.path, width: 350, height: 350, crop: :thumb, gravity: :face %>
+        <% else %>
+        <%= image_tag 'cosilverlogo3.png', width: 350, height: 350, crop: :fill %>
+        <% end %>
+        <div class="author">
+          <h5><%= service.provider.first_name %> <span>- <%= service.price_per_hour %> €/heure</span></h5>
+          <h4><%= service.title %></h4>
+          <p><%= service.address %></p>
+        </div>
+      </figure>
+    </div>
+    <% end %>
+  </div>
+</div>

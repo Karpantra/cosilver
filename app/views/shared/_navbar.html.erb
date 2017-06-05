@@ -74,8 +74,7 @@
     <div class="dropdown">
       <% if current_provider.photos? %>
       <%= cl_image_tag current_provider.photos.first.path, width: 30, height: 30, crop: :fill, radius: :max, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-      <% elsif current_provider.facebook_picture_url.present? %>
-      <%= image_tag current_provider.facebook_picture_url, :style => 'border-radius: 150px', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"  %>
+
       <% else %>
       <%= image_tag "http://placehold.it/30x30", class: "img-thumbnail avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <% end %>

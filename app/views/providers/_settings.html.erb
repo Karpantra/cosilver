@@ -2,10 +2,9 @@
   <div class="text-center">
     <% if current_provider.photos? %>
       <%= cl_image_tag current_provider.photos.first.path, width: 300, height: 300, crop: :thumb, radius: :max, class: "avatar-extra-large img-thumbnail" %>
-    <% elsif current_provider.facebook_picture_url.present? %>
-      <%= image_tag current_provider.facebook_picture_url, :style => 'border-radius: 150px' %>
+
     <% else %>
-      <%= image_tag 'logo.png', class: "avatar-extra-large" %>
+      <%= image_tag 'cosilverlogo3.png', class: "avatar-extra-large" %>
     <% end %>
     <h6>Upload a different photo...</h6>
   </div>
@@ -16,24 +15,18 @@
 <%= simple_form_for(current_provider, as: "provider", url: registration_path("provider"), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs form-horizontal">
     <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :password_confirmation, required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    <%= f.input :photos, as: :attachinary %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path("provider"), data: { confirm: "Are you sure?" }, method: :delete %></p>
 

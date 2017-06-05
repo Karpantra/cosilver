@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602092335) do
+ActiveRecord::Schema.define(version: 20170604150154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,9 @@ ActiveRecord::Schema.define(version: 20170602092335) do
     t.datetime "booked_at"
     t.integer  "service_id"
     t.integer  "flat_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "status",       default: "pending"
     t.index ["flat_id"], name: "index_bookings_on_flat_id", using: :btree
     t.index ["service_id"], name: "index_bookings_on_service_id", using: :btree
   end

@@ -1,6 +1,13 @@
 class ProvidersController < ApplicationController
-  def profile
+  def dashboard
     @provider = current_provider
+  end
+
+  def my_services
+  end
+
+  def new_service
+    @service = Service.new
   end
 
   def update
@@ -12,6 +19,7 @@ class ProvidersController < ApplicationController
   private
 
   def provider_params
-    params.require(:provider).permit(:day, :start_time, :end_time)
+    # A modifier si besoin car faux
+    params.require(:provider).permit(:email, :password, :first_name, :last_name)
   end
 end
