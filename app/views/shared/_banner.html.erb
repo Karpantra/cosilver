@@ -7,12 +7,13 @@
   <h1>Cosilver</h1> <p>Colocation pour jeunes seniors</p>
   <p>Trouvez vos futurs colocataires pour partager votre nouvelle vie et vos passions</p>
 
-  <%= simple_form_for :offers, :method => 'get',
+  <%= simple_form_for :offer, :method => 'get',
       :html => { :class => 'form-search' }, url: offers_path do |f| %>
     <%= f.input_field :search, placeholder: "ville",
         class: "input-medium search-query" %>
     <%= f.submit "Lancez-vous !", class: "btn btn-primary btn-banner", style:"text-decoration:none" %>
   <% end %>
+
   </div>
  </div>
 
