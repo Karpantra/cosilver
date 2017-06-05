@@ -8,7 +8,11 @@
     <%= form_tag(services_path, method: :get, class: 'form-search') do %>
     <%= text_field_tag :search_city, params[:search_city] , placeholder: "ville", class: "input-medium search-query" %>
     <br>
+    <br>
     <%= select_tag :search_category, options_for_select(Service::SOUS_CATEGORIES, params[:search_category]), prompt: "Catégorie?" %>
+    <br>
+    <br>
+
     <%= submit_tag "Trouvez un spécialiste", class: "btn btn-primary" %>
       <% end %>
 
@@ -21,34 +25,71 @@
   </div>
 
 <div class="container-index text-center col-xs-12 col-sm-8" style="overflow:scroll; height: 90vh;">
-  <div class="row">
+
          <% @services.each do |service| %>
-     <div class="col-xs-12 col-sm-6">
-            <div class="card">
-            <figure class="snip1139">
-              <% if service.description %>
-                <blockquote> <%= service.description.first(70) %>...
-                  <div class="arrow"></div>
-                </blockquote>
-              <% end %>
+     <div class="row white-row">
+            <div class="card-row">
+             <h5><%= service.title %></h5>
+              <div class="col-sm-6 row-picture">
               <% if service.provider.photos.first.nil? %>
                <%= image_tag 'cosilverlogo3.png', width: 300, height: 200, crop: :fill %>
                <% else %>
                <%= cl_image_tag service.provider.photos.first.path, width: 300, height: 200, crop: :fill %>
                <% end %>
-              <div class="author">
-                <h5><%= service.title %> <span><%= service.category %></span>
-                <%= link_to "Détails", service_path(service) %></h5>
+
               </div>
-            </figure>
-           </div>
-
+              <br>
+              <div class="col-sm-6 date-picker">
+                <div class="month">
+                  <ul>
+                    <li class="prev">&#10094;</li>
+                    <li class="next">&#10095;</li>
+                    <li>
+                      August<br>
+                      <span style="font-size:18px">2017</span>
+                    </li>
+                  </ul>
+                </div>
+                  <ul class="weekdays">
+                    <li>Mo</li>
+                    <li>Tu</li>
+                    <li>We</li>
+                    <li>Th</li>
+                    <li>Fr</li>
+                    <li>Sa</li>
+                    <li>Su</li>
+                  </ul>
+                  <ul class="days">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li><span class="active">10</span></li>
+                    <li>11</li>
+                    <li>12</li>
+                  </ul>
+                </div>
+                <div class="col-sm-6 date-picker">
+                  <span><%= service.category %></span>
+                  <% if service.description %>
+                  <div> <%= service.description.first(70) %>...
+                  </div>
+                  <% end %>
+                  <%= link_to "Détails", service_path(service) %>
+                  <p>Date: <input type="text" id="datepicker"></p>
+                </div>
+                <div class="col-sm-6 date-picker">
+                </div>
+              </div>
+            </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
-  </div>
-
-</div>
 
 
 <% content_for(:after_js) do %>
