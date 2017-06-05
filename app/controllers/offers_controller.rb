@@ -4,18 +4,44 @@ class OffersController < ApplicationController
     @offers = Offer.all
 
     if (params[:search] == "")  || (params[:search] == nil)
-      @flats = Flat.where.not(latitude: nil, longitude: nil)
+      @flats = Flat.where.not(latitude: nil, longitude: nil).joins(:offers)
 
     elsif params[:search]
-      @flats = Flat.near(params[:search], 10)
+      @flats = Flat.near(params[:search], 10).joins(:offers)
 
     end
+
+    @flat_properties = Array.new
+    @flats.each do |flat|
+      @flat_properties.push(flat)
+    end
+
 
     @hash = Gmaps4rails.build_markers(@flats) do |flat, marker|
+      concat_info_window = "#{flat.address + " " + flat.offers.last.title + " " + flat.offers.last.content}"
       marker.lat flat.latitude
       marker.lng flat.longitude
+      marker.infowindow concat_info_window
     end
   end
+
+#    def gmaps4rails_title
+#       return "Hello all"
+#     end
+
+
+# def gmaps4rails_marker_picture
+#   {
+#    "picture" => "/images/logo.png",
+#    "width" => 20,
+#    "height" => 20,
+#    "marker_anchor" => [ 5, 10],
+#    "shadow_picture" => "/images/morgan.png" ,
+#    "shadow_width" => "110",
+#    "shadow_height" => "110",
+#    "shadow_anchor" => [5, 10],
+#   }
+# end
 
 
   def show

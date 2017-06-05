@@ -1,20 +1,23 @@
 #footer {
-  background: $dark-gray;
+  background: $gray;
   font-family: 'Roboto';
-  color: white;
-  padding-bottom: 0;
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+  color: $dark-gray;
+  padding-bottom: 0px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   font-weight: 130;
   line-height: 1.7em;
+  position:relative;
+  bottom: 0px;
 }
 
 #footer a {
-  color: rgba(255, 255, 255, 0.8);
+  // color: rgba(255, 255, 255, 0.8);
+  color: $dark-gray;
   text-decoration: none;
 }
 
 #footer a:hover {
-  color: white;
+  color: $orange;
   cursor: pointer;
 }
 
