@@ -13,6 +13,7 @@ class Flat < ApplicationRecord
   validates :city, presence: true
   validates :service_charges, presence: true, numericality: { greater_than_or_equal_to: 1 }
   validates :deposit, presence: true, numericality: { greater_than_or_equal_to: 1 }
+  validates :photos, presence: true
   # :address, :city, :service_charges, :deposit, :description, :flat_area, :max_roommmates, :number_pieces, :smoker, :animals
 
   # Photo

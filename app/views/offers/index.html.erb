@@ -3,7 +3,7 @@
 <div class="container text-center">
   <div class="map-container text-center col-xs-12 col-sm-4 ">
 
-    <h3>Trouvez votre colloc'</h3>
+    <h3>Trouvez une collocation</h3>
 
 
     <%= form_tag(offers_path, method: :get, class: 'form-search') do %>
@@ -11,7 +11,7 @@
     <br>
     <br>
 
-    <%= submit_tag "Lancez-vous", class: "btn btn-primary" %>   <%= link_to t(".top_call_to_action", default: "ré-initialiser"), offers_path, class: "btn btn-info" %>
+    <%= submit_tag "Rechercher", class: "btn btn-primary" %>   <%= link_to t(".top_call_to_action", default: "ré-initialiser"), offers_path, class: "btn btn-info" %>
       <% end %>
 
 
