@@ -16,9 +16,12 @@
               <% @users = []%>
               <% @users << conversation.sender unless conversation.sender == current_user %>
               <% @users << conversation.recipient unless conversation.recipient == current_user %>
+              <% if @users.empty? %>
+              <% else %>
               <% @users.each do |user| %>
               <li><%= link_to user.email.split("@")[0], conversations_path(user_id: user), remote: true, method: :post %>
               <%= link_to "x", close_conversation_path(conversation), class: "btn btn-default btn-xs pull-right", remote: true, method: :post %></li>
+            <% end %>
             <% end %>
             </ul>
           <% end %>
