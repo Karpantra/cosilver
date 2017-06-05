@@ -13,9 +13,9 @@
     <div class="profile-picture">
     <% if offer.flat.user.photos.first || offer.flat.user.facebook_picture_url %>
       <% if offer.flat.user.photos.first %>
-      <%= cl_image_tag offer.flat.user.photos.first.path, class: "avatar-extra-large img-thumbnail" %>
+      <%= cl_image_tag offer.flat.user.photos.first.path, size: '50x50', crop: :thumb, gravity: :face, class: "avatar-extra-large img-thumbnail" %>
       <% else %>
-      <%=  image_tag offer.flat.user.facebook_picture_url, class: "avatar-extra-large img-thumbnail"  %>
+      <%=  image_tag offer.flat.user.facebook_picture_url, size: '50x50', crop: :thumb, class: "avatar-extra-large img-thumbnail"  %>
       <% end %>
       <% else %>
         <%= image_tag 'logo.png', class: "avatar-extra-large" %>

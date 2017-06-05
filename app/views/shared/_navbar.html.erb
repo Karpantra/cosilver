@@ -46,18 +46,19 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
           <%= link_to profile_users_path do %>
-          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+          <i class="fa fa-user"></i> <%= t(".profile", default: "Profil") %>
           <% end %>
         </li>
         <li>
           <%= link_to root_path do %>
-          <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+          <i class="fa fa-home"></i>  <%= t(".profile", default: "Accueil") %>
           <% end %>
         </li>
         <li>
           <%= link_to new_flat_path do %><i class="fa fa-user-plus"></i> <%= t(".top_call_to_action", default: "Proposer une colocation") %>
           <%end %>
         </li>
+        <li><%= link_to t(".top_call_to_action", default: "Proposer un service"), new_provider_session_path%></li>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
@@ -86,7 +87,7 @@
         </li>
         <li>
           <%= link_to root_path do %>
-          <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+          <i class="fa fa-home"></i>  <%= t(".profile", default: "Accueil") %>
           <% end %>
         </li>
         <li>
@@ -116,15 +117,15 @@
 
 
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
+<!--   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path%></li>
-        <li><%= link_to t(".top_call_to_action", default: "Proposer un service"), new_provider_session_path%></li>
-        <li><%= link_to t(".top_call_to_action", default: "Proposer une colocation"), new_flat_path %></li>
+        <li><%#= link_to t(".sign_in", default: "Se connecter"), new_user_session_path%></li>
+        <li><%#= link_to t(".top_call_to_action", default: "Proposer un service"), new_provider_session_path%></li>
+        <li><%#= link_to t(".top_call_to_action", default: "Proposer une colocation"), new_flat_path %></li>
       </ul>
     </div>
-  </div>
+  </div> -->
 </div>
 
