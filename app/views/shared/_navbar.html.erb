@@ -94,7 +94,7 @@
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
           <% end %>
         </li>
-        <li><%= link_to t(".navbar-connect-button", default: "Proposer un service"), new_service_path %></li>
+        <li><%= link_to t(".navbar-connect-button", default: "Proposer un service"), new_provider_service_path(current_provider) %></li>
       </ul>
     </div>
 
