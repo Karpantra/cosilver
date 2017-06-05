@@ -36,11 +36,11 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-       & .card-image:hover {
-          -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  transform: scale(1.1);
-       }
+  //      & .card-image:hover {
+  //         -webkit-transform: scale(1.1);
+  // -moz-transform: scale(1.1);
+  // transform: scale(1.1);
+  //      }
       .category {
         font-family: 'Roboto', open sans;
         position: absolute;
@@ -53,13 +53,15 @@
         font-weight: 600;
         text-transform: uppercase;
       }
-      .description {
+      .description  {
         font-family: 'Roboto', open sans;
         color: #666666;
         font-size: 14px;
         line-height: 1.8em;
         text-transform: uppercase;
+        visibility:hidden;
       }
+
       .profile-picture {
         position: absolute;
         top: 5px;
@@ -79,7 +81,7 @@
       width: 100%;
       text-transform: capitalize;
       .sub_title {
-        margin: 0;
+        margin-top: 10px;
         color: #f2b202;
         font-size: 20px;
         font-weight: 400;
@@ -89,10 +91,20 @@
         align-items: center;
         justify-content: center;
       }
+
+      .description {
+        display:none;
+        // font-family: 'Roboto', open sans;
+        // color: #666666;
+        // font-size: 14px;
+        // line-height: 1.8em;
+        // text-transform: uppercase;
+        // visibility:hidden;
+      }
     }
     &:hover,
     .hover {
-    box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
 
   }
 }
