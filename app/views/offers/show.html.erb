@@ -45,11 +45,6 @@
           <% end %>
            <h4>Description</h4>
         <p> <%= @offer.content %>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="padded">
-          <h2>Détails</h2>
           <h5><%= @offer.flat.user.first_name %></h5>
           <p> <strong>Surface : </strong><%= @offer.flat.flat_area %> m²</p>
           <p><strong>Nombre max de colocs : </strong> <%= @offer.flat.max_roommmates %></p>
@@ -58,10 +53,9 @@
           <p> <i class="fa fa-paw" aria-hidden="true"></i> <strong>Animaux: </strong> <%= @offer.flat.animals %></p>
         </div>
       </div>
-
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="padded">
-        <h2>Détails</h2>
+          <h2>Détails</h2>
         <p> <i class="fa fa-money" aria-hidden="true"></i> <strong>Prix:</strong>  <%= @offer.price %> €/mois</p>
 
         <p> <i class="fa fa-cc-visa" aria-hidden="true"></i> <strong>Charges:</strong> <%= @offer.flat.service_charges %> €/mois</p>
@@ -72,34 +66,40 @@
         </div>
       </div>
 
-      <!-- ##################### discution instantanée ######################## -->
-
-      <% if current_user != @offer.flat.user %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="message_row">
-          <div class="col-xs-12">
-            <ul id="conversations-list">
-            </ul>
-          </div>
-          <div class="col-xs-12 col-md-3">
-            <div class="panel text-center">
-              <div class="panel-heading">
-                <h3 class="panel-title">Discussion instantanée</h3>
-              </div>
-              <div class="panel-body">
-                <ul>
-                  <% @users = [] %>
-                  <% @users << @offer.flat.user unless @offer.flat.user == current_user  %>
-                  <% @users.each do |user| %>
-                  <li><%= link_to user.email.split("@")[0], conversations_path(user_id: user), remote: true, method: :post %></li>
-                  <% end %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="padded">
+        <h2>Messenger</h2>
+          <% if current_user != @offer.flat.user %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="message_row">
+              <div class="col-xs-12">
+                <ul id="conversations-list">
                 </ul>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <div class="panel text-center">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Discussion instantanée</h3>
+                  </div>
+                  <div class="panel-body">
+                    <ul>
+                      <% @users = [] %>
+                      <% @users << @offer.flat.user unless @offer.flat.user == current_user  %>
+                      <% @users.each do |user| %>
+                      <li><%= link_to user.email.split("@")[0], conversations_path(user_id: user), remote: true, method: :post %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <% end %>
         </div>
       </div>
-      <% end %>
+
+      <!-- ##################### discution instantanée ######################## -->
+
     </div>
   </div>
 
