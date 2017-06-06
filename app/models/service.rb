@@ -4,8 +4,7 @@ class Service < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   belongs_to :provider
-  has_many :bookings
-  has_many :availabilities
+  has_many :availabilities, dependent: :destroy
 
 
   validates :category, presence: true

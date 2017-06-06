@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :flats
   has_many :conversations, foreign_key: :sender_id
   has_many :messages
+  has_many :availabilities, dependent: :destroy
+
 
   # validates :first_name, presence: true
   # validates :last_name, presence: true
