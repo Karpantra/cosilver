@@ -4,8 +4,11 @@ class UsersController < ApplicationController
     @user = current_user
     @flat = @user.flats.last
     @conversations = Conversation.where("recipient_id = ? OR sender_id = ?", current_user.id, current_user.id).order('updated_at DESC')
+    @availabilities = Availability.where("user_id = ?", current_user.id).sort_by(&:date)
+
 
     @offer = Offer.new
+
 
 
     ######### code below is here to make work the chat ###########
