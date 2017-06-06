@@ -1,7 +1,7 @@
 
 <!-- Mettre les infos du flat ou des flats de l'user -->
 
-<div class="container">
+<div class="container" id="my-flat-page">
   <div id="carousel-example-generic" class="carousel slide carousel-top-link" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -56,28 +56,38 @@
     </div>
   </div>
   <div>
-  <h4>Mes offres de colocation</h4>
+  <span><h4 class="text-center">Mes offres de colocation</h4></span>
+  <br>
     <% current_user.flats.each do |flat| %>
       <% if flat.offers.empty? %>
-        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat, modal: true), data: {toggle: "modal", target: "#create-offer" } %>
+        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %>
       <% else %>
-        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat, modal: true), data: {toggle: "modal", target: "#create-offer" } %>
+        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %>
         <% flat.offers.order("created_at DESC").each do |offer| %>
-        <ul class="list-unstyled">
-          <li>
-            <%= offer.content %>
-          </li>
-          <li>
-            <%= offer.title %>
-          </li>
-          <li>
-            <%= offer.price %>
-          </li>
-          <li>
-            <%= offer.room_size %>
-          </li>
-        </ul>
-          <%= link_to "Editer l'offre", "#", data: {toggle: "modal", target: "#edit_offer_#{offer.id}" }%>
+        <div class="container-my-offers text-center col-xs-12 col-sm-6 col-md-3">
+        <div class="media">
+          <div class="media-body">
+            <div class="media-section">
+              <%= cl_image_tag @user.flats.last.photos[0].path, height:450, width: 1200, crop: :fill, class: "img-responsive center-block" %>
+            </div>
+            <div class="media-section">
+              <h4><%= offer.title %></h4>
+                <ul class="list-unstyled">
+                  <li>
+                    <%= offer.content %>
+                  </li>
+                  <li>
+                    <%= offer.price %> €
+                  </li>
+                  <li>
+                    <%= offer.room_size %> m2
+                  </li>
+                </ul>
+                  <%= link_to "Editer l'offre", "#", data: {toggle: "modal", target: "#edit_offer_#{offer.id}" }, class:"btn btn-primary"%>
+            </div>
+          </div>
+        </div>
+        </div>
           <div class="modal modalbox fade" id="edit_offer_<%= offer.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
