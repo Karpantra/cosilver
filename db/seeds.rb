@@ -61,6 +61,7 @@ end
 # end
 
 
+
 # html_doc.search('.has-tip').each do |element|
 #   p element
 # end

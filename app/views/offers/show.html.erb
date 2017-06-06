@@ -46,23 +46,23 @@
 
           <h2>Détails</h2>
           <h5><%= @offer.flat.user.first_name %></h5>
-          <p> <strong>Surface: </strong><%= @offer.flat.flat_area %> m²</p>
-          <p><strong>Nombre max de colocs: </strong> <%= @offer.flat.max_roommmates %></p>
-          <p><strong>Nombre de pièces: </strong> <%= @offer.flat.number_pieces %></p>
-          <p><strong>Fumeur/non fumeur: </strong> <%= @offer.flat.smoker %></p>
-          <p><strong>Animaux: </strong> <%= @offer.flat.animals %></p>
+          <p> <strong>Surface : </strong><%= @offer.flat.flat_area %> m²</p>
+          <p><strong>Nombre max de colocs : </strong> <%= @offer.flat.max_roommmates %></p>
+          <p><strong>Nombre de pièces : </strong> <%= @offer.flat.number_pieces %></p>
+          <p><strong>Fumeur/non fumeur : </strong> <%= @offer.flat.smoker %></p>
+          <p><strong>Animaux : </strong> <%= @offer.flat.animals %></p>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-4">
         <h4 class="text-center">Description</h4>
         <p> <strong><%= @offer.content %></strong></p>
-        <p> <strong>Prix:</strong> <%= @offer.price %> €/mois</p>
-        <p> <strong>Charges:</strong> <%= @offer.flat.service_charges %> €/mois</p>
-        <p> <strong>Garantie:</strong> <%= @offer.flat.deposit %> €</p>
-        <p> <strong>Taille de la chambre:</strong> <%= @offer.room_size %> m2</p>
-        <p> <strong></strong> <%= @offer.flat.category %></p>
-        <p> <strong>au </strong> <%= @offer.flat.address %> à <%= @offer.flat.city %></p>
+        <p> <strong>Prix :</strong> <%= @offer.price %> €/mois</p>
+        <p> <strong>Charges :</strong> <%= @offer.flat.service_charges %> €/mois</p>
+        <p> <strong>Garantie :</strong> <%= @offer.flat.deposit %> €</p>
+        <p> <strong>Taille de la chambre :</strong> <%= @offer.room_size %> m2</p>
+        <p> <strong>Type :</strong> <%= @offer.flat.category %></p>
+        <p> <strong>Adresse</strong> <%= @offer.flat.address %>, <%= @offer.flat.city %></p>
       </div>
 
       <!-- ##################### discution instantanée ######################## -->
@@ -83,11 +83,8 @@
                 <ul>
                   <% @users = [] %>
                   <% @users << @offer.flat.user unless @offer.flat.user == current_user  %>
-                  <% if @users.empty? %>
-                  <% else %>
                   <% @users.each do |user| %>
                   <li><%= link_to user.email.split("@")[0], conversations_path(user_id: user), remote: true, method: :post %></li>
-                  <% end %>
                   <% end %>
                 </ul>
               </div>

@@ -53,6 +53,8 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     @offer_coordinates = { lat: @offer.flat.latitude, lng: @offer.flat.longitude }
+    ######### code below is here to make work the chat ###########
+    session[:conversations] ||= []
   end
 
   def new
