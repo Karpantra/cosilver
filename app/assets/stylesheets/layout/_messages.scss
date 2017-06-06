@@ -6,13 +6,13 @@
 }
 .message-sent {
   // position: relative;
-  background-color: #2E2C3C;
+  background: #2E2C3C;
   color: white;
-  border-color: #BCE8F1;
   font-size: 12px;
   margin: 5px 20px;
   padding: 10px;
   max-width: 150px;
+  border-radius: 15px;
 }
 
 .message-received {
@@ -29,13 +29,14 @@
 .message_row ul {
   padding-left: 0px;
   list-style: none;
-  font-size: 10px;
+  font-size: 13px;
 }
 
 .message_row {
   bottom: 0;
   // width: 100%;
   // position: relative;
+  display: flex;
 
 }
 
@@ -66,6 +67,14 @@
 textarea.form-control {
   height: 30px;
 }
+
+.panel-default {
+  // position: absolute;
+  left: 500px;
+  width: 500px;
+  height: 300px;
+}
+
 
 
 
