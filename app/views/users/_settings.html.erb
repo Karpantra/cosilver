@@ -35,11 +35,13 @@
           <%= f.button :submit, "Mettre à jour" %>
         </div>
       </div>
+
     <% end %>
 
     <p>Unhappy? <%= link_to "Supprimer mon compte", registration_path("user"), data: { confirm: "Etes-vous sûr?" }, method: :delete %></p>
-
-    <%= link_to "Retour aux offres de colocations", :back %>
+    <h3>
+      <%= link_to "Retour aux offres de colocations", offers_path, class: "navbar-connect-button" %>
+    </h3>
 
   </div>
 </div>
