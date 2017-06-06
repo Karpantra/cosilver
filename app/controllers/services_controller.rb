@@ -62,7 +62,9 @@ class ServicesController < ApplicationController
     @service.availabilities.each do |availability|
       if booking_dates.include?(availability.date)
         availability.user = current_user
+        availability.available = false
       end
+      availability.save
     end
     redirect_to profile_users_path
   end

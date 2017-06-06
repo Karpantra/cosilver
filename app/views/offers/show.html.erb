@@ -14,9 +14,11 @@
   <div class="item">
     <%= cl_image_tag @offer.flat.photos[1].path, height:450,width: 800, crop: :fill, class: "img-responsive center-block" %>
   </div>
-  <div class="item">
-    <%= cl_image_tag @offer.flat.photos[2].path, height:450, width: 800, crop: :fill, class: "img-responsive center-block" %>
-  </div>
+  <% if @offer.flat.photos.count > 3 %>
+    <div class="item">
+      <%= cl_image_tag @offer.flat.photos[2].path, height:300, crop: :fill, class: "img-responsive center-block" %>
+    </div>
+  <% end %>
 </div>
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -66,41 +68,43 @@
         <p>   <i class="fa fa-map-marker" aria-hidden="true"></i>   <strong> Adresse:</strong> <%= @offer.flat.address %>, <%= @offer.flat.city %></p>
         </div>
       </div>
-
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="padded">
-        <h2>Messenger</h2>
+          <h2>Messenger</h2>
+        </div>
+        <div class="panel text-center">
+          <div class="panel-heading">
+            <h3 class="panel-title">Discussion instantanée</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @users = [] %>
+              <% @users << @offer.flat.user unless @offer.flat.user == current_user  %>
+              <% @users.each do |user| %>
+              <li><%= link_to user.email.split("@")[0], conversations_path(user_id: user), remote: true, method: :post, id:"email-msg"  %></li>
+              <li>
+                <a href="#" id='close-msg'>Fermer</a>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
           <% if current_user != @offer.flat.user %>
-          <div class="col-xs-12 col-sm-4">
-            <div class="message_row">
-              <div class="col-xs-12">
+          <div class="col-xs-12">
+            <div class="message_ro">
+              <div class="col-xs-8">
                 <ul id="conversations-list">
                 </ul>
               </div>
-              <div class="col-xs-12 col-md-3">
-                <div class="panel text-center">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Discussion instantanée</h3>
-                  </div>
-                  <div class="panel-body">
-                    <ul>
-                      <% @users = [] %>
-                      <% @users << @offer.flat.user unless @offer.flat.user == current_user  %>
-                      <% @users.each do |user| %>
-                      <li><%= link_to user.email.split("@")[0], conversations_path(user_id: user), remote: true, method: :post %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-                </div>
+              <div class="col-xs-12 col-md-4" style ="float: left;">
+
               </div>
             </div>
           </div>
           <% end %>
         </div>
       </div>
-
-      <!-- ##################### discution instantanée ######################## -->
-
     </div>
   </div>
 
@@ -110,3 +114,17 @@
     </div>
   </div>
 </div>
+
+
+
+<script>
+  $(document).ready(function(){
+      $('#close-msg').click(function(e){
+      e.preventDefault();
+      $('.panel.panel-default').hide();
+    });
+    $('#email-msg').click(function(){
+      $('.panel.panel-default').show()
+    });
+  });
+</script>

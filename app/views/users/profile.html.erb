@@ -6,8 +6,8 @@
         <a class="tab" data-target="#messagerie">
           <h3>Mes conversations</h3>
         </a>
-        <a class="tab" data-target="#profile">
-          <h3>Mes services</h3>
+        <a class="tab" data-target="#services">
+          <h3>Mes services à venir</h3>
         </a>
         <a class="tab" data-target="#colocataires">
           <h3>Mes offres</h3>
@@ -27,8 +27,8 @@
     <div class="tab-content hidden" id="messagerie">
       <%= render "my_messages" %>
     </div>
-    <div class="tab-content hidden" id="profile">
-
+    <div class="tab-content hidden" id="services">
+      <%= render "my_services" %>
     </div>
     <div class="tab-content hidden" id="colocataires">
         <%= render "cards" %>
@@ -37,7 +37,6 @@
         <%= render "settings" %>
     </div>
     <div class="tab-content hidden" id="my-flat">
-      <h3 class="text-center">Informations générales </h3>
         <%= render "my-flat" %>
     </div>
   </div>
