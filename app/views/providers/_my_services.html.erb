@@ -1,20 +1,22 @@
 <% current_provider.services.split.flatten.each do |service| %>
+<% service.availabilities.split.flatten.each do |availability| %>
 <div class="product">
-  <% service.availabilities.each do |availability| %>
-    <% if availability.user.photos? %>
-      <%= cl_image_tag availability.user.photos.path %>
-    <% else %>
-      <%= image_tag "cosilverlogo3.png", class: "product-image" %>
-    <% end %>
+  <% if availability.user.photos? %>
+  <% availability.user.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, size: '50x50', crop: :thumb, gravity: :face, class: "avatar-large" %>
+  <% end %>
+  <% else %>
+  <%= image_tag "cosilverlogo3.png", class: "avatar-large" %>
+  <% end %>
   <div class='product-body'>
     <h3><%= service.title %></h3>
-    <p><strong><%= availability.user.email %></strong></p>
-    <p>Le <%= availability.date.strftime("%d/%m/%Y") %></p>
-    <p><%= %></p>
+    <span><strong><%= availability.user.email %></strong>
+    </span><span> | <strong> <%= availability.date.strftime("%d/%m/%Y") %></strong>
+    </span><span> | <%=  %></span>
   </div>
   <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
-    <%= link_to "", dashboard_users_path, class: "fa fa-trash"%>
+    <%= link_to "", dashboard_providers_path, class: "fa fa-trash"%>
   </ul>
 </div>
-  <% end %>
+<% end %>
 <% end %>
