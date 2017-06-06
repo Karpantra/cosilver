@@ -29,3 +29,14 @@
    </div>
  <!-- </div>
   -->
+  <script>
+    $(document).ready(function(){
+        $('#close-msg').click(function(e){
+        e.preventDefault();
+        $('.panel.panel-default').hide();
+      });
+      $('#email-msg').click(function(){
+        $('.panel.panel-default').show()
+      });
+    });
+  </script>
