@@ -59,7 +59,7 @@
       <% else %>
         <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %>
         <% flat.offers.order("created_at DESC").each do |offer| %>
-        <div class="container-my-offers text-center col-xs-12 col-sm-12 col-md-3>
+        <div class="container-my-offers text-center col-xs-12 col-sm-6 col-md-3">
         <div class="media">
           <div class="media-body">
             <div class="media-section">
