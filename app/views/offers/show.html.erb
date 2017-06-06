@@ -20,6 +20,7 @@
     </div>
   <% end %>
 </div>
+
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -31,10 +32,10 @@
   </a>
 </div>
 
-<div class="container">
+<div class="container" id="container-show-offer">
   <div class="offer-show-container">
     <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="padded">
           <% if @offer.flat.user.photos.first || @offer.flat.user.facebook_picture_url %>
           <% if @offer.flat.user.photos.first %>
@@ -46,74 +47,73 @@
           <% else %>
           <%= image_tag 'cosilverlogo2.png', class: "avatar-extra-large" %>
           <% end %>
-           <h4>Description</h4>
-        <p> <%= @offer.content %>
-          <h5><%= @offer.flat.user.first_name %></h5>
-          <p> <strong>Surface : </strong><%= @offer.flat.flat_area %> m²</p>
-          <p><strong>Nombre max de colocs : </strong> <%= @offer.flat.max_roommmates %></p>
-          <p><strong>Nombre de pièces : </strong> <%= @offer.flat.number_pieces %></p>
-          <p><strong>Fumeur/non fumeur : </strong> <%= @offer.flat.smoker %></p>
-          <p> <i class="fa fa-paw" aria-hidden="true"></i> <strong>Animaux: </strong> <%= @offer.flat.animals %></p>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="padded">
-          <h2>Détails</h2>
-        <p> <i class="fa fa-money" aria-hidden="true"></i> <strong>Prix:</strong>  <%= @offer.price %> €/mois</p>
-
-        <p> <i class="fa fa-cc-visa" aria-hidden="true"></i> <strong>Charges:</strong> <%= @offer.flat.service_charges %> €/mois</p>
-        <p> <i class="fa fa-credit-card-alt" aria-hidden="true"></i> <strong>Garantie:</strong> <%= @offer.flat.deposit %> €</p>
-        <p> <i class="fa fa-expand" aria-hidden="true"></i> <strong>Taille de la chambre:</strong> <%= @offer.room_size %> m2</p>
-        <p> <i class="fa fa-home" aria-hidden="true"></i>  <strong>Type:</strong> <%= @offer.flat.category %></p>
-        <p>   <i class="fa fa-map-marker" aria-hidden="true"></i>   <strong> Adresse:</strong> <%= @offer.flat.address %>, <%= @offer.flat.city %></p>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="padded">
-          <h2>Messenger</h2>
-        </div>
-        <div class="panel text-center">
-          <div class="panel-heading">
-            <h3 class="panel-title">Discussion instantanée</h3>
-          </div>
-          <div class="panel-body">
-            <ul>
-              <% @users = [] %>
-              <% @users << @offer.flat.user unless @offer.flat.user == current_user  %>
-              <% @users.each do |user| %>
-              <li><%= link_to user.email.split("@")[0], conversations_path(user_id: user), remote: true, method: :post, id:"email-msg"  %></li>
-              <li>
-                <a href="#" id='close-msg'>Fermer</a>
-              </li>
-              <% end %>
-            </ul>
+          <h4>Description</h4>
+          <p> <%= @offer.content %>
+            <h5><%= @offer.flat.user.first_name %></h5>
+            <p> <strong>Surface : </strong><%= @offer.flat.flat_area %> m²</p>
+            <p><strong>Nombre max de colocs : </strong> <%= @offer.flat.max_roommmates %></p>
+            <p><strong>Nombre de pièces : </strong> <%= @offer.flat.number_pieces %></p>
+            <p><strong>Fumeur/non fumeur : </strong> <%= @offer.flat.smoker %></p>
+            <p> <i class="fa fa-paw" aria-hidden="true"></i> <strong>Animaux: </strong> <%= @offer.flat.animals %></p>
           </div>
         </div>
-      </div>
-          <% if current_user != @offer.flat.user %>
-          <div class="col-xs-12">
-            <div class="message_ro">
-              <div class="col-xs-8">
-                <ul id="conversations-list">
-                </ul>
-              </div>
-              <div class="col-xs-12 col-md-4" style ="float: left;">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="padded">
+            <h2>Détails</h2>
+            <p> <i class="fa fa-money" aria-hidden="true"></i> <strong>Prix:</strong>  <%= @offer.price %> €/mois</p>
 
-              </div>
+            <p> <i class="fa fa-cc-visa" aria-hidden="true"></i> <strong>Charges:</strong> <%= @offer.flat.service_charges %> €/mois</p>
+            <p> <i class="fa fa-credit-card-alt" aria-hidden="true"></i> <strong>Garantie:</strong> <%= @offer.flat.deposit %> €</p>
+            <p> <i class="fa fa-expand" aria-hidden="true"></i> <strong>Taille de la chambre:</strong> <%= @offer.room_size %> m2</p>
+            <p> <i class="fa fa-home" aria-hidden="true"></i>  <strong>Type:</strong> <%= @offer.flat.category %></p>
+            <p>   <i class="fa fa-map-marker" aria-hidden="true"></i>   <strong> Adresse:</strong> <%= @offer.flat.address %>, <%= @offer.flat.city %></p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="padded">
+            <h2>Messenger</h2>
+          </div>
+          <div class="panel text-center">
+            <div class="panel-heading">
+              <h3 class="panel-title">Discussion instantanée</h3>
+            </div>
+            <div class="panel-body">
+              <ul>
+                <% @users = [] %>
+                <% @users << @offer.flat.user unless @offer.flat.user == current_user  %>
+                <% @users.each do |user| %>
+                <li><%= link_to user.email.split("@")[0], conversations_path(user_id: user), remote: true, method: :post, id:"email-msg"  %></li>
+                <li>
+                  <a href="#" id='close-msg'>Fermer</a>
+                </li>
+                <% end %>
+              </ul>
             </div>
           </div>
-          <% end %>
         </div>
+        <% if current_user != @offer.flat.user %>
+        <div class="col-xs-12">
+          <div class="message_ro">
+            <div class="col-xs-8">
+              <ul id="conversations-list">
+              </ul>
+            </div>
+            <div class="col-xs-12 col-md-4" style ="float: left;">
+
+            </div>
+          </div>
+        </div>
+        <% end %>
       </div>
     </div>
-  </div>
-
-  <div class="col-md-1">
-    <div class="offer_btn">
-      <%= link_to "Retour", offers_path, :class => "btn btn-warning" %>
+    <div class="col-md-1">
+      <div class="offer_btn">
+        <%= link_to "Retour", offers_path, :class => "btn btn-warning" %>
+      </div>
     </div>
   </div>
 </div>
+
 
 
 
