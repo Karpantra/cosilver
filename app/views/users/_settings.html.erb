@@ -22,7 +22,7 @@
 
 <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
   <div class="text-center">
-    <h3>Informations personnelles </h3>
+    <h3>Vos informations personnelles </h3>
     <%= simple_form_for(current_user, as: "user", url: user_path(current_user), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
 
@@ -32,15 +32,15 @@
         <%= f.input :password_confirmation, required: true, label: false, placeholder: "Entrez un nouveau mot de passe si vous voulez le changer. " %>
         <%= f.input :current_password, required: true, label: false, placeholder: "Réécrivez le nouveau mot de passe." %>
         <div class="form-actions">
-          <%= f.button :submit, "Mettre à jour" %>
+          <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
         </div>
       </div>
 
     <% end %>
-
+      <br>
     <p>Unhappy? <%= link_to "Supprimer mon compte", registration_path("user"), data: { confirm: "Etes-vous sûr?" }, method: :delete %></p>
     <h3>
-      <%= link_to "Retour aux offres de colocations", offers_path, class: "navbar-connect-button" %>
+      <%= link_to "Retour aux offres de colocations", offers_path, class: "btn btn-primary" %>
     </h3>
 
   </div>
