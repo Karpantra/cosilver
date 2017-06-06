@@ -1,6 +1,8 @@
 <% current_provider.services.split.flatten.each do |service| %>
 <% service.availabilities.split.flatten.each do |availability| %>
 <div class="product">
+  <% if availability.user.nil? %>
+  <% else %>
   <% if availability.user.photos? %>
   <% availability.user.photos.each do |photo| %>
   <%= cl_image_tag photo.path, size: '50x50', crop: :thumb, gravity: :face, class: "avatar-large" %>
@@ -17,6 +19,7 @@
   <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
     <%= link_to "", dashboard_providers_path, class: "fa fa-trash"%>
   </ul>
+  <% end %>
 </div>
 <% end %>
 <% end %>
