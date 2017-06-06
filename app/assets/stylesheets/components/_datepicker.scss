@@ -4,3 +4,11 @@
 .disabled {
   background-color: $gray-light !important;
 }
+
+.available {
+  background-color: green;
+}
+
+.booked {
+  background-color: red;
+}
