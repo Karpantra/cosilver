@@ -7,23 +7,22 @@ class AvailabilitiesController < ApplicationController
   end
 
 
-  def create
-    @service = Service.find(params[:service_id])
-    @availability = Availability.new(availability_params)
-    @availability.service = @service
-    raise
+  # def create
+  #   @service = Service.find(params[:service_id])
+  #   @availability = Availability.new(availability_params)
+  #   @availability.service = @service
 
-    if @availability.save
-      respond_to do |format|
-        format.html { redirect_to service_path(@service) }
-      end
-    else
-      respond_to do |format|
-        format.html { render 'services/show' }
-        # format.js  # <-- idem
-      end
-    end
-  end
+  #   if @availability.save
+  #     respond_to do |format|
+  #       format.html { redirect_to service_path(@service) }
+  #     end
+  #   else
+  #     respond_to do |format|
+  #       format.html { render 'services/show' }
+  #       # format.js  # <-- idem
+  #     end
+  #   end
+  # end
 
   private
 

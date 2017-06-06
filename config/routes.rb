@@ -16,20 +16,14 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :providers do
     resources :services, only: [:new, :create]
-    resources :bookings, only: :create
   end
-  # resources :flats, only: [:show] do
-  #   collection do
-  #     get "dashboard"
-  #   end
-  # end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :flats do
     resources :offers, only: [:new, :create]
   end
+
   resources :offers, except: [:new, :create]
 
   resources :services, except: [:new, :create] do
