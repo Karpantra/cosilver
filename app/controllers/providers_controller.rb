@@ -1,10 +1,9 @@
 class ProvidersController < ApplicationController
   def dashboard
     @provider = current_provider
+
   end
 
-  def my_services
-  end
 
   def new_service
     @service = Service.new
