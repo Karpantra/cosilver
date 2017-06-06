@@ -85,10 +85,10 @@ class OffersController < ApplicationController
 
   def update
     @offer = Offer.find(params[:id])
-    if @offer.update
+    if @offer.update(offer_params)
       redirect_to profile_users_path
     else
-      render :new
+      render :edit
     end
   end
 
