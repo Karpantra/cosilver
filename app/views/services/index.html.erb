@@ -24,29 +24,38 @@
     </div>
   </div>
 
-<div class="container-index text-center col-xs-12 col-sm-8" style="overflow:scroll; height: 90vh;">
+<div class="container-index col-xs-12 col-sm-8" style="overflow:scroll; height: 90vh;">
 
          <% @services.each do |service| %>
      <div class="row white-row">
-            <div class="card-row">
-             <h5><%= service.title %></h5>
+
+             <h4 class= "text-center" ><%= service.title %></h4>
               <div class="col-sm-6 row-picture">
               <% if service.provider.photos.first.nil? %>
-               <%= image_tag 'cosilverlogo3.png', width: 300, height: 200, crop: :fill %>
+               <%= image_tag 'cosilverlogo3.png', width: 150, height: 100, crop: :fill %>
                <% else %>
-               <%= cl_image_tag service.provider.photos.first.path, width: 300, height: 200, crop: :fill %>
+               <%= cl_image_tag service.provider.photos.first.path, width: 150, height: 100, crop: :fill %>
                <% end %>
+               <br>
+                <span><%= service.category %></span>
+                <br>
+                <% if service.description %>
+                <div> <%= service.description.first(70) %>...
+                </div>
+                <% end %>
+                <%= link_to "Détails", service_path(service) %>
+                  <p>Date: <input type="text" id="datepicker"></p>
 
               </div>
               <br>
-              <div class="col-sm-6 date-picker">
+              <div class="col-sm-6 date-picker text-center">
                 <div class="month">
                   <ul>
                     <li class="prev">&#10094;</li>
                     <li class="next">&#10095;</li>
                     <li>
                       August<br>
-                      <span style="font-size:18px">2017</span>
+                      <span style="font-size:13px">2017</span>
                     </li>
                   </ul>
                 </div>
@@ -75,17 +84,9 @@
                   </ul>
                 </div>
                 <div class="col-sm-6 date-picker">
-                  <span><%= service.category %></span>
-                  <% if service.description %>
-                  <div> <%= service.description.first(70) %>...
-                  </div>
-                  <% end %>
-                  <%= link_to "Détails", service_path(service) %>
-                  <p>Date: <input type="text" id="datepicker"></p>
                 </div>
                 <div class="col-sm-6 date-picker">
                 </div>
-              </div>
             </div>
         <% end %>
       </div>

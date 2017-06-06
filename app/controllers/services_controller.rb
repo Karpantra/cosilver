@@ -4,6 +4,8 @@ class ServicesController < ApplicationController
   def show
     @service = Service.find(params[:id])
     @service_coordinates = { lat: @service.latitude, lng: @service.longitude }
+    @availabilities = @service.availabilities.where(available: true).pluck(:date).map { | date| date.strftime("%-d-%-m-%Y") }
+    @booking = Booking.new
   end
 
   def index
