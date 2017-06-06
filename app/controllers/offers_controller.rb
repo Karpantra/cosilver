@@ -80,9 +80,16 @@ class OffersController < ApplicationController
   end
 
   def edit
+    @offer = Offer.find(params[:id])
   end
 
   def update
+    @offer = Offer.find(params[:id])
+    if @offer.update
+      redirect_to profile_users_path
+    else
+      render :new
+    end
   end
 
   def destroy

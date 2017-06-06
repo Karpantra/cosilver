@@ -5,11 +5,9 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     @service_coordinates = { lat: @service.latitude, lng: @service.longitude }
     @availabilities = @service.availabilities.where(available: true).pluck(:date).map { | date| date.strftime("%-d-%-m-%Y") }
-    @booking = Booking.new
   end
 
   def index
-     # @services = Service.all
 
     if (params[:search_city] == "" &&  params[:search_category] == "") || (params[:search_city] == nil &&  params[:search_category] == nil)
       @services = Service.where.not(latitude: nil, longitude: nil)
@@ -56,6 +54,17 @@ class ServicesController < ApplicationController
         # format.js  # <-- idem
       end
     end
+  end
+
+  def update
+    @service = Service.find(params[:id])
+    booking_dates = params["booking_dates"].split(",").map { |date| Date.parse(date) }
+    @service.availabilities.each do |availability|
+      if booking_dates.include?(availability.date)
+        availability.user = current_user
+      end
+    end
+    redirect_to profile_users_path
   end
 
  private

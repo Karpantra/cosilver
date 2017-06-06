@@ -3,7 +3,7 @@
     <div class="container profile-header-container text-center">
 
       <div class="tabs">
-        <a class="tab active" data-target="#messagerie">
+        <a class="tab" data-target="#messagerie">
           <h3>Mes conversations</h3>
         </a>
         <a class="tab" data-target="#profile">
@@ -12,8 +12,11 @@
         <a class="tab" data-target="#colocataires">
           <h3>Mes offres</h3>
         </a>
-        <a class="tab" data-target="#settings">
-          <h3>Editer mes informations</h3>
+        <a class="tab active" data-target="#settings">
+          <h3>Mes informations</h3>
+        </a>
+        <a class="tab " data-target="#my-flat">
+          <h3>Mon appartement / Ma maison</h3>
         </a>
       </div>
     </div>
@@ -21,7 +24,7 @@
 
 
   <div class="container">
-    <div class="tab-content" id="messagerie">
+    <div class="tab-content hidden" id="messagerie">
       <%= render "my_messages" %>
     </div>
     <div class="tab-content hidden" id="profile">
@@ -30,9 +33,12 @@
     <div class="tab-content hidden" id="colocataires">
         <%= render "cards" %>
     </div>
-    <div class="tab-content hidden" id="settings">
-      <h3 class="text-center">Informations personnelles</h3>
+    <div class="tab-content" id="settings">
         <%= render "settings" %>
+    </div>
+    <div class="tab-content hidden" id="my-flat">
+      <h3 class="text-center">Informations générales </h3>
+        <%= render "my-flat" %>
     </div>
   </div>
 </div>
