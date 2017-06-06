@@ -3,8 +3,9 @@
   display: flex;
   padding: 0 0 0 0;
   // border-radius: 10px 10px 0 0;
-  margin-bottom: 5px;
-  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  height: 50px
 }
 
 .tabs a {
@@ -19,6 +20,7 @@
   font-size: 15px;
   font-weight: 400;
   font-family: "roboto", sans-serif;
+  font-weight: normal;
   margin: 0;
 }
 .tabs p {
@@ -39,7 +41,7 @@
 }
 .tab.active {
   background: $orange;
-  color: black;
+  color: white;
 }
 .tab-content {
   padding-top: 0px;

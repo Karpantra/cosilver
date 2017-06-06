@@ -1,5 +1,8 @@
-<div class="col-md-4 col-sm-6 col-xs-12">
+
+
+<div class="col-md-4 col-sm-6 col-xs-12 personal-info">
   <div class="text-center">
+    <h3>Votre photo de profil</h3>
     <% if current_user.photos? %>
       <%= cl_image_tag current_user.photos.first.path, width: 300, height: 300, crop: :thumb, radius: :max, class: "avatar-extra-large img-thumbnail" %>
     <% elsif current_user.facebook_picture_url.present? %>
@@ -7,27 +10,37 @@
     <% else %>
       <%= image_tag 'cosilverlogo3.png', class: "avatar-extra-large" %>
     <% end %>
-    <h6>Upload a different photo...</h6>
+
+    <%= simple_form_for(current_user, as: "user", url: user_path(current_user), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :photos, as: :attachinary %>
+    <% end %>
+    <h5>Upload a different photo...</h5>
   </div>
 </div>
+
+
 <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-<%= simple_form_for(current_user, as: "user", url: user_path(current_user), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <div class="text-center">
+    <h3>Informations personnelles </h3>
+    <%= simple_form_for(current_user, as: "user", url: user_path(current_user), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs form-horizontal">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, label: false, placeholder: "Mot de passe", autocomplete: "off", hint: "Laissez ce champs vide si vous ne voulez pas changer de mot de passe", required: true %>
-    <%= f.input :password_confirmation, required: true, label: false, placeholder: "Entrez un nouveau mot de passe si vous voulez le changer. " %>
-    <%= f.input :current_password, required: true, label: false, placeholder: "Réécrivez le nouveau mot de passe." %>
-    <%= f.input :photos, as: :attachinary %>
+      <div class="form-inputs form-horizontal">
+        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :password, label: false, placeholder: "Mot de passe actuel", autocomplete: "off", hint: "Laissez ce champs vide si vous ne voulez pas changer de mot de passe", required: true %>
+        <%= f.input :password_confirmation, required: true, label: false, placeholder: "Entrez un nouveau mot de passe si vous voulez le changer. " %>
+        <%= f.input :current_password, required: true, label: false, placeholder: "Réécrivez le nouveau mot de passe." %>
+        <div class="form-actions">
+          <%= f.button :submit, "Mettre à jour" %>
+        </div>
+      </div>
+    <% end %>
+
+    <p>Unhappy? <%= link_to "Supprimer mon compte", registration_path("user"), data: { confirm: "Etes-vous sûr?" }, method: :delete %></p>
+
+    <%= link_to "Retour aux offres de colocations", :back %>
+
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Mettre à jour" %>
-  </div>
-<% end %>
-
-<p>Unhappy? <%= link_to "Supprimer mon compte", registration_path("user"), data: { confirm: "Etes-vous sûr?" }, method: :delete %></p>
-
-<%= link_to "Retour aux offres de colocations", :back %>
 </div>
+

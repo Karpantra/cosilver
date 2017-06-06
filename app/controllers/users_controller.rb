@@ -2,7 +2,9 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
+    @flat = @user.flats.last
     @conversations = Conversation.where("recipient_id = ? OR sender_id = ?", current_user.id, current_user.id).order('updated_at DESC')
+    @offer = Offer.new
   end
 
   def update
