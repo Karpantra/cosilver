@@ -11,12 +11,24 @@
           <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
         </ul>
       </div>
-      <form class="new_message">
+      <form class="new_message" id="form-msg">
         <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
         <input name="user_id" type="hidden" value="<%= user.id %>">
-        <textarea name="content" class="form-control"></textarea>
+        <textarea name="content" class="form-control" id="textarea-msg"></textarea>
         <input type="submit" class="btn btn-success" value="Envoyez">
       </form>
     </div>
   </div>
 </li>
+
+
+<script>
+
+$('#textarea-msg').keyup(function(e){
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    $('#form-msg').submit();
+    }
+});
+
+</script>
