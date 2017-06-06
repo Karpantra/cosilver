@@ -14,18 +14,30 @@
               <% @users << conversation.recipient unless conversation.recipient == current_user %>
 
               <% @users.each do |user| %>
-               <li><%= link_to user.email.split("@")[0].capitalize, conversations_path(user_id: user), remote: true, method: :post %>
-               <%= link_to "Fermer", close_conversation_path(conversation), class: "btn btn-default btn-xs pull-right", remote: true, method: :post %></li>
-             <% end %>
-             </ul>
-           <% end %>
-         </div>
-       </div>
-     </div>
-     <div class="col-xs-12 col-md-3 col-md-offset-1">
-       <ul id="conversations-list">
-       </ul>
-     </div>
-   </div>
- <!-- </div>
-  -->
+              <li><%= link_to user.email.split("@")[0].capitalize, conversations_path(user_id: user), remote: true, method: :post %>
+              <%= link_to "Fermer", close_conversation_path(conversation), class: "btn btn-default btn-xs pull-right", remote: true, method: :post %></li>
+            <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-3 col-md-offset-1">
+      <ul id="conversations-list">
+      </ul>
+    </div>
+  </div>
+<!-- </div>
+ -->
+<script>
+  $(document).ready(function(){
+      $('#close-msg').click(function(e){
+      e.preventDefault();
+      $('.panel.panel-default').hide();
+    });
+    $('#email-msg').click(function(){
+      $('.panel.panel-default').show()
+    });
+  });
+</script>
+
