@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :providers do
     resources :services, only: [:new, :create]
-    resources :bookings, only: :create
+
   end
   # resources :flats, only: [:show] do
   #   collection do
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   resources :services, except: [:new, :create] do
     resources :availabilities, only: [:new, :create]
+    resources :bookings, only: :create
   end
 
   resources :availabilities, except: [:new, :create]
