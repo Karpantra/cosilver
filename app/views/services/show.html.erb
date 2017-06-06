@@ -14,14 +14,12 @@
           <div class="padded">
             <% if @service.provider.photos.first.nil? %>
 
-            <%= image_tag "cosilverlogo#{rand(1..3)}.png", width: 250, height: 250, crop: :fill %>
+            <%= image_tag "prestataire.png", width: 230, height: 400, crop: :fill %>
             <% else %>
             <%= cl_image_tag @service.provider.photos.first.path, width: 180, height: 100, crop: :thumb, gravity: :face %>
             <% end %>
               <p><%= @service.description %></p>
-              <p> <%= @service.provider.first_name %></p>
-
-
+              <h4> <%= @service.provider.first_name %></h4>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-4">
