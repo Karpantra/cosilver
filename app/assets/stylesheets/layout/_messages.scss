@@ -22,7 +22,7 @@
   margin: 5px 20px;
   padding: 10px;
   float: right;
-  border-radius: 3px;
+  border-radius: 15px;
   max-width: 150px;
 }
 
@@ -30,13 +30,6 @@
   padding-left: 0px;
   list-style: none;
   font-size: 13px;
-}
-
-.message_row {
-  bottom: 0;
-  // width: 100%;
-  // position: relative;
-  display: flex;
 }
 
 .panel-title {
@@ -51,12 +44,8 @@
 }
 
 .panel {
-  border: 1px solid;
-  border-color: #302E3E;
   border-radius: 5px;
   color: #2E2C3C;
-  width: 400px;
-
 }
 
 .panel-heading {
@@ -70,8 +59,11 @@ textarea.form-control {
 
 .panel-default {
   // position: absolute;
-  width: 500px;
-  box-shadow: 8px 8px 0px #aaa;
+  box-shadow: 5px 5px 0px #aaa;
+}
+
+.panel-body ul {
+  list-style: none;
 }
 
 
