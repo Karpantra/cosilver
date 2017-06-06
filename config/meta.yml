@@ -1,0 +1,5 @@
+meta_product_name: "CoSilver"
+meta_title: "CoSilver - Trouvez une colocation entre jeunes seniors"
+meta_description: "CoSilver est site référencant des profils de jeunes seniors à la recherche d'une nouvelle vie. Sur CoSilver, vous pouvez discuter directement avec la communauté et trouver le colocataire idéal."
+meta_image: "bannerpicture.png"                       # should exist in `app/assets/images/`
+twitter_account: "@GautierWeigert"   # required for Twitter Cards

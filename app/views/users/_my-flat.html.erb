@@ -38,15 +38,16 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <ul>
-        <% if @user.flats.count > 0 %>
-        <li><h4>Informations relatives à votre appartement / maison</h4></li>
-        <li><%= @user.flats.last.category %></li>
-        <li><%= @user.flats.last.address %></li>
-        <li><%= @user.flats.last.city %></li>
-        <li><%= @user.flats.last.service_charges %></li>
-        <li><%= @user.flats.last.deposit %></li>
-        <% end %>
+
+
+      <h4>Informations relatives à votre appartement / maison</h4>
+      <ul class="list-unstyled">
+        <li>Type de logement : <%= @user.flats.last.category %></li>
+        <li>Adresse : <%= @user.flats.last.address %></li>
+        <li>Ville : <%= @user.flats.last.city %></li>
+        <li>Montant des charges : <%= @user.flats.last.service_charges %> € </li>
+        <li>Caution : <%= @user.flats.last.deposit %> €</li>
+
       </ul>
       <%# @user.flats.last.photos.each do |photo| %>
   <%#= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
@@ -58,11 +59,11 @@
   <h4>Mes offres de colocation</h4>
     <% current_user.flats.each do |flat| %>
       <% if flat.offers.empty? %>
-        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat), data: {toggle: "modal", target: "#myModal" } %>
+        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat, modal: true), data: {toggle: "modal", target: "#create-offer" } %>
       <% else %>
-        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat), data: {toggle: "modal", target: "#myModal" } %>
-        <% flat.offers.each do |offer| %>
-        <ul>
+        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat, modal: true), data: {toggle: "modal", target: "#create-offer" } %>
+        <% flat.offers.order("created_at DESC").each do |offer| %>
+        <ul class="list-unstyled">
           <li>
             <%= offer.content %>
           </li>
@@ -77,27 +78,28 @@
           </li>
         </ul>
           <%= link_to "Editer l'offre", "#", data: {toggle: "modal", target: "#edit_offer_#{offer.id}" }%>
-
-
           <div class="modal modalbox fade" id="edit_offer_<%= offer.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Modifier votre offre de colocation</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-center">
+                  <h4 class="modal-title" id="myModalLabel">Modifier votre offre de colocation</h4>
+                  <br>
                   <%= simple_form_for offer do |f| %>
-                    <%= f.input :title, placeholder: "Votre proposition" %>
-                    <%= f.input :content, placeholder: "Détaillez votre offre" %>
-                    <%= f.input :price, placeholder: "Prix ?" %>
-                    <%= f.input :room_size, placeholder: "Superficie de la chambre ?"%>
+                    <%= f.input :title, label: "Titre", placeholder: "Votre proposition" %>
+                    <%= f.input :content, label: "Description", placeholder: "Détaillez votre offre" %>
+                    <%= f.input :price, label: "Prix", placeholder: "Quel est le prix ?" %>
+                    <%= f.input :room_size,label: "Superficie", placeholder: "Superficie de la chambre ?"%>
                     <%= f.submit "Publiez votre offre de colocation !", class: "btn btn-success" %>
                   <% end %>
                 </div>
               </div>
             </div>
           </div>
+
+
         <% end %>
       <% end %>
     <% end %>
@@ -105,21 +107,17 @@
 </div>
 
 
-
-
-
-
-    <div class="modal modalbox fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal modalbox fade" id="create-offer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Let us a review ! </h4>
           </div>
-          <div class="modal-body">
+          <div class="modal-body text-center">
+          <h4 class="modal-title" id="myModalLabel">Publier une offre de colocation</h4>
           <% current_user.flats.each do |flat| %>
             <%= simple_form_for([flat, @offer]) do |f| %>
-            <%= f.input :title, placeholder: "Votre proposition" %>
+            <%= f.input :title, label: "Titre", placeholder: "Votre proposition" %>
             <%= f.input :content, placeholder: "Détaillez votre offre" %>
             <%= f.input :price, placeholder: "Prix ?" %>
             <%= f.input :room_size, placeholder: "Superficie de la chambre ?"%>
@@ -131,6 +129,10 @@
         </div>
       </div>
     </div>
+
+
+
+
 
 
 
