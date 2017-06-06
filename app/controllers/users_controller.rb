@@ -3,6 +3,14 @@ class UsersController < ApplicationController
   def profile
     @user = current_user
     @conversations = Conversation.where("recipient_id = ? OR sender_id = ?", current_user.id, current_user.id).order('updated_at DESC')
+
+    ######### code below is here to make work the chat ###########
+    session[:conversations] ||= []
+
+    ########## uncomment code below if chatbox with all users wanted ###################
+    # @users = User.all.where.not(id: current_user)
+    # @conversations = Conversation.includes(:recipient, :messages)
+    #                              .find(session[:conversations])
   end
 
   def update
