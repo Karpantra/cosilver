@@ -21,10 +21,10 @@ Rails.application.routes.draw do
   end
 
   resources :flats do
-    resources :offers, only: [:new, :create]
+    resources :offers, only: [ :create]
   end
 
-  resources :offers, except: [:new, :create]
+  resources :offers, except: [ :create]
 
   resources :services, except: [:new, :create] do
     resources :availabilities, only: [:new, :create]
