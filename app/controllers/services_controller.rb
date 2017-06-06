@@ -37,9 +37,14 @@ class ServicesController < ApplicationController
     @provider = current_provider
     @service = Service.new(service_params)
     @service.provider = @provider
-    # @service.status = 'pending'
-
     if @service.save
+      dates = params["availabilities"].split(",")
+      dates.each do |date|
+        availability = Availability.new
+        availability.date = date
+        availability.service = @service
+        availability.save!
+      end
       respond_to do |format|
         format.html { redirect_to service_path(@service) }
       end
