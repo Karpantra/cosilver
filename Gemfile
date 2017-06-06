@@ -38,7 +38,7 @@ end
 gem 'geocoder'
 gem "gmaps4rails"
 gem "faker"
-
+gem 'jquery-ui-rails'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
