@@ -54,7 +54,10 @@
                  € </span>
                  <br>
 
-                <%= link_to "Réserver une prestation", service_path(service),   class: "btn btn-success float-left" %>
+                <%#= link_to "Réserver une prestation", service_path(service),   class: "btn btn-success float-left" %>
+
+                <%= link_to "Réserver une prestation", "#", data: {toggle: "modal", target: "#myservice_path#{service.id}" }%>
+
                 </div>
               </div>
             </div>

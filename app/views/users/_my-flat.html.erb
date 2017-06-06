@@ -12,6 +12,7 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" style="width:100, height:100" role="listbox">
+    <% if @user.flats.count > 0 %>
       <div class="item active">
         <%= cl_image_tag @user.flats.last.photos[0].path, height:450, width: 1200, crop: :fill, class: "img-responsive center-block" %>
       </div>
@@ -21,6 +22,7 @@
       <div class="item">
         <%= cl_image_tag @user.flats.last.photos[2].path, height:450, width: 1200, crop: :fill, class: "img-responsive center-block" %>
       </div>
+      <% end %>
     </div>
       <!-- Controls -->
     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -37,12 +39,14 @@
   <div class="row">
     <div class="col-xs-12">
       <ul>
+        <% if @user.flats.count > 0 %>
         <li><h4>Informations relatives à votre appartement / maison</h4></li>
         <li><%= @user.flats.last.category %></li>
         <li><%= @user.flats.last.address %></li>
         <li><%= @user.flats.last.city %></li>
         <li><%= @user.flats.last.service_charges %></li>
         <li><%= @user.flats.last.deposit %></li>
+        <% end %>
       </ul>
       <%# @user.flats.last.photos.each do |photo| %>
   <%#= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
