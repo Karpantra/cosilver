@@ -1,7 +1,7 @@
 <% @availabilities.each do |availability| %>
 <div class="product">
   <% if availability.service.provider.photos? %>
-  <%= cl_image_tag availability.service.provider.photos.path, class: "product-image" %>
+  <%= cl_image_tag availability.service.provider.photos.first.path, class: "product-image" %>
   <% else %>
   <%= image_tag "cosilverlogo3.png", class: "product-image" %>
   <% end %>
