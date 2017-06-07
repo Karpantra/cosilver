@@ -47,13 +47,14 @@
                 <%= image_tag 'cosilverlogo2.png', class: "avatar-extra-large" %>
           <% end %>
           <h4>Description</h4>
-            <p> <%= @offer.content %>
-              <h5><%= @offer.flat.user.first_name %></h5>
-                <p> <strong>Surface : </strong><%= @offer.flat.flat_area %> m²</p>
-                <p><strong>Nombre max de colocs : </strong> <%= @offer.flat.max_roommmates %></p>
-                <p><strong>Nombre de pièces : </strong> <%= @offer.flat.number_pieces %></p>
-                <p><strong>Fumeur/non fumeur : </strong> <%= @offer.flat.smoker %></p>
-                <p> <i class="fa fa-paw" aria-hidden="true"></i> <strong>Animaux: </strong> <%= @offer.flat.animals %></p>
+          <p> <%= @offer.content %>
+            <h5><%= @offer.flat.user.first_name %></h5>
+            <p> <strong>Surface : </strong><%= @offer.flat.flat_area %> m²</p>
+            <p><strong>Nombre max de colocs : </strong> <%= @offer.flat.max_roommmates %></p>
+            <p><strong>Nombre de pièces : </strong> <%= @offer.flat.number_pieces %></p>
+            <p><strong>Fumeur : </strong> <%= @offer.flat.smoker ? 'Oui' : 'Non' %></p>
+            <p> <i class="fa fa-paw" aria-hidden="true"></i> <strong>Animaux</strong> <%= @offer.flat.animals ? 'Oui' : 'Non' %></p>
+          </div>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
