@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>Désolé ! La page recherchée n'existe plus !
+   (404)
+    Mais vous pouvez retourner à l'accueil
+   </title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
   <style>
   .rails-default-error-page {
     background-color: #EFEFEF;
@@ -18,6 +22,10 @@
     margin: 4em auto 0;
   }
 
+  .header{
+    padding-top: 30px;
+}
+/*
   .rails-default-error-page div.dialog > div {
     border: 1px solid #CCC;
     border-right-color: #999;
@@ -29,15 +37,15 @@
     background-color: white;
     padding: 7px 12% 0;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+  }*/
 
-  .rails-default-error-page h1 {
+  .rails-default-error-page h1, p {
     font-size: 100%;
-    color: #730E15;
+    color: p#730E15;
     line-height: 1.5em;
   }
 
-  .rails-default-error-page div.dialog > p {
+/*  .rails-default-error-page p {
     margin: 0 0 1em;
     padding: 1em;
     background-color: #F7F7F7;
@@ -48,19 +56,24 @@
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     border-top-color: #DADADA;
-    color: #666;
+    color: #730E15;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+*/
+
+
+
   </style>
 </head>
 
 <body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
+<!-- <div class="banner"> -->
+  <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <h1>Désolé ! Petite erreur interne au serveur !  :( </h1>
+    <a href="/"><img src="500.png" style="width:600px; height:500px;"></a>
+    <p>Mais vous pouvez retourner à l'accueil en cliquant sur l'image !</p>
   </div>
 </body>
+<!-- </div> -->
 </html>
