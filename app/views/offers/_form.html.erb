@@ -1,14 +1,15 @@
 
-  <div class="container">
+  <div class="container text-center">
     <div class="row">
     <div class="col-xs-12 col-lg-6 col-offset-6">
-        <%= simple_form_for([flat, offer]) do |f| %>
-        <%= f.input :title, placeholder: "Votre proposition" %>
-        <%= f.input :content, placeholder: "Détaillez votre offre" %>
-        <%= f.input :price, placeholder: "Prix ?" %>
-        <%= f.input :room_size, placeholder: "Superficie de la chambre ?"%>
-        <%= f.submit "Publiez votre offre !", class: "btn btn-success" %>
-        <% end %>
+      <h4 class="modal-title text-center" id="myModalLabel">Publier une offre de colocation</h4>
+          <%= simple_form_for([flat, offer]) do |f| %>
+          <%= f.input :title, label: "Titre", placeholder: "Votre proposition" %>
+          <%= f.input :content, label: "Description", placeholder: "Détaillez votre offre" %>
+          <%= f.input :price, label: "Prix", placeholder: "Combien voulez-vous faire payer ?" %>
+          <%= f.input :room_size, label:"Superficie de la chambre à louer", placeholder: "Entrez un chiffre"%>
+          <%= f.submit "Publiez votre offre de colocation !", class: "btn btn-success " %>
+          <% end %>
       </div>
     </div>
   </div>

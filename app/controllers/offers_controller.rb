@@ -60,6 +60,12 @@ class OffersController < ApplicationController
   def new
     @flat = Flat.find(params[:flat_id])
     @offer = Offer.new
+    if params[:modal] == "true"
+      render 'new', layout: false
+    else
+      render 'new'
+    end
+
   end
 
   def create

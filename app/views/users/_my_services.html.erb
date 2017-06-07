@@ -1,20 +1,19 @@
-
-      <% @availabilities.each do |availability| %>
-      <div class="product">
-        <% if availability.service.provider.photos? %>
-        <%= cl_image_tag availability.service.provider.photos.path %>
-        <% else %>
-        <%= image_tag "cosilverlogo3.png", class: "product-image" %>
-        <% end %>
-        <div class='product-body'>
-          <h3><%= availability.service.title %></h3>
-          <p><strong><%= availability.service.provider.first_name %></strong></p>
-          <p>Le <%= availability.date.strftime("%d/%m/%Y") %></p>
-          <p><%=  %></p>
-        </div>
-        <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
-          <%= link_to "", profile_users_path, class: "fa fa-trash"%>
-        </ul>
-      </div>
-      <% end %>
+<% @availabilities.each do |availability| %>
+<div class="product">
+  <% if availability.service.provider.photos? %>
+  <%= cl_image_tag availability.service.provider.photos.path, class: "product-image" %>
+  <% else %>
+  <%= image_tag "cosilverlogo3.png", class: "product-image" %>
+  <% end %>
+  <div class='product-body'>
+    <h3><%= availability.service.title %></h3>
+    <span><strong><%= availability.service.provider.first_name %> <%= availability.service.provider.last_name %></strong></span>
+    <span> | <%= availability.date.strftime("%d/%m/%Y") %></span>
+    <span> | <%= availability.service.provider.email  %></span>
+  </div>
+  <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
+    <%= link_to "", profile_users_path, class: "fa fa-trash"%>
+  </ul>
+</div>
+<% end %>
 
