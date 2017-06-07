@@ -46,27 +46,29 @@
             <% else %>
                 <%= image_tag 'cosilverlogo2.png', class: "avatar-extra-large" %>
           <% end %>
-          <h4>Description</h4>
+
+            <h2><%= @offer.flat.user.first_name %></h2>
           <p> <%= @offer.content %>
-            <h5><%= @offer.flat.user.first_name %></h5>
-            <p> <strong>Surface : </strong><%= @offer.flat.flat_area %> m²</p>
-            <p><strong>Nombre max de colocs : </strong> <%= @offer.flat.max_roommmates %></p>
-            <p><strong>Nombre de pièces : </strong> <%= @offer.flat.number_pieces %></p>
-            <p><strong>Fumeur : </strong> <%= @offer.flat.smoker ? 'Oui' : 'Non' %></p>
-            <p> <i class="fa fa-paw" aria-hidden="true"></i> <strong>Animaux : </strong> <%= @offer.flat.animals ? 'Oui' : 'Non' %></p>
+
           </div>
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="padded">
             <h2>Détails de l'offre</h2>
-
+            <p> <%= @offer.content %>
+            <p>
             <p> <i class="fa fa-money" aria-hidden="true"></i> <strong>Prix:</strong>  <%= @offer.price %> €/mois</p>
             <p> <i class="fa fa-cc-visa" aria-hidden="true"></i> <strong>Charges:</strong> <%= @offer.flat.service_charges %> €/mois</p>
             <p> <i class="fa fa-credit-card-alt" aria-hidden="true"></i> <strong>Garantie:</strong> <%= @offer.flat.deposit %> €</p>
             <p> <i class="fa fa-expand" aria-hidden="true"></i> <strong>Taille de la chambre:</strong> <%= @offer.room_size %> m2</p>
             <p> <i class="fa fa-home" aria-hidden="true"></i>  <strong>Type:</strong> <%= @offer.flat.category %></p>
             <p>   <i class="fa fa-map-marker" aria-hidden="true"></i>   <strong> Adresse:</strong> <%= @offer.flat.address %>, <%= @offer.flat.city %></p>
+             <strong>Surface : </strong><%= @offer.flat.flat_area %> m²</p>
+            <p><strong>Nombre max de colocs : </strong> <%= @offer.flat.max_roommmates %></p>
+            <p><strong>Nombre de pièces : </strong> <%= @offer.flat.number_pieces %></p>
+            <p><strong>Fumeur : </strong> <%= @offer.flat.smoker ? 'Oui' : 'Non' %></p>
+            <p> <i class="fa fa-paw" aria-hidden="true"></i> <strong>Animaux : </strong> <%= @offer.flat.animals ? 'Oui' : 'Non' %></p>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
@@ -121,5 +123,7 @@
     to: { width: 200, height: 60 }
   }, 1000 );
   })
+    // $( "#textarea-msg" ).resizable({
+    //       containment: ".panel-body"
+    //     });
 </script>
-
