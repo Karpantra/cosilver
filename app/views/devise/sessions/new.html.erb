@@ -5,33 +5,36 @@
       </br>
       </br>
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div>
-            <%= f.input :email, required: false, label:false,  autofocus: true, placeholder: "Entrez votre email" %>
-            <%= f.input :password, required: false, placeholder: "Mot de passe", label:false %>
-            <%= f.input :remember_me, label: "se rappeler de moi", as: :boolean if devise_mapping.rememberable? %>
-              <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-                <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class:"btn btn-mdp" %><br />
-              <% end %>
-          </div>
-        <%= f.button :submit, "Je me connecte", class:"btn btn-co" %>
-        <% end -%>
-        </br>
-        </br>
-        <%- if devise_mapping.omniauthable? %>
-          <%- resource_class.omniauth_providers.each do |provider| %>
-            <%= link_to "Connexion avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-primary btn-fb" %>
-            <br />
+      <div id="inscription-style">
+
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div>
+              <%= f.input :email, required: false, label:false,  autofocus: true, placeholder: "Entrez votre email" %>
+              <%= f.input :password, required: false, placeholder: "Mot de passe", label:false %>
+              <%= f.input :remember_me, label: "se rappeler de moi", as: :boolean if devise_mapping.rememberable? %>
+                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class:"btn btn-mdp" %><br />
+                <% end %>
+            </div>
+          <%= f.button :submit, "Je me connecte", class:"btn btn-success" %>
           <% end -%>
-        <% end -%>
-        </br>
-        </br>
-        <div class="row btn-insc">
-          <div class="col-xs-6">
-            <h6>Vous n'avez pas de compte ? </h6>
-          </div>
-          <div class="col-xs-6 ">
-            <%= render "devise/shared/links" %>
+          </br>
+          </br>
+          <%- if devise_mapping.omniauthable? %>
+            <%- resource_class.omniauth_providers.each do |provider| %>
+              <%= link_to "Connexion avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-primary btn-fb" %>
+              <br />
+            <% end -%>
+          <% end -%>
+          </br>
+          </br>
+          <div class="row btn-insc">
+            <div class="col-xs-6">
+              <h6>Vous n'avez pas de compte ? </h6>
+            </div>
+            <div class="col-xs-6 ">
+              <%= render "devise/shared/links" %>
+            </div>
           </div>
         </div>
       </div>

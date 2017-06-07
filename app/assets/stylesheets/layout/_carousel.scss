@@ -5,7 +5,16 @@
   margin: auto;
     }
 
-
 .carousel-inner img {
   margin: auto;
+}
+
+.carousel-control {
+  background-image:none;
+  // background-color: $dark-gray;
+}
+
+.carousel-inner {
+  color:black;
+  background-color: #313131;
 }

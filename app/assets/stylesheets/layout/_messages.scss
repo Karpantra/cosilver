@@ -70,6 +70,9 @@ textarea.form-control {
 .panel-default {
   // position: absolute;
   box-shadow: 5px 5px 0px #aaa;
+  min-width: 300px;
+  max-width: 450px;
+  width:auto;
 }
 
 .panel-body ul {
@@ -80,6 +83,3 @@ textarea.form-control {
   padding-left: 20px;
   padding-right: 20px;
 }
-
-
-
