@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-xs-10 col-offset-1 col-sm-6">
       <h3>Ajoutez un nouveau service</h3>
-        <%= simple_form_for [current_provider, @service], :url => services_path, do |f| %>
+        <%= simple_form_for [current_provider, @service] do |f| %>
           <%= f.input :title, placeholder: "Service title" %>
           <%= f.input :price_per_hour, placeholder: "price/hour" %>
           <%= f.input :category, as: :select, collection: Service::SOUS_CATEGORIES, placeholder: "Service category"%>
