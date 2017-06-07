@@ -1,9 +1,9 @@
 <div class="card">
   <%= link_to "", offer_path(offer), class: "card-link" %>
-  <% if offer.flat.photos.blank? %>
+  <% if offer.flat.user.photos.blank? %>
     <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('livingroom1.jpg')%>');">
     <% else %>
-    <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path offer.flat.photos.first.path %>')">
+    <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path offer.flat.user.photos.first.path %>')">
   <% end %>
 
 
