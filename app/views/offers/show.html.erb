@@ -53,12 +53,14 @@
             <p><strong>Nombre max de colocs : </strong> <%= @offer.flat.max_roommmates %></p>
             <p><strong>Nombre de pièces : </strong> <%= @offer.flat.number_pieces %></p>
             <p><strong>Fumeur : </strong> <%= @offer.flat.smoker ? 'Oui' : 'Non' %></p>
-            <p> <i class="fa fa-paw" aria-hidden="true"></i> <strong>Animaux</strong> <%= @offer.flat.animals ? 'Oui' : 'Non' %></p>
+            <p> <i class="fa fa-paw" aria-hidden="true"></i> <strong>Animaux : </strong> <%= @offer.flat.animals ? 'Oui' : 'Non' %></p>
           </div>
         </div>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="padded">
-          <h2>Détails</h2>
+
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="padded">
+            <h2>Détails de l'offre</h2>
+
             <p> <i class="fa fa-money" aria-hidden="true"></i> <strong>Prix:</strong>  <%= @offer.price %> €/mois</p>
             <p> <i class="fa fa-cc-visa" aria-hidden="true"></i> <strong>Charges:</strong> <%= @offer.flat.service_charges %> €/mois</p>
             <p> <i class="fa fa-credit-card-alt" aria-hidden="true"></i> <strong>Garantie:</strong> <%= @offer.flat.deposit %> €</p>
@@ -99,12 +101,11 @@
     </div>
     <div class="col-md-1">
       <div class="offer_btn">
-        <%= link_to "Retour", offers_path, :class => "btn btn-warning" %>
+        <%= link_to "Retour aux offres de colocation", offers_path, :class => "btn btn-warning" %>
       </div>
     </div>
   </div>
 </div>
-
 
 <script>
   $(document).ready(function(){
@@ -116,5 +117,9 @@
       $('.panel.panel-default').show()
     });
     $('.message_row').draggable();
+    $( "#panel.panel-default" ).effect( "size", {
+    to: { width: 200, height: 60 }
+  }, 1000 );
   })
 </script>
+
