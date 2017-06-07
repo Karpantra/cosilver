@@ -55,7 +55,7 @@
           <%= link_to new_flat_path do %><i class="fa fa-user-plus"></i> <%= t(".top_call_to_action", default: "Proposer une colocation") %>
           <%end %>
         </li>
-        <li><%= link_to new_provider_session_path do %>
+        <li><%= link_to new_provider_session_path(current_provider) do %>
           <i class="fa fa-users"></i>
           <%= t(".top_call_to_action", default: "Proposer un service") %>
           <% end %>
@@ -98,7 +98,7 @@
           <% end %>
         </li>
         <li>
-          <%= link_to new_provider_service_path(current_provider) do %>
+          <%= link_to new_provider_service_path do %>
           <i class="fa fa-users"></i>
           <%= t(".navbar-connect-button", default: "Proposer un service") %>
           <% end %>
