@@ -1,81 +1,78 @@
+require "csv"
 
-require 'open-uri'
-require 'nokogiri'
-
-
-
-html_file = open("https://stootie.com/stoot/services")
-html_doc = Nokogiri::HTML(html_file)
-
-Service.destroy_all
+puts "deleting items from database"
+User.destroy_all
 Provider.destroy_all
+Service.destroy_all
+Flat.destroy_all
+Offer.destroy_all
+puts "done"
+puts "starting seed"
 
-# titles
-# html_doc.search('#stoots-list .link').each_with_index do |element, index|
-#   services[index] = Service.new
-#   services[index].title =  element.text
-#   services[index].description = Faker::Lorem.paragraph
-# end
-
-# names
-# names = []
-# services = []
-
-# html_doc.search('#stoots-list img').each do |element|
-#   names << element.attr('alt')
-# end
-
-# names.compact!
-
-# # photo
-# html_doc.search('#stoots-list .profile-picture-field img').each_with_index do |element, index|
-#   if services[index]
-#     provider = services[index].create_provider!({
-#       first_name: names[index],
-#       last_name: "Toto",
-#       email: Faker::Internet.email,
-#       password: "123456",
-#     })
-
-#     provider.photo_urls = ["https://unsplash.com/search/worker?photo=UuW4psOb388", "https://unsplash.com/search/worker?photo=fQxMGkYXqFU", "https://unsplash.com/search/photos/male?photo=sok0YssrV5g", "https://unsplash.com/search/photos/male?photo=vmBik4xv27s", "https://unsplash.com/search/photos/male?photo=lCVP-lu0kxk", "https://unsplash.com/search/photos/male?photo=kB7SzzDgM3o", "https://unsplash.com/search/photos/female?photo=_KaMTEmJnxY", "https://unsplash.com/search/photos/female?photo=K-chxjiTu7c", "https://unsplash.com/search/photos/female?photo=mS55sdqJ9uU", "https://unsplash.com/search/photos/female?photo=i2AmfpRO0Cc", "https://unsplash.com/search/photos/female?photo=_ehb7RsbYRc", "https://unsplash.com/search/photos/female?photo=Yrjprzq-1jk", "https://unsplash.com/search/photos/female?photo=B3VWevRn1oU"].sample
-
-#   end
-# end
-
-20.times do
-  Provider.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456")
+csv_users = File.read(Rails.root.join('lib', 'seeds', 'users.csv'))
+csv = CSV.parse(csv_users, :headers => true, col_sep: ';')
+csv.each do |row|
+  user = User.new(first_name: row["first_name"], last_name: row["last_name"], email: row["email"], password: row["password"], gender: row["gender"], description: row["description"])
+  urls = []
+  urls << row["photo_url_1"] if row["photo_url_1"] != ""
+  urls << row["photo_url_2"] if row["photo_url_2"] != ""
+  urls << row["photo_url_3"] if row["photo_url_3"] != ""
+  user.save
+  user.photo_urls = urls
 end
+puts "users loaded"
 
-category = ["Babysitting et nounous", "Cours particuliers et coaching", "Nettoyage, repassage et cuisine", "Animaux", "Réparations et dépannage", "Bricolage et jardinage", "Courses et livraison", "Déménagement", "Transport, co-voiturage", "Prestations web, design, photo", "Mode, beauté, bien-être", "Prestations administratives", "Sports, loisirs et évènements", "Informations et conseils"]
-address = ["16 villa gaudelet, paris", "12 rue de strasbourg, paris", "5 rue barbès, levallois", "10 villa gaudelet, paris", "123 rue de rivoli, paris", "2 faubourg saint antoine, paris", "12 rue tolbiac, paris", "8 rue censier, paris", "55 boulevard de port royal, paris"]
-10.times do
-  Service.create(category: category.sample, title: Faker::Lorem.sentence, address: address.sample, price_per_hour: (10..50).to_a.sample, provider: Provider.all.sample )
+csv_providers = File.read(Rails.root.join('lib', 'seeds', 'providers.csv'))
+csv = CSV.parse(csv_providers, :headers => true, col_sep: ';')
+csv.each do |row|
+  provider = Provider.new(first_name: row["first_name"], last_name: row["last_name"], email: row["email"], password: row["password"])
+  urls = []
+  urls << row["photo_url_1"] if row["photo_url_1"] != ""
+  urls << row["photo_url_2"] if row["photo_url_2"] != ""
+  urls << row["photo_url_3"] if row["photo_url_3"] != ""
+  provider.save
+  provider.photo_urls = urls
 end
-# services.each do |service, index|
-#   service = Service.new
-#   services[index].description.category = ["Babysitting et nounous", "Cours particuliers et coaching", "Nettoyage, repassage et cuisine", "Animaux", "Réparations et dépannage", "Bricolage et jardinage", "Courses et livraison", "Déménagement", "Transport, co-voiturage", "Prestations web, design, photo", "Mode, beauté, bien-être", "Prestations administratives", "Sports, loisirs et évènements", "Informations et conseils"].sample
-#   services[index].title = Faker::Lorem.sentence
-#   services[index].address = ["16 villa gaudelet, paris", "12 rue de strasbourg, paris", "5 rue barbès, levallois", "10 villa gaudelet, paris", "123 rue de rivoli, paris", "2 faubourg saint antoine, paris", "12 rue tolbiac, paris", "8 rue censier, paris", "55 boulevard de port royal, paris"].sample
-#   services[index].price_per_hour = (10..50).to_a.sample
-#   services[index].save!
+puts "providers loaded"
+
+csv_services = File.read(Rails.root.join('lib', 'seeds', 'services.csv'))
+csv = CSV.parse(csv_services, :headers => true, col_sep: ';')
+csv.each do |row|
+  service = Service.new(category: row["category"], title: row["title"], price_per_hour: row["price_per_hour"], description: row["description"], address: row["address"])
+  service.provider = Provider.find_by_first_name(row["provider_first_name"])
+  service.save
+end
+puts "services loaded"
+
+csv_flats = File.read(Rails.root.join('lib', 'seeds', 'flats.csv'))
+csv = CSV.parse(csv_flats, :headers => true, col_sep: ';')
+csv.each do |row|
+  flat = Flat.new(category: row["category"], address: row["address"], city: row["city"], service_charges: row["service_charges"], deposit: row["deposit"], description: row["description"], flat_area: row["flat_area"], max_roommmates: row["max_roommmates"], number_pieces: row["number_pieces"], smoker: row["smoker"], animals: row["animals"])
+  flat.user = User.find_by_first_name(row["user_first_name"])
+  urls = [row["photo_url_1"], row["photo_url_2"], row["photo_url_3"]]
+  flat.photo_urls = urls
+  flat.save
+end
+puts "flats loaded"
+
+csv_offers = File.read(Rails.root.join('lib', 'seeds', 'offers.csv'))
+csv = CSV.parse(csv_offers, :headers => true, col_sep: ';')
+csv.each do |row|
+  offer = Offer.new(content: row["content"], title: row["title"], price: row["price"], room_size: row["room_size"])
+  offer.flat = Flat.find_by_address(row["flat_address"])
+  offer.save
+end
+puts "offers loaded"
+
+# csv_availabilities = File.read(Rails.root.join('lib', 'seeds', 'availabilities.csv'))
+# csv = CSV.parse(csv_availabilities, :headers => true, col_sep: ';')
+# csv.each do |row|
+#   availability = Availability.new(category: row["category"], title: row["title"], price_per_hour: row["price_per_hour"], description: row["description"], address: row["address"])
+#   availability.service = Service.find_by_address(row["service_address"])
+#   availability.save
 # end
 
 
 
-# html_doc.search('.has-tip').each do |element|
-#   p element
-# end
 
 
-
-# create_table "services", force: :cascade do |t|
-#   t.string   "category"
-#   t.string   "title"
-#   t.string   "price_per_hour"
-#   t.string   "description"
-#   t.string   "address"
-#   t.integer  "provider_id"
-#   t.datetime "created_at",     null: false
-#   t.datetime "updated_at",     null: false
-#   t.index ["provider_id"], name: "index_services_on_provider_id", using: :btree
-# end
