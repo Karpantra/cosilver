@@ -15,17 +15,17 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" style="width:100, height:100" role="listbox">
     <% if @user.flats.count > 0 %>
-      <div class="item active">
-        <%= cl_image_tag @user.flats.last.photos[0].path, height:450, width: 1200, crop: :fill, class: "img-responsive center-block" %>
-      </div>
-      <div class="item">
-        <%= cl_image_tag @user.flats.last.photos[1].path, height:450,width: 1200, crop: :fill, class: "img-responsive center-block" %>
-      </div>
-      <% if @user.flats.last.photos.count > 2 %>
-      <div class="item">
-        <%= cl_image_tag @user.flats.last.photos[2].path, height:450, width: 1200, crop: :fill, class: "img-responsive center-block" %>
-      </div>
-      <% end %>
+        <div class="item active">
+          <%= cl_image_tag @user.flats.last.photos[0].path, height:450, width: 1200, crop: :fill, class: "img-responsive center-block" %>
+        </div>
+        <div class="item">
+          <%= cl_image_tag @user.flats.last.photos[1].path, height:450,width: 1200, crop: :fill, class: "img-responsive center-block" %>
+        </div>
+        <% if @user.flats.last.photos.count > 2 %>
+
+        <div class="item">
+          <%= cl_image_tag @user.flats.last.photos[2].path, height:450, width: 1200, crop: :fill, class: "img-responsive center-block" %>
+        </div>
       <% end %>
     </div>
       <!-- Controls -->
@@ -38,6 +38,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  <% end %>
 </div>
     <% else %>
     <br>
@@ -66,8 +67,9 @@
   <div>
   <span><h4 class="text-center">Mes offres de colocation</h4></span>
   <br>
-        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(@flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %>
-        <% @flat.offers.order("created_at DESC").each do |offer| %>
+        <% if current_user.flats.count > 0 %>
+        <div><%= link_to 'Créer une nouvelle offre', new_flat_offer_path(@flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %> </div>
+        <% @user.flats.last.offers.order("created_at DESC").each do |offer| %>
         <div class="container-my-offers text-center col-xs-12 col-sm-6 col-md-3">
         <div class="media">
           <div class="media-body">
@@ -112,7 +114,8 @@
               </div>
             </div>
           </div>
-      <% end %>
+    <% end %>
+    <% end %>
   </div>
 </div>
 
