@@ -5,7 +5,7 @@
             <% if @service.provider.photos.first.nil? %>
             <%= image_tag "prestataire.png", width: 180, height: 320, crop: :fill %>
             <% else %>
-            <%= cl_image_tag @service.provider.photos.first.path, width: 180, height: 100, crop: :thumb, gravity: :face %>
+            <%= cl_image_tag @service.provider.photos.first.path, width: 180, height: 180, crop: :thumb, gravity: :face, radius: 100 %>
             <% end %>
             <p><%= @service.description %></p>
             <h4> <%= @service.provider.first_name %></h4>

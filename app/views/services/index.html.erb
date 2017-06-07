@@ -38,7 +38,7 @@
               <% if service.provider.photos.first.nil? %>
                <%= image_tag "cosilverlogo#{rand(1..3)}.png", width: 150, height: 100, crop: :fill %>
                <% else %>
-               <%= cl_image_tag service.provider.photos.first.path, width: 150, height: 100, crop: :fill %>
+               <%= cl_image_tag service.provider.photos.first.path, width: 150, height: 150, crop: :fill, radius: 100 %>
                <% end %>
                <br>
 
