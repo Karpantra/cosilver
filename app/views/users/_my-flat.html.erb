@@ -42,12 +42,13 @@
 
       <h4>Informations relatives à votre appartement / maison</h4>
       <ul class="list-unstyled">
+      <% if @user.flats.count > 0 %>
         <li>Type de logement : <%= @user.flats.last.category %></li>
         <li>Adresse : <%= @user.flats.last.address %></li>
         <li>Ville : <%= @user.flats.last.city %></li>
         <li>Montant des charges : <%= @user.flats.last.service_charges %> € </li>
         <li>Caution : <%= @user.flats.last.deposit %> €</li>
-
+        <% end %>
       </ul>
       <%# @user.flats.last.photos.each do |photo| %>
   <%#= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
