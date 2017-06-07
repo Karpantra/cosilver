@@ -19,27 +19,25 @@
           <h3>Mon appartement / Ma maison</h3>
         </a>
       </div>
+      <div class="tab-content hidden" id="messagerie">
+        <%= render "my_messages" %>
+      </div>
+      <div class="tab-content hidden" id="services">
+        <%= render "my_services" %>
+      </div>
+      <div class="tab-content hidden" id="colocataires">
+          <%= render "cards" %>
+      </div>
+      <div class="tab-content hidden" id="settings">
+          <%= render "settings" %>
+      </div>
+      <div class="tab-content" id="my-flat">
+          <%= render "my-flat" %>
+      </div>
     </div>
   </div>
 
 
-  <div class="container">
-    <div class="tab-content hidden" id="messagerie">
-      <%= render "my_messages" %>
-    </div>
-    <div class="tab-content hidden" id="services">
-      <%= render "my_services" %>
-    </div>
-    <div class="tab-content hidden" id="colocataires">
-        <%= render "cards" %>
-    </div>
-    <div class="tab-content hidden" id="settings">
-        <%= render "settings" %>
-    </div>
-    <div class="tab-content" id="my-flat">
-        <%= render "my-flat" %>
-    </div>
-  </div>
 </div>
 
 

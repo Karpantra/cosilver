@@ -119,3 +119,12 @@ transform: rotateY(180deg);
   font-size:20px;
   border-radius: 5px
 }
+
+.flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .input-container {
+    width: 300px;
+  }
+}
