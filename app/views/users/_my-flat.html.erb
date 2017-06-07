@@ -42,12 +42,11 @@
 
       <h4>Informations relatives à votre appartement / maison</h4>
       <ul class="list-unstyled">
-        <li>Type de logement : <%= @user.flats.last.category %></li>
-        <li>Adresse : <%= @user.flats.last.address %></li>
-        <li>Ville : <%= @user.flats.last.city %></li>
-        <li>Montant des charges : <%= @user.flats.last.service_charges %> € </li>
-        <li>Caution : <%= @user.flats.last.deposit %> €</li>
-
+        <li><h5>Type de logement : <%= @user.flats.last.category %></h5></li>
+        <li><h5>Adresse : <%= @user.flats.last.address %></h5></li>
+        <li><h5>Ville : <%= @user.flats.last.city %></h5></li>
+        <li><h5>Montant des charges : <%= @user.flats.last.service_charges %> € </h5></li>
+        <li><h5>Caution : <%= @user.flats.last.deposit %> €</h5></li>
       </ul>
       <%# @user.flats.last.photos.each do |photo| %>
   <%#= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
