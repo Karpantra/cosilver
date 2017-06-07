@@ -19,9 +19,11 @@
       <div class="item">
         <%= cl_image_tag @user.flats.last.photos[1].path, height:450,width: 1200, crop: :fill, class: "img-responsive center-block" %>
       </div>
+      <% if @user.flats.photos.count > 3 %>
       <div class="item">
         <%= cl_image_tag @user.flats.last.photos[2].path, height:450, width: 1200, crop: :fill, class: "img-responsive center-block" %>
       </div>
+      <% end %>
       <% end %>
     </div>
       <!-- Controls -->
