@@ -6,9 +6,9 @@
 
 .message-sent {
   // position: relative;
-  background: #2E2C3C;
+  background: $blue;
   color: white;
-  font-size: 12px;
+  font-size: 15px;
   margin: 5px 20px;
   padding: 10px;
   max-width: 150px;
@@ -29,11 +29,15 @@
 .message_row ul {
   padding-left: 0px;
   list-style: none;
-  font-size: 13px;
+  font-size: 15px;
 }
 
+// .message_row ul a {
+// text-decoration: none
+// }
+
 .panel-title {
-  font-size: 12px;
+  font-size: 15px;
   color: #302E3E;
 }
 
@@ -50,11 +54,17 @@
 
 .panel-heading {
   text-align: center;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid $orange;
+  font-size:20px;
+   a {
+    text-decoration:none;
+   }
 }
 
 textarea.form-control {
   height: 30px;
+  margin-bottom: 10px;
+  margin-top:10px;
 }
 
 .panel-default {
@@ -66,6 +76,10 @@ textarea.form-control {
   list-style: none;
 }
 
+#form-msg .btn-success {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
 
 

@@ -31,7 +31,7 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user = current_user
       if @flat.save
-        redirect_to user_path(current_user)
+        redirect_to profile_users_path
       else
       render :new
     end

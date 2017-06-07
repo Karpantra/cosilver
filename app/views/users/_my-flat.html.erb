@@ -1,6 +1,8 @@
 
 <!-- Mettre les infos du flat ou des flats de l'user -->
 
+
+<% if @user.flats.count > 0  %>
 <div class="container" id="my-flat-page">
   <div id="carousel-example-generic" class="carousel slide carousel-top-link" data-ride="carousel">
     <!-- Indicators -->
@@ -19,9 +21,11 @@
       <div class="item">
         <%= cl_image_tag @user.flats.last.photos[1].path, height:450,width: 1200, crop: :fill, class: "img-responsive center-block" %>
       </div>
+      <% if @user.flats.last.photos.count > 2 %>
       <div class="item">
         <%= cl_image_tag @user.flats.last.photos[2].path, height:450, width: 1200, crop: :fill, class: "img-responsive center-block" %>
       </div>
+      <% end %>
       <% end %>
     </div>
       <!-- Controls -->
@@ -35,6 +39,10 @@
     </a>
   </div>
 </div>
+    <% else %>
+    <br>
+    <%= link_to "Enregistrer votre appartement / maison", new_flat_path, class: "btn btn-success" %>
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
@@ -42,28 +50,24 @@
 
       <h4>Informations relatives à votre appartement / maison</h4>
       <ul class="list-unstyled">
+      <% if @user.flats.count > 0 %>
         <li>Type de logement : <%= @user.flats.last.category %></li>
         <li>Adresse : <%= @user.flats.last.address %></li>
         <li>Ville : <%= @user.flats.last.city %></li>
         <li>Montant des charges : <%= @user.flats.last.service_charges %> € </li>
         <li>Caution : <%= @user.flats.last.deposit %> €</li>
-
       </ul>
       <%# @user.flats.last.photos.each do |photo| %>
   <%#= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-<%# end %>
+<% end %>
 
     </div>
   </div>
   <div>
   <span><h4 class="text-center">Mes offres de colocation</h4></span>
   <br>
-    <% current_user.flats.each do |flat| %>
-      <% if flat.offers.empty? %>
-        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %>
-      <% else %>
-        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %>
-        <% flat.offers.order("created_at DESC").each do |offer| %>
+        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(@flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %>
+        <% @flat.offers.order("created_at DESC").each do |offer| %>
         <div class="container-my-offers text-center col-xs-12 col-sm-6 col-md-3">
         <div class="media">
           <div class="media-body">
@@ -108,11 +112,7 @@
               </div>
             </div>
           </div>
-
-
-        <% end %>
       <% end %>
-    <% end %>
   </div>
 </div>
 
@@ -134,16 +134,8 @@
             <%= f.submit "Publiez votre offre de colocation !", class: "btn btn-success" %>
             <%  %>
             <% end %>
-            <%end %>
+          <%end %>
           </div>
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
