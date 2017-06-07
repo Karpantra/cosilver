@@ -66,10 +66,8 @@
   <div>
   <span><h4 class="text-center">Mes offres de colocation</h4></span>
   <br>
-      <% if @user.flats.offers.empty? %>
-        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(@flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %>
-      <% else %>
-        <%= link_to 'Créer une nouvelle offre', new_flat_offer_path(@flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %>
+        <% if current_user.flats.count > 0 %>
+        <div><%= link_to 'Créer une nouvelle offre', new_flat_offer_path(@flat, modal: true), data: {toggle: "modal", target: "#create-offer" }, class:"btn btn-primary" %> </div>
         <% @user.flats.last.offers.order("created_at DESC").each do |offer| %>
         <div class="container-my-offers text-center col-xs-12 col-sm-6 col-md-3">
         <div class="media">
@@ -115,7 +113,7 @@
               </div>
             </div>
           </div>
-        <% end %>
+    <% end %>
     <% end %>
   </div>
 </div>
