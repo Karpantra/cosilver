@@ -29,6 +29,7 @@
   </div>
 <!-- </div>
  -->
+<%= content_for(:after_js) do %>
 <script>
   $(document).ready(function(){
       $('#close-msg').click(function(e){
@@ -41,4 +42,5 @@
     $('.drag').draggable();
   });
 </script>
+<% end %>
 

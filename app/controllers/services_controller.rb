@@ -8,7 +8,7 @@ class ServicesController < ApplicationController
   end
 
   def index
-
+    @availabilities = {}
     if (params[:search_city] == "" &&  params[:search_category] == "") || (params[:search_city] == nil &&  params[:search_category] == nil)
       @services = Service.where.not(latitude: nil, longitude: nil)
 

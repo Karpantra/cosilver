@@ -3,31 +3,26 @@
 <div class="container text-center">
   <div class="search-options">
       <h3>Trouvez une colocation</h3>
-
-
       <%= form_tag(offers_path, method: :get, class: 'form-search') do %>
-      <%= text_field_tag :search, params[:search] , placeholder: "ville", class: "input-medium search-query" %>
-      <br>
-      <br>
+      <div class="flexbox">
+        <div class="input-container">
+          <%= text_field_tag :search, params[:search] , placeholder: "ville", class: "input-medium search-query form-control" %>
+          </div>
 
-        <%= submit_tag "Rechercher", class: "btn btn-primary" %>   <%= link_to t(".top_call_to_action", default: "ré-initialiser"), offers_path, class: "btn btn-info" %>
+
+        <%= submit_tag "Rechercher", class: "btn btn-primary" %>   <%= link_to t(".top_call_to_action", default: "Ré-initialiser"), offers_path, class: "btn btn-info" %>
+
         <% end %>
+      </div>
   </div>
   <div class="map-container text-center col-xs-12 col-sm-4 ">
-
-
-
-
-
-
-
-  <div class="mappy" id="offers-map">
-    <div class="card">
-      <div id="map" style="width: 100%; height: 100vh;"></div>
-    </div>
+    <div class="mappy" id="offers-map">
+      <div class="card">
+        <div id="map" style="width: 100%; height: 100vh;">
+        </div>
+      </div>
     </div>
   </div>
-
   <div class="container-index text-center col-xs-12 col-sm-8">
   <div class="row" style="overflow:scroll; height:80vh;">
          <% @offers.each do |offer| %>
@@ -40,14 +35,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
 
 <% content_for(:after_js) do %>
   <script>

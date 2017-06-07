@@ -1,0 +1,36 @@
+#inscription-style{
+  font-family: 'Roboto', open-sans;
+  .btn-success {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size:18px;
+  }
+  .btn-mdp {
+    font-size:15px;
+  }
+input #user_email {
+  padding-bottom:15px;
+  padding-top: 15px
+}
+
+input #user_password {
+  padding-bottom:15px;
+  padding-top: 15px
+}
+
+  .form-group {
+    padding-bottom: 0px;
+  }
+  .email {
+    padding-bottom:18px;
+  }
+  .password {
+    padding-bottom:18px
+  }
+  .checkbox {
+    font-size:15px
+  }
+  & .checkbox:hover {
+    color: $orange
+  }
+}
