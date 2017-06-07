@@ -2,23 +2,23 @@
       <div class="offer-show-container">
         <div class="col-xs-12 col-sm-4 col-sm-offset-2">
           <div class="padded">
-            <% if @service.provider.photos.first.nil? %>
+            <% if service.provider.photos.first.nil? %>
             <%= image_tag "prestataire.png", width: 180, height: 320, crop: :fill %>
             <% else %>
-            <%= cl_image_tag @service.provider.photos.first.path, width: 180, height: 100, crop: :thumb, gravity: :face %>
+            <%= cl_image_tag service.provider.photos.first.path, width: 180, height: 100, crop: :thumb, gravity: :face %>
             <% end %>
-            <p><%= @service.description %></p>
-            <h4> <%= @service.provider.first_name %></h4>
-            <h5> <%= @service.title %></h5>
-            <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @service.address.last(5) %></p>
+            <p><%= service.description %></p>
+            <h4> <%= service.provider.first_name %></h4>
+            <h5> <%= service.title %></h5>
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= service.address.last(5) %></p>
             <h5>
-             <i class="fa fa-money" aria-hidden="true"></i> <span> <%= @service.price_per_hour %> €/heure</span></h5>
+             <i class="fa fa-money" aria-hidden="true"></i> <span> <%= service.price_per_hour %> €/heure</span></h5>
             </div>
           </div>
           <div class="col-xs-12 col-sm-4">
             <div class="padded ">
               <h3>Calendrier</h3>
-              <%= simple_form_for [@service ] do |f| %>
+              <%= simple_form_for [service ] do |f| %>
               <div class="form-group">
                 <label for="" class="control-label">Sélectionnez vos disponibilités</label>
                 <div  id="datepicker-show"></div>

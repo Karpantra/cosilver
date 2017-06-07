@@ -57,7 +57,7 @@
          <%#= link_to "Réserver une prestation", service_path(service),   class: "btn btn-success float-left" %>
 
          <%#= link_to "Réserver une prestation", "#", data: {toggle: "modal", target: "#myservice_path#{service.id}" }%>
-         <%= link_to "réserver un créneau", "#", data: {toggle: "modal", target: "#service_path#{service.id}" }, class:"btn btn-primary float-left"%>
+         <%= link_to "réserver un créneau", "#", data: {toggle: "modal", target: "#service_path#{service.id}" }, class:"btn btn-primary float-left btn-modal", id:"#{service.id}"%>
 
        </div>
      </div>
@@ -95,8 +95,9 @@
                 <%= simple_form_for service do |f| %>
                   <div class="form-group">
                     <label for="" class="control-label">Sélectionnez vos disponibilités</label>
+                    <% @availabilities["avail-#{service.id}"] = service.availabilities.where(available: true).pluck(:date).map { | date| date.strftime("%-d-%-m-%Y") } %>
                     <div  class="datepicker-show"></div>
-                    <input type="hidden" id="my_hidden_input_show" name="booking_dates">
+                    <input type="hidden" class="my_hidden_input_show" name="booking_dates">
                   </div>
                   <%= f.submit "Réservez une prestation", class: "btn btn-success" %>
                 <% end %>
@@ -125,35 +126,44 @@
       });
     });
 
-    var availableDates = <%= raw @availabilities %>
+    $('.btn-modal').click(function(){
+      var service_id = parseInt($(this).attr('id'));
+      var availabilities = <%= raw @availabilities.to_json %>
 
-    $('.datepicker-show').datepicker({
-      format: "dd/mm/yyyy",
-      weekStart: 1,
-      multidate: true,
-      beforeShowDay:
-      function(date)
-      {
-        return available(date)
+      var availableDates = availabilities["avail-" + service_id]
+
+      console.log(availableDates);
+      $('.datepicker-show').datepicker("destroy");
+      $('.datepicker-show').datepicker({
+        format: "dd/mm/yyyy",
+        weekStart: 1,
+        multidate: true,
+        beforeShowDay:
+        function(date)
+        {
+          return available(date)
+        }
+      });
+
+      $('.datepicker-show').on('changeDate', function() {
+        $(this).siblings(".my_hidden_input_show").val(
+          $(this).datepicker('getFormattedDate')
+          );
+      });
+
+      function available(date) {
+        dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+        if ($.inArray(dmy, availableDates) != -1) {
+          return { enabled: true, classes: "available" }
+        } else {
+          return { enabled: false, classes: "booked" }
+        }
       }
     });
-
-    $('#datepicker-show').on('changeDate', function() {
-      $('#my_hidden_input_show').val(
-        $('#datepicker-show').datepicker('getFormattedDate')
-        );
-    });
-
-    function available(date) {
-      dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
-      if ($.inArray(dmy, availableDates) != -1) {
-        return { enabled: true, classes: "available" }
-      } else {
-        return { enabled: false, classes: "booked" }
-      }
-    }
   </script>
 <% end %>
+
+
 
 
 
