@@ -76,11 +76,11 @@
         <div class="modal-body text-center modal-resize">
           <h4 class="modal-title" id="myModalLabel"> <%= service.title %> </h4>
           <div class="container text-center">
-            <div class="col-xs-12 col-sm-2">
+            <div class="col-xs-12 col-sm-3">
               <% if service.provider.photos.first.nil? %>
-                <%= image_tag "prestataire.png", width: 180, height: 320, crop: :fill %>
+                <%= image_tag "prestataire.png", width: 150, height: 220, crop: :fill %>
               <% else %>
-                <%= cl_image_tag service.provider.photos.first.path, width: 180, height: 100, crop: :thumb, gravity: :face %>
+                <%= cl_image_tag service.provider.photos.first.path, width: 150, height: 220, crop: :thumb, gravity: :face %>
               <% end %>
               <p><%= service.description %></p>
               <h4> <%= service.provider.first_name %></h4>
@@ -89,8 +89,10 @@
               <h5>
                <i class="fa fa-money" aria-hidden="true"></i> <span> <%= service.price_per_hour %> €/heure</span></h5>
               </div>
-              <div class="col-xs-12 col-sm-4">
-                <div class="padded ">
+
+              <div class="col-xs-12 col-sm-3">
+                <h3>Calendrier</h3>
+
                 <%= simple_form_for service do |f| %>
                   <div class="form-group">
                     <label for="" class="control-label">Sélectionnez vos disponibilités</label>
@@ -100,7 +102,7 @@
                   </div>
                   <%= f.submit "Réservez une prestation", class: "btn btn-success" %>
                 <% end %>
-              </div>
+              </div
             </div>
           </div>
         </div>
