@@ -2,7 +2,7 @@
 <div class="container">
   <div class="map-container text-center col-xs-12 col-sm-6 ">
 
-    <h3>Trouvez un service sur mesure</h3>
+    <h3 id="services-main-title">Trouvez un service sur mesure</h3>
 
     <%= form_tag(services_path, method: :get, class: 'form-search') do %>
     <%= text_field_tag :search_city, params[:search_city] , placeholder: "ville", class: "input-medium search-query" %>
