@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-md-3 col-md-offset-1">
+    <div class="col-xs-12 col-md-3 col-md-offset-1 drag">
       <ul id="conversations-list">
       </ul>
     </div>
@@ -38,6 +38,7 @@
     $('#email-msg').click(function(){
       $('.panel.panel-default').show()
     });
+    $('.drag').draggable();
   });
 </script>
 
