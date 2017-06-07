@@ -1,6 +1,8 @@
 
 <!-- Mettre les infos du flat ou des flats de l'user -->
 
+
+<% if @user.flats.count > 0  %>
 <div class="container" id="my-flat-page">
   <div id="carousel-example-generic" class="carousel slide carousel-top-link" data-ride="carousel">
     <!-- Indicators -->
@@ -35,6 +37,10 @@
     </a>
   </div>
 </div>
+    <% else %>
+    <br>
+    <%= link_to "Enregistrer votre appartement / maison", new_flat_path, class: "btn btn-success" %>
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-xs-12">

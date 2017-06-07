@@ -9,9 +9,6 @@
 
   <%= form_tag(offers_path, method: :get, class: 'form-search') do %>
     <div class="flexbox">
-      <div class="input-container">
-        <%= text_field_tag :search, params[:search] , placeholder: "ville", class: "input-medium search-query form-control" %>
-      </div>
       <%= submit_tag "Lancez-vous !", class: "btn btn-primary btn-banner", style:"text-decoration:none" %>
     </div>
   <% end %>
