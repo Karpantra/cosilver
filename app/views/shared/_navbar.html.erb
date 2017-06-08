@@ -83,24 +83,24 @@
       <% end %>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to dashboard_providers_path  do %>
-          <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
-          <% end %>
-        </li>
-        <li>
           <%= link_to root_path do %>
           <i class="fa fa-home"></i>  <%= t(".profile", default: "Accueil") %>
           <% end %>
         </li>
         <li>
-          <%= link_to destroy_provider_session_path, method: :delete do %>
-          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
+          <%= link_to dashboard_providers_path  do %>
+          <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
           <% end %>
         </li>
         <li>
-          <%= link_to new_provider_service_path do %>
+          <%= link_to new_provider_service_path(current_provider) do %>
           <i class="fa fa-users"></i>
           <%= t(".navbar-connect-button", default: "Proposer un service") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_provider_session_path, method: :delete do %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
           <% end %>
         </li>
       </ul>
