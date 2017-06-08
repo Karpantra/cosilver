@@ -98,7 +98,7 @@
           <% end %>
         </li>
         <li>
-          <%= link_to new_provider_service_path do %>
+          <%= link_to new_provider_service_path(current_provider) do %>
           <i class="fa fa-users"></i>
           <%= t(".navbar-connect-button", default: "Proposer un service") %>
           <% end %>
