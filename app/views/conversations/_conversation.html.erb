@@ -14,8 +14,10 @@
       <form class="new_message" id="form-msg">
         <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
         <input name="user_id" type="hidden" value="<%= user.id %>">
-        <textarea name="content" class="form-control" id="textarea-msg"></textarea>
-        <input type="submit" class="btn btn-success" value="Envoyez">
+        <div class="send_message">
+          <input type="text" name="content" class="form-control" id="textarea-msg">
+          <input type="submit" value="Envoyez">
+        </div>
       </form>
     </div>
   </div>
@@ -32,3 +34,5 @@
   });
   </script>
 <% end %>
+<!--
+class="btn btn-success" -->
