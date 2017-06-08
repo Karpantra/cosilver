@@ -13,7 +13,7 @@
     <div class="profile-picture">
       <% if offer.flat.user.photos.first || offer.flat.user.facebook_picture_url %>
         <% if offer.flat.user.photos.first %>
-          <%= cl_image_tag offer.flat.user.photos.first.path, width: 90, height: 90, crop: :fill, class: "avatar-extra-large img-thumbnail" %>
+          <%= cl_image_tag offer.flat.user.photos.first.path, width: 90, height: 90, crop: :fill, class: "avatar-extra-large img-thumbnail"%>
         <% else %>
           <%=  image_tag offer.flat.user.facebook_picture_url, width: 90, height: 90, crop: :fill, class: "avatar-extra-large img-thumbnail"  %>
         <% end %>
