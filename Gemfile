@@ -41,6 +41,7 @@ gem "faker"
 gem 'jquery-ui-rails'
 gem 'jquery-ui-sass-rails'
 
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end

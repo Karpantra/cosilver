@@ -1,3 +1,6 @@
+
+
+
 <div id="carousel-example-generic" class="carousel slide carousel-top-link center-block" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -7,16 +10,16 @@
   </ol>
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner" style="width:100, height:100" role="listbox">
+  <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <%= cl_image_tag @offer.flat.photos[0].path, height:450, width: 800, crop: :fill, class: "img-responsive center-block" %>
+      <%= cl_image_tag @offer.flat.photos[0].path, height:600, width: 1300, crop: :fill, class: "img-responsive center-block" %>
     </div>
     <div class="item">
-      <%= cl_image_tag @offer.flat.photos[1].path, height:450,width: 800, crop: :fill, class: "img-responsive center-block" %>
+      <%= cl_image_tag @offer.flat.photos[1].path, height:600,width: 1300, crop: :fill, class: "img-responsive center-block" %>
     </div>
     <% if @offer.flat.photos.count > 2 %>
     <div class="item">
-      <%= cl_image_tag @offer.flat.photos[2].path, height:300, crop: :fill, class: "img-responsive center-block" %>
+      <%= cl_image_tag @offer.flat.photos[2].path, height:600, width:1300, crop: :fill, class: "img-responsive center-block" %>
     </div>
     <% end %>
   </div>
@@ -39,7 +42,7 @@
         <div class="padded">
           <% if @offer.flat.user.photos.first || @offer.flat.user.facebook_picture_url %>
             <% if @offer.flat.user.photos.first %>
-              <%= cl_image_tag @offer.flat.user.photos.first.path, width: 120, height: 120, crop: :fill, radius: 100 %>
+              <%= cl_image_tag @offer.flat.user.photos.first.path, size: '50x50', crop: :thumb, gravity: :face, class: "avatar-extra-large img-thumbnail" %>
               <% else %>
                 <%=  image_tag @offer.flat.user.facebook_picture_url, size: '50x50', crop: :thumb, class: "avatar-extra-large img-thumbnail"  %>
               <% end %>
@@ -108,8 +111,8 @@
     </div>
   </div>
 </div>
-<%= content_for(:after_js) do %>
-<script>
+
+<!-- <script>
   $(document).ready(function(){
     $('#close-msg').click(function(e){
       e.preventDefault();
@@ -122,9 +125,9 @@
     $( "#panel.panel-default" ).effect( "size", {
     to: { width: 200, height: 60 }
   }, 1000 );
+     $( '.swipebox' ).swipebox();
+     if ($.swipebox.isOpen) {
+        alert("Bug");
+     }
   })
-    // $( "#textarea-msg" ).resizable({
-    //       containment: ".panel-body"
-    //     });
-</script>
-<% end %>
+</script> -->

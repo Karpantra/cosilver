@@ -26,5 +26,5 @@ $(document).ready(function() {
       messages_list.scrollTop(height);
     }
   });
+   // $( '.swipebox' ).swipebox();
 });
-

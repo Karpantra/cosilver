@@ -10,11 +10,15 @@
 }
 
 .carousel-control {
-  background-image:none;
+  background-image:none !important;
   // background-color: $dark-gray;
 }
 
 .carousel-inner {
-  color:black;
-  background-color: #313131;
+  background-color: white;
+}
+
+#carousel-example-generic {
+  width: 1300px;
+  margin:auto;
 }
