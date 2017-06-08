@@ -12,15 +12,15 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <%= cl_image_tag @offer.flat.photos[0].path, height:600, width: 1300, crop: :fill, class: "img-responsive center-block" %>
+      <%= cl_image_tag @offer.flat.photos[0].path, height:500, width: 1080, crop: :fill, class: "img-responsive center-block" %>
     </div>
     <div class="item">
-      <%= cl_image_tag @offer.flat.photos[1].path, height:600,width: 1300, crop: :fill, class: "img-responsive center-block" %>
+      <%= cl_image_tag @offer.flat.photos[1].path, height:500,width: 1080, crop: :fill, class: "img-responsive center-block" %>
     </div>
     <% if @offer.flat.photos.count > 2 %>
     <div class="item">
 
-      <%= cl_image_tag @offer.flat.photos[2].path, height:600, width:1300, crop: :fill, class: "img-responsive center-block" %>
+      <%= cl_image_tag @offer.flat.photos[2].path, height:500, width:1080, crop: :fill, class: "img-responsive center-block" %>
 
     </div>
     <% end %>
@@ -91,10 +91,7 @@
   </div>
 </div>
 
-<<<<<<< HEAD
-<script>
-=======
-<!-- <div id="messenger">
+<div id="messenger">
   <div class="panel text-center">
     <div class="panel-heading">
       <h3 class="panel-title">Discussion instantanée</h3>
