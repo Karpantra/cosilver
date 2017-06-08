@@ -1,31 +1,30 @@
 <div class="card">
   <%= link_to "", offer_path(offer), class: "card-link" %>
   <% if offer.flat.photos.blank? %>
-    <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('livingroom1.jpg')%>');">
+      <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('livingroom1.jpg')%>');">
     <% else %>
-    <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path offer.flat.photos.first.path %>')">
-  <% end %>
+      <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path offer.flat.photos.first.path %>')">
+    <% end %>
 
 
     <div class="category">
       <%= offer.flat.category %>
     </div>
     <div class="profile-picture">
-    <% if offer.flat.user.photos.first || offer.flat.user.facebook_picture_url %>
-      <% if offer.flat.user.photos.first %>
-      <%= cl_image_tag offer.flat.user.photos.first.path, width: 90, height: 90, crop: :fill, class: "avatar-extra-large img-thumbnail" %>
-      <% else %>
-      <%=  image_tag offer.flat.user.facebook_picture_url, width: 90, height: 90, crop: :fill, class: "avatar-extra-large img-thumbnail"  %>
-      <% end %>
+      <% if offer.flat.user.photos.first || offer.flat.user.facebook_picture_url %>
+        <% if offer.flat.user.photos.first %>
+          <%= cl_image_tag offer.flat.user.photos.first.path, width: 90, height: 90, crop: :fill, class: "avatar-extra-large img-thumbnail" %>
+        <% else %>
+          <%=  image_tag offer.flat.user.facebook_picture_url, width: 90, height: 90, crop: :fill, class: "avatar-extra-large img-thumbnail"  %>
+        <% end %>
       <% else %>
         <%= image_tag 'logo.png', class: "avatar-extra-large" %>
       <% end %>
-
     </div>
   </div>
   <div class="card-info">
     <div class="sub_title">
-      <%= offer.title %>
+      <%= offer.title.capitalize %>
     </div>
     <p class="description">
           <span><%= offer.price %> euros/mois</span>
@@ -33,5 +32,4 @@
 <!--     <div class="post-meta">
     </div> -->
   </div>
-</div>
 </div>

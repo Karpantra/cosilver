@@ -1,11 +1,13 @@
 require "csv"
 
 puts "deleting items from database"
+Conversation.destroy_all
 User.destroy_all
 Provider.destroy_all
 Service.destroy_all
 Flat.destroy_all
 Offer.destroy_all
+Availability.destroy_all
 puts "done"
 puts "starting seed"
 
@@ -64,13 +66,16 @@ csv.each do |row|
 end
 puts "offers loaded"
 
-# csv_availabilities = File.read(Rails.root.join('lib', 'seeds', 'availabilities.csv'))
-# csv = CSV.parse(csv_availabilities, :headers => true, col_sep: ';')
-# csv.each do |row|
-#   availability = Availability.new(category: row["category"], title: row["title"], price_per_hour: row["price_per_hour"], description: row["description"], address: row["address"])
-#   availability.service = Service.find_by_address(row["service_address"])
-#   availability.save
-# end
+csv_availabilities = File.read(Rails.root.join('lib', 'seeds', 'availabilities.csv'))
+csv = CSV.parse(csv_availabilities, :headers => true, col_sep: ';')
+csv.each do |row|
+  availability = Availability.new(available: row["available"], booked: row["booked"], date: row["date"])
+  availability.service = Service.find_by_address(row["service_address"])
+  availability.save
+end
+puts "availabilities loaded"
+
+puts "the seed is done"
 
 
 

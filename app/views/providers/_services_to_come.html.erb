@@ -1,8 +1,9 @@
 <% current_provider.services.split.flatten.each do |service| %>
 <% service.availabilities.each do |availability| %>
 <div class="product">
-  <% if availability.user.nil? %>
+<% if availability.user.nil? %>
   <% else %>
+  <% if availability.booked == true %>
   <% if availability.user.photos? %>
   <% availability.user.photos.each do |photo| %>
   <!-- possibilité d'appeler la méthode .first sur photos. car une seule photo -->
@@ -15,12 +16,10 @@
     <h3><%= service.title %></h3>
     <span><strong><%= availability.user.email %></strong>
     </span><span> | <strong> <%= availability.date.strftime("%d/%m/%Y") %></strong>
-    </span><span> | <%=  %></span>
-  </div>
-  <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
-    <%= link_to "", dashboard_providers_path, class: "fa fa-trash"%>
-  </ul>
-  <% end %>
+  </span><span> | <%=  %></span>
+</div>
+<% end %>
+<% end %>
 </div>
 <% end %>
 <% end %>
