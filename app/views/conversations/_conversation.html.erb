@@ -21,14 +21,14 @@
   </div>
 </li>
 
+<% content_for(:after_js) do %>
+  <script>
 
-<script>
-
-$('#textarea-msg').keyup(function(e){
-  if (e.keyCode === 13) {
-    e.preventDefault();
-    $('#form-msg').submit();
-    }
-});
-
-</script>
+  $('#textarea-msg').keyup(function(e){
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      $('#form-msg').submit();
+      }
+  });
+  </script>
+<% end %>
