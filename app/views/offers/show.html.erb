@@ -55,16 +55,6 @@
           </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="padded">
-            <h2>La chambre</h2>
-            <p>
-            <p> <i class="fa fa-money" aria-hidden="true"></i> <strong>Prix:</strong>  <%= @offer.price %> €/mois</p>
-            <p> <i class="fa fa-cc-visa" aria-hidden="true"></i> <strong>Charges:</strong> <%= @offer.flat.service_charges %> €/mois</p>
-            <p> <i class="fa fa-credit-card-alt" aria-hidden="true"></i> <strong>Garantie:</strong> <%= @offer.flat.deposit %> €</p>
-            <p> <i class="fa fa-expand" aria-hidden="true"></i> <strong>Taille de la chambre:</strong> <%= @offer.room_size %> m2</p>
-        </div>
-      </div>
        <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="padded">
             <h2>L'appartement</h2>
@@ -76,11 +66,21 @@
             <p><strong>Fumeur : </strong> <%= @offer.flat.smoker ? 'Oui' : 'Non' %></p>
             <p> <i class="fa fa-paw" aria-hidden="true"></i> <strong>Animaux : </strong> <%= @offer.flat.animals ? 'Oui' : 'Non' %></p>
         </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="padded">
+            <h2>La chambre</h2>
+            <p>
+            <p> <i class="fa fa-money" aria-hidden="true"></i> <strong>Prix:</strong>  <%= @offer.price %> €/mois</p>
+            <p> <i class="fa fa-cc-visa" aria-hidden="true"></i> <strong>Charges:</strong> <%= @offer.flat.service_charges %> €/mois</p>
+            <p> <i class="fa fa-credit-card-alt" aria-hidden="true"></i> <strong>Garantie:</strong> <%= @offer.flat.deposit %> €</p>
+            <p> <i class="fa fa-expand" aria-hidden="true"></i> <strong>Taille de la chambre:</strong> <%= @offer.room_size %> m2</p>
+        </div>
       </div>
     </div>
     <div class="col-md-1">
       <div class="offer_btn">
-        <%= link_to "Retour aux offres de colocation", offers_path, :class => "btn btn-warning" %>
+        <%= link_to "Retour", offers_path, :class => "btn btn-warning" %>
       </div>
     </div>
   </div>
