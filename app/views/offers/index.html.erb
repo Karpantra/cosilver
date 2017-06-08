@@ -2,35 +2,34 @@
 
 <div class="container text-center">
   <div class="search-options">
-      <h3>Trouvez une colocation</h3>
-      <%= form_tag(offers_path, method: :get, class: 'form-search') do %>
-      <div class="flexbox">
+    <h3>Trouvez une colocation</h3>
+    <%= form_tag(offers_path, method: :get, class: 'form-search') do %>
+      <div class="flexbox" id="research-bar">
         <div class="input-container">
-          <%= text_field_tag :search, params[:search] , placeholder: "ville", class: "input-medium search-query form-control" %>
-          </div>
+         <%= text_field_tag :search, params[:search] , placeholder: "ville", class: "input-medium search-query form-control" %>
+        </div>
 
-
-        <%= submit_tag "Rechercher", class: "btn btn-primary" %>   <%= link_to t(".top_call_to_action", default: "Ré-initialiser"), offers_path, class: "navbar-connect-button" %>
-
-        <% end %>
+        <%= submit_tag "Rechercher", class: "btn btn-primary", id: "offers-research-btn" %>
+        <%= link_to t(".top_call_to_action", default: "Ré-initialiser"), offers_path, class: "navbar-connect-button" %>
       </div>
+    <% end %>
   </div>
-  <div class="map-container text-center col-xs-12 col-sm-4 ">
-    <div class="mappy" id="offers-map">
-      <div class="card">
-        <div id="map" style="width: 100%; height: 100vh;">
+  <div class="row">
+    <div class="map-container text-center col-xs-12 col-sm-4 ">
+      <div class="mappy" id="offers-map">
+        <div class="card">
+          <div id="map" style="width: 100%; height: 100vh;">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container-index text-center col-xs-12 col-sm-8">
-  <div class="row" style="overflow:scroll; height:80vh;">
-         <% @offers.each do |offer| %>
-     <div class="col-xs-12 col-sm-6">
-
-       <%= render "card", offer: offer%>
-
-      <% end %>
+    <div class="container-index text-center col-xs-12 col-sm-8">
+      <div class="row">
+        <% @offers.each do |offer| %>
+          <div class="col-xs-12 col-sm-6">
+            <%= render "card", offer: offer %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
