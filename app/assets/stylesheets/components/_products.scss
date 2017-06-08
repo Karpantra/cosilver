@@ -5,13 +5,23 @@
   margin-bottom: 20px;
   border-radius: 3px;
   transition: all 0.15s ease;
-  background-color: $dark-gray;
-  color: white;
+  background-color: #f7f7fa;
+  color: $dark-gray;
   margin: auto;
   margin-bottom: 5px;
   width: 1140px;
   height: 75px;
-  border-radius: 100px;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+.product:hover {
+  opacity: 1;
+}
+
+span {
+  padding-left: 50px;
+  margin-top: 10px;
 }
 
 /* Body design */
@@ -20,7 +30,7 @@
   padding-left: 20px;
 }
 .product-body h3 {
-  font-weight: bold;
+  // font-weight: bold;
   font-size: 20px;
   margin-top: 0;
 }
@@ -72,11 +82,11 @@
 .product-controls a {
   padding: 0 20px;
   font-size: 17px;
-  color: #E6E6E6;
+  color: $orange !important
 }
-.product-controls a:hover {
-  color: #D3473C !important
-}
+// .product-controls a:hover {
+//   color: #D3473C !important
+// }
 .product-controls-hidden a {
   color: transparent;
   font-size: 15px;
@@ -85,11 +95,11 @@
 }
 
 /* Hover effects */
-.product:hover {
-  background: #f7f7fa;
-  color: black;
-  cursor: pointer;
-}
+// .product:hover {
+//   background: #f7f7fa;
+//   color: black;
+//   cursor: pointer;
+// }
 .product-upvote:hover, .product-upvote.product-upvote-upvoted {
   color: #5898f1;
   cursor: pointer;
