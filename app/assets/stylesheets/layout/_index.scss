@@ -66,9 +66,12 @@ opacity: 0.9;
 }
 .float-left {
   float: right;
+  margin-top: 15px;
 }
 
-
+.card-link {
+  height: auto;
+}
 
 .card-row {
   border-radius: 4px;
