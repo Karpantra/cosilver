@@ -8,11 +8,12 @@
   // position: relative;
   background: $blue;
   color: white;
-  font-size: 15px;
+  font-size: 10px;
   margin: 5px 20px;
   padding: 10px;
   max-width: 150px;
   border-radius: 15px;
+  display: inline-block;
 }
 
 .message-received {
@@ -23,13 +24,13 @@
   padding: 10px;
   float: right;
   border-radius: 15px;
-  max-width: 150px;
+  max-width: 100%;
 }
 
 .message_row ul {
   padding-left: 0px;
   list-style: none;
-  font-size: 15px;
+  font-size: 10px;
 }
 
 // .message_row ul a {
@@ -37,8 +38,8 @@
 // }
 
 .panel-title {
-  font-size: 15px;
-  color: #302E3E;
+  font-size: 12px;
+  color: white;
 }
 
 .panel-body a:hover {
@@ -49,13 +50,17 @@
 
 .panel {
   border-radius: 5px;
-  color: #2E2C3C;
+  border-color: #F78536;
+  padding: 0;
+  margin-bottom: 5px !important;
+  margin-right: 5px !important;
 }
 
 .panel-heading {
   text-align: center;
   border-bottom: 1px solid $orange;
-  font-size:20px;
+  font-size:13px;
+  background: #F78536;
    a {
     text-decoration:none;
    }
@@ -69,7 +74,6 @@ textarea.form-control {
 
 .panel-default {
   // position: absolute;
-  box-shadow: 5px 5px 0px #aaa;
   min-width: 300px;
   max-width: 450px;
   width:auto;
@@ -79,7 +83,36 @@ textarea.form-control {
   list-style: none;
 }
 
-#form-msg .btn-success {
-  padding-left: 20px;
-  padding-right: 20px;
+
+#messenger {
+  position:fixed;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  .message_row {
+    position:absolute;
+    z-index: 1000;
+    bottom: 0px;
+    right: 250px;
+  }
+}
+.new_message textarea {
+  resize:none;
+}
+
+.send_message {
+  position: relative;
+  input[type=submit] {
+    position: absolute;
+    right: 0;
+    top:0;
+    height: 36px;
+  }
+  .form-control {
+    padding-right: 60px;
+  }
+}
+
+.panel-body {
+  padding: 2px;
 }
