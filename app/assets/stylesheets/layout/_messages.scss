@@ -13,6 +13,7 @@
   padding: 10px;
   max-width: 150px;
   border-radius: 15px;
+  display: inline-block;
 }
 
 .message-received {
@@ -23,7 +24,7 @@
   padding: 10px;
   float: right;
   border-radius: 15px;
-  max-width: 150px;
+  max-width: 100%;
 }
 
 .message_row ul {
@@ -52,6 +53,7 @@
   border-color: #F78536;
   padding: 0;
   margin-bottom: 5px !important;
+  margin-right: 5px !important;
 }
 
 .panel-heading {
