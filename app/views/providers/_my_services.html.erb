@@ -1,26 +1,28 @@
 <% current_provider.services.split.flatten.each do |service| %>
-<% service.availabilities.each do |availability| %>
-<div class="product">
-  <% if availability.user.nil? %>
-  <% else %>
-  <% if availability.user.photos? %>
-  <% availability.user.photos.each do |photo| %>
-  <!-- possibilité d'appeler la méthode .first sur photos. car une seule photo -->
-  <%= cl_image_tag photo.path, size: '50x50', crop: :thumb, gravity: :face, class: "avatar-large" %>
+  <% service.availabilities.each do |availability| %>
+    <% if availability.user.nil? %>
+    <% else %>
+      <% if availability.available == true %>
+        <div class="product">
+          <% if availability.user.photos? %>
+          <% availability.user.photos.each do |photo| %>
+          <!-- possibilité d'appeler la méthode .first sur photos. car une seule photo -->
+          <%= cl_image_tag photo.path, size: '50x50', crop: :thumb, gravity: :face, class: "avatar-large" %>
+          <% end %>
+          <% else %>
+          <%= image_tag "cosilverlogo3.png", class: "avatar-large" %>
+          <% end %>
+          <div class='product-body'>
+            <h3><%= service.title %></h3>
+            <span><strong><%= availability.user.email %></strong>
+            </span><span> | <strong> <%= availability.date.strftime("%d/%m/%Y") %></strong>
+            </span><span> | <%=  %></span>
+          </div>
+          <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
+            <%= link_to "", dashboard_providers_path, class: "fa fa-trash"%>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
-  <% else %>
-  <%= image_tag "cosilverlogo3.png", class: "avatar-large" %>
-  <% end %>
-  <div class='product-body'>
-    <h3><%= service.title %></h3>
-    <span><strong><%= availability.user.email %></strong>
-    </span><span> | <strong> <%= availability.date.strftime("%d/%m/%Y") %></strong>
-    </span><span> | <%=  %></span>
-  </div>
-  <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
-    <%= link_to "", dashboard_providers_path, class: "fa fa-trash"%>
-  </ul>
-  <% end %>
-</div>
-<% end %>
 <% end %>
