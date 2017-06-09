@@ -124,7 +124,10 @@ textarea.form-control {
 .panel-body {
   padding: 2px;
   font-size:10px;
-  padding-left:10px
+  padding-left:10px;
+  ul {
+    width: 100%;
+  }
 }
 
 #messagerie .panel-default {
