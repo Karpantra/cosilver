@@ -13,13 +13,13 @@ class ServicesController < ApplicationController
       @services = Service.where.not(latitude: nil, longitude: nil)
 
     elsif params[:search_city] && params[:search_category]
-      @services = Service.near(params[:search_city], 10).where(category: params[:search_category])
+      @services = Service.near(params[:search_city], 7).where(category: params[:search_category])
 
     elsif params[:search_city] == "" && params[:search_category]
       @services = Service.where.not(latitude: nil, longitude: nil).where(category: params[:search_category])
 
     elsif params[:search_city] && params[:search_category] == ""
-      @services = Service.near(params[:search_city], 10)
+      @services = Service.near(params[:search_city], 7)
 
     end
 

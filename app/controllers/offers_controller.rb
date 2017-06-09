@@ -8,7 +8,7 @@ class OffersController < ApplicationController
 
 
     elsif params[:search]
-      @flats = Flat.near(params[:search], 10).joins(:offers)
+      @flats = Flat.near(params[:search], 2).joins(:offers)
       @offers = []
       @flats.each do |flat|
         flat.offers.each do |offer|
