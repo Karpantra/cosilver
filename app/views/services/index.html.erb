@@ -19,17 +19,17 @@
       <!-- </div> -->
   </div>
   <div class="row">
-    <div class="map-container text-center col-xs-10 col-sm-4 col-md-6 ">
+    <div class="map-container text-center col-xs-10 col-sm-4 col-md-6 hidden-xs">
       <div class="mappy">
           <div id="map" style="width: 100%; height: 70vh;">
           </div>
       </div>
     </div>
-    <div class="container-index col-xs-10 col-sm-8 col-md-6">
-    <div class="row" style="overflow:scroll; height: 70vh;">
+    <div class="container-index col-xs-12 col-sm-8 col-md-6">
+    <div class="row unscroll">
        <% @services.each do |service| %>
        <div class="card white">
-         <div class="card-link">
+         <div class="card-link morepadding">
 
           <h4 class= "text-center" ><%= service.title.first(45) %></h4>
           <div class="col-xs-3  col-sm-3">
