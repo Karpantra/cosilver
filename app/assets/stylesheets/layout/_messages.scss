@@ -1,19 +1,23 @@
 .messages-list {
-  max-height: 100px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  height: 300px;
+  overflow: scroll;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .message-sent {
   // position: relative;
   background: $blue;
   color: white;
-  font-size: 15px;
+  font-size: 10px;
   margin: 5px 20px;
   padding: 10px;
-  max-width: 150px;
+  max-width: 250px;
   border-radius: 15px;
-  display: inline-block;
+  word-wrap: break-word;
+  text-align: left;
+  float:right;
 }
 
 .message-received {
@@ -22,10 +26,11 @@
   border-color: #EEEEEE;
   margin: 5px 20px;
   padding: 10px;
-  float: right;
   border-radius: 15px;
-  max-width: 100%;
-  font-size:15px;
+  max-width: 250px;
+  font-size:10px;
+  word-wrap: break-word;
+  text-align: left;
 }
 
 .message_row ul {
@@ -39,7 +44,7 @@
 // }
 
 .panel-title {
-  font-size: 12px;
+  font-size: 15px;
   color: white;
 }
 
@@ -64,6 +69,7 @@
   background: #F78536;
    a {
     text-decoration:none;
+    font-size:15px;
    }
 }
 
@@ -111,11 +117,18 @@ textarea.form-control {
   }
   .form-control {
     padding-right: 60px;
+    margin-top: 20px;
   }
 }
 
 .panel-body {
   padding: 2px;
-  font-size:20px;
+  font-size:10px;
   padding-left:10px
+}
+
+#messagerie .panel-default {
+  min-width: 100%;
+  max-width: 100%;
+
 }
