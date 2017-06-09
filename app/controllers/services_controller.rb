@@ -66,7 +66,7 @@ class ServicesController < ApplicationController
       end
       availability.save
     end
-    redirect_to profile_users_path
+    redirect_to profile_users_path(:anchor => "services")
   end
 
  private
